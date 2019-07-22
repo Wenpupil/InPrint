@@ -5,7 +5,6 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_bottom"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:layout_above="@+id/ll_bottom"
@@ -22,14 +21,21 @@
         android:layout_centerHorizontal="true"
         android:orientation="horizontal">
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:id="@+id/iv_qq"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
             android:layout_marginEnd="20dp"
-            android:contentDescription="@string/login_bottom_zfb"
-            android:src="@mipmap/zhifubao"/>
+            android:contentDescription="@string/login_bottom_qq"
+            android:src="@mipmap/qq"/>
         <ImageView
+            android:id="@+id/iv_phone"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:src="@mipmap/shouji"/>
+        <ImageView
+            android:id="@+id/iv_wx"
             android:layout_width="33dp"
             android:layout_height="33dp"
             android:layout_marginStart="20dp"

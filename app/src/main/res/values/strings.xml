@@ -2,11 +2,19 @@
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
 
+    <string name="dialog_confirm_title">提示</string>
+    <string name="dialog_confirm_content">这是一个测试内容</string>
+    <string name="dialog_confirm_btn">确定</string>
+
+    <string name="login_back_description">退出登入页面</string>
     <string name="login_picDescription">登入页面图标</string>
     <string name="login_hint_name">手机/邮箱/用户名</string>
     <string name="login_hint_pass">请输入密码</string>
     <string name="login_login">登入</string>
     <string name="login_bottom_msg">-------------- 其他方式登录 --------------</string>
-    <string name="login_bottom_zfb">支付宝登入</string>
+    <string name="login_bottom_qq">QQ登入</string>
     <string name="login_bottom_wx">微信登入</string>
+    <string name="login_phone_log">动态登入</string>
+    <string name="login_loss_pass">忘记密码</string>
+    <string name="login_register">注册</string>
 </resources>
