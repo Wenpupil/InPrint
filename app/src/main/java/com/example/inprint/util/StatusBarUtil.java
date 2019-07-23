@@ -36,4 +36,16 @@ public class StatusBarUtil {
     public static void hideStatusBar(Activity activity){
         activity.getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
+    //设置Activity对应的顶部状态栏的颜色
+    public static void setWindowStatusBarColor(Activity activity, int colorResId) {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                Window window = activity.getWindow();
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+                window.setStatusBarColor(activity.getResources().getColor(colorResId));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
