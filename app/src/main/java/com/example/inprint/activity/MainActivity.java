@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void initView(){
         StatusBarCompat.setStatusBarColor(this,
-                getResources().getColor(R.color.app_main_color));
+                getResources().getColor(R.color.app_top_color));
         Banner banner=findViewById(R.id.banner);
         MainPresenter.iniBanner(banner);
     }
