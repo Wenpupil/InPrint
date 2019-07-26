@@ -27,4 +27,10 @@
     <string name="login_phone_log">动态登入</string>
     <string name="login_loss_pass">忘记密码</string>
     <string name="login_register">注册</string>
+
+    <string name="doc_item_img">文档类型识别图像</string>
+    <string name="doc_item_title">学分认定</string>
+    <string name="doc_item_where_qq">来自 QQ</string>
+    <string name="doc_item_where_wx">来自 微信</string>
+    <string name="doc_item_where_phone">来自 本设备</string>
 </resources>

@@ -1,27 +1,17 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.example.inprint.R;
-import com.example.inprint.presenter.GlideImageLoader;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
-import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
 import com.youth.banner.Banner;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView userhead;   //用户头像
     private ImageView more;       //更多选项
@@ -69,15 +59,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view){
         switch(view.getId()){
             case R.id.ll_tab1:
-                past=mainPresenter.changeTab(past,0);
+                select(0);
                 break;
             case R.id.ll_tab2:
-                past=mainPresenter.changeTab(past,1);
+                select(1);
                 break;
             case R.id.ll_tab3:
-                past=mainPresenter.changeTab(past,2);
+                select(2);
                 break;
         }
+    }
+    private void select(int i){
+        past=mainPresenter.changeTab(past,i);
     }
     @Override
     public void onStart(){

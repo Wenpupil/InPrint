@@ -9,9 +9,13 @@
     <color name="app_icon_color">#57BEEC</color>
     <color name="app_grey">#888888</color>
 
+    <color name="view">#f3f3f3</color>
+
     <color name="white">#fff</color>
     <color name="my_grey">#ECECEC</color>
     <color name="my_black">#050000</color>
+
+    <color name="doc_item_title_color">#050000</color>
 
     <color name="dialog_title">#000</color>
     <color name="dialog_content">#424242</color>

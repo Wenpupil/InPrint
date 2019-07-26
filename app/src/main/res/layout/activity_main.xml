@@ -19,6 +19,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/app_view_color" />
+        android:background="@color/view" />
     <include layout="@layout/main_tab"/>
 </LinearLayout>
