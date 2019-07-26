@@ -1,12 +1,16 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.inprint.R;
+import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
@@ -19,6 +23,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout tab2;    //底部tab2
     private LinearLayout tab3;    //底部tab3
 
+    DocFragment docFragment;
     private static int past;
 
     private MainPresenter mainPresenter;
@@ -28,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         initView();
         mainPresenter=new MainPresenter(this);
+        select(0);
     }
     //初始化界面
     private void initView(){
@@ -41,8 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab1=findViewById(R.id.ll_tab1);
         tab2=findViewById(R.id.ll_tab2);
         tab3=findViewById(R.id.ll_tab3);
-
-        setListener();                                                                              //对控件设置监听
+        setListener();//对控件设置监听
     }
 
     /**
@@ -70,7 +75,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
     private void select(int i){
+        FragmentManager manager=getSupportFragmentManager();
+        FragmentTransaction transaction=manager.beginTransaction();
         past=mainPresenter.changeTab(past,i);
+        if(i==0){
+            if(docFragment==null){
+                docFragment=new DocFragment();
+            }
+            transaction.replace(R.id.fl_main,docFragment);
+        }
+        transaction.commit();
     }
     @Override
     public void onStart(){

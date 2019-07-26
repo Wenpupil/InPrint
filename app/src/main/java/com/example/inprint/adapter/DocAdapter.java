@@ -51,7 +51,7 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         holder.docWhere.setText(doc.getWhere());
 
         String rate=doc.getDocRate();
-        if(rate.equals("pdf")){
+        if(rate!=null&&rate.equals("pdf")){
             Glide.with(holder.itemView).
                     load(R.mipmap.pdf).
                     apply(RequestOptions.bitmapTransform(new CircleCrop())).
