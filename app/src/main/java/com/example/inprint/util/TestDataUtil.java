@@ -23,5 +23,9 @@ public class TestDataUtil {
         b.setDocTitle("连接wifi手册");
         b.setWhere("来自 QQ");
         docList.add(b);
+
+        Doc c=new Doc();
+        c.setDocRate("tianjia");
+        docList.add(c);
     }
 }

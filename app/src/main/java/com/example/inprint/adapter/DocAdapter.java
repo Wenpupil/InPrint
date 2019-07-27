@@ -16,7 +16,10 @@ import com.example.inprint.R;
 import com.example.inprint.base.Doc;
 
 import java.util.List;
-
+/*
+ * @Author Wenpupil
+ * @Description 文档列表适配器
+ */
 public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
 
     private List<Doc> mDocList;
@@ -24,11 +27,14 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         ImageView docImage;
         TextView docTitle;
         TextView docWhere;
+        TextView docAdd;
         ViewHolder(View view){
             super(view);
             docImage=view.findViewById(R.id.iv_doc_item_img);
             docTitle=view.findViewById(R.id.tv_doc_item_title);
             docWhere=view.findViewById(R.id.tv_doc_item_where);
+            docAdd=view.findViewById(R.id.tv_add_doc);
+            docAdd.setVisibility(View.GONE);
         }
     }
 
@@ -54,13 +60,19 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         if(rate!=null&&rate.equals("pdf")){
             Glide.with(holder.itemView).
                     load(R.mipmap.pdf).
-                    apply(RequestOptions.bitmapTransform(new CircleCrop())).
+                    //apply(RequestOptions.bitmapTransform(new CircleCrop())).
+                    into(holder.docImage);
+        }else if(rate.equals("docx")||rate.equals("doc")){
+            Glide.with(holder.itemView).
+                    load(R.mipmap.word).
+                    //apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
         }else{
             Glide.with(holder.itemView).
-                    load(R.mipmap.word).
-                    apply(RequestOptions.bitmapTransform(new CircleCrop())).
+                    load(R.mipmap.tianjia).
+                    //apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
+            holder.docAdd.setVisibility(View.VISIBLE);
         }
     }
     @Override
