@@ -26,4 +26,6 @@
     <color name="login_cursor_color">#57BEEC</color>
     <color name="login_button_color1">#4CAF50</color>
     <color name="login_button_color2">#B44CAF50</color>
+
+    <color name="doc_item_select">#f3f3f3</color>
 </resources>

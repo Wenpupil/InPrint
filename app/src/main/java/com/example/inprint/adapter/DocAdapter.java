@@ -23,6 +23,10 @@ import java.util.List;
 public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
 
     private List<Doc> mDocList;
+    private onItemClickListener listener;
+    public interface onItemClickListener{
+        String onClick(View v,String docurl);
+    }
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView docImage;
         TextView docTitle;
@@ -55,7 +59,15 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
 
         holder.docTitle.setText(doc.getDocTitle());
         holder.docWhere.setText(doc.getWhere());
-
+        holder.itemView.setTag(doc.getDocUrl());
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(listener!=null) {
+                    listener.onClick(v, (String) v.getTag());
+                }
+            }
+        });
         String rate=doc.getDocRate();
         if(rate!=null&&rate.equals("pdf")){
             Glide.with(holder.itemView).
@@ -78,5 +90,8 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
     @Override
     public int getItemCount(){
         return mDocList.size();
+    }
+    public void setItemListener(onItemClickListener listener){
+        this.listener=listener;
     }
 }
