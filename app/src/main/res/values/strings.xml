@@ -38,4 +38,5 @@
     <string name="dialog_add_doc_qq">QQ</string>
     <string name="dialog_add_doc_phone">本地</string>
     <string name="dialog_add_doc_wx">微信</string>
+    <string name="dialog_add_doc">添加文档</string>
 </resources>

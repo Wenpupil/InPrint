@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.example.inprint.R;
 import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.presenter.MainPresenter;
+import com.example.inprint.util.DialogUtil;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
