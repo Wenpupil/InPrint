@@ -1,6 +1,8 @@
-package com.example.inprint.base;
+package com.example.inprint.bean;
 
-public class Doc {
+import org.litepal.crud.LitePalSupport;
+
+public class Doc extends LitePalSupport {
     private String docTitle;   //文档名字
     private String docRate;    //文档种类....such as: Doc,docx,pdf
     private String where;      //文档来自:qq,wx,phone

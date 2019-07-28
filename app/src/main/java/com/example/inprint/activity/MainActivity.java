@@ -3,7 +3,6 @@ package com.example.inprint.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -12,11 +11,11 @@ import android.widget.LinearLayout;
 import com.example.inprint.R;
 import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.presenter.MainPresenter;
-import com.example.inprint.util.DialogUtil;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
 import com.youth.banner.Banner;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView userhead;   //用户头像
     private ImageView more;       //更多选项

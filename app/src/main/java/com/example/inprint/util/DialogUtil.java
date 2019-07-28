@@ -2,7 +2,6 @@ package com.example.inprint.util;
 
 import android.app.Dialog;
 import android.content.Context;
-
 import com.example.inprint.myview.ConfirmDialog;
 import com.example.inprint.myview.DocAddDialog;
 

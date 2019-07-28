@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.inprint.R;
-import com.example.inprint.base.Doc;
+import com.example.inprint.bean.Doc;
 
 import java.util.List;
 /*
