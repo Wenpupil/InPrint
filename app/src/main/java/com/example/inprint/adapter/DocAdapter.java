@@ -10,8 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.resource.bitmap.CircleCrop;
-import com.bumptech.glide.request.RequestOptions;
 import com.example.inprint.R;
 import com.example.inprint.base.Doc;
 
@@ -23,9 +21,9 @@ import java.util.List;
 public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
 
     private List<Doc> mDocList;
-    private onItemClickListener listener;
+    private onItemClickListener listener;         //文档列表子项点击监听
     public interface onItemClickListener{
-        String onClick(View v,String docurl);
+        void onClick(View v,String docurl);
     }
     static class ViewHolder extends RecyclerView.ViewHolder{
         ImageView docImage;
