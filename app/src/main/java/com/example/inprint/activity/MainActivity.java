@@ -3,6 +3,9 @@ package com.example.inprint.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,6 +18,13 @@ import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
 import com.youth.banner.Banner;
+
+import java.io.File;
+import java.util.List;
+
+import ru.bartwell.exfilepicker.data.ExFilePickerResult;
+
+import static com.example.inprint.presenter.DocFragmentPresent.EX_FILE_PICKER_RESULT;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView userhead;   //用户头像
@@ -114,5 +124,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         LogUtil.d("onDestroy","past="+0);
         SharedUtil.deleteInt(this,"past");
         super.onDestroy();
+    }
+
+    //文档获取的结果
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == EX_FILE_PICKER_RESULT) {
+            ExFilePickerResult result = ExFilePickerResult.getFromIntent(data);
+            if (result != null && result.getCount() > 0) {
+                String path =result.getPath();
+                LogUtil.d("addDoc","filepath="+path);
+                List<String> names = result.getNames();
+                for (int i = 0; i < names.size(); i++) {
+                    File f = new File(path, names.get(i));
+                    try {
+                        Uri uri = Uri.fromFile(f); //这里获取了真实可用的文件资源
+                        String docUrl = new String(path.getBytes(),"UTF-8");     //路径
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.example.inprint.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,12 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
 
     private List<Doc> mDocList;
     private onItemClickListener listener;         //文档列表子项点击监听
+    private Context context;
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
     public interface onItemClickListener{
         void onClick(View v,String docurl);
     }
@@ -68,17 +75,17 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         });
         String rate=doc.getDocRate();
         if(rate!=null&&rate.equals("pdf")){
-            Glide.with(holder.itemView).
+            Glide.with(context).
                     load(R.mipmap.pdf).
                     //apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
         }else if(rate.equals("docx")||rate.equals("doc")){
-            Glide.with(holder.itemView).
+            Glide.with(context).
                     load(R.mipmap.word).
                     //apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
         }else{
-            Glide.with(holder.itemView).
+            Glide.with(context).
                     load(R.mipmap.tianjia).
                     //apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
