@@ -13,6 +13,7 @@ import com.google.gson.Gson;
 import com.youth.banner.Banner;
 
 import java.io.File;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -96,6 +97,7 @@ public class MainPresenter {
                 File f = new File(path, names.get(i));
                 try {
                     Uri uri = Uri.fromFile(f); //这里获取了真实可用的文件资源
+                    LogUtil.d("fileAbsolute",uri.toString());
                     addDocInList(where[requestCode],uri);//将路径定位传入
                 } catch (Exception e) {
                     e.printStackTrace();

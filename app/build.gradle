@@ -2,6 +2,10 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 28
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     defaultConfig {
         applicationId "com.example.inprint"
         minSdkVersion 19
@@ -16,19 +20,34 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+    }
+    defaultConfig {
+        multiDexEnabled true
+    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'                                       //recyclerView控件
-    implementation 'com.githang:status-bar-compat:0.7'                                              //状态栏api使用--后期需要自己写
-    implementation 'com.youth.banner:banner:1.4.10'                                                 //ViewPage使用--后期需要自己写
-    implementation 'com.github.bumptech.glide:glide:3.7.0'                                          //图像导入
-    implementation 'org.litepal.android:java:3.0.0'                                                 //android数据库框架
-    implementation 'ru.bartwell:exfilepicker:2.1'                                                   //文件选择框架--后期自己写
-    implementation 'com.google.code.gson:gson:2.8.2'                                                //json相应api
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    //recyclerView控件
+    implementation 'com.githang:status-bar-compat:0.7'
+    //状态栏api使用--后期需要自己写
+    implementation 'com.youth.banner:banner:1.4.10'
+    //ViewPage使用--后期需要自己写
+    implementation 'com.github.bumptech.glide:glide:3.7.0'
+    //图像导入
+    implementation 'org.litepal.android:java:3.0.0'
+    //android数据库框架
+    implementation 'ru.bartwell:exfilepicker:2.1'
+    //文件选择框架--后期自己写
+    implementation 'com.google.code.gson:gson:2.8.2'
+    //json相应api
+    implementation 'org.apache.poi:poi-scratchpad:3.10-FINAL'
+    implementation 'fr.opensagres.xdocreport:org.apache.poi.xwpf.converter.xhtml:1.0.6'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
