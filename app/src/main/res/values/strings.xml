@@ -39,4 +39,6 @@
     <string name="dialog_add_doc_phone">本地</string>
     <string name="dialog_add_doc_wx">微信</string>
     <string name="dialog_add_doc">添加文档</string>
+
+    <string name="docList_update_error">更新文档列表广播接收器出现异常</string>
 </resources>

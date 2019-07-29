@@ -130,21 +130,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == EX_FILE_PICKER_RESULT) {
-            ExFilePickerResult result = ExFilePickerResult.getFromIntent(data);
-            if (result != null && result.getCount() > 0) {
-                String path =result.getPath();
-                LogUtil.d("addDoc","filepath="+path);
-                List<String> names = result.getNames();
-                for (int i = 0; i < names.size(); i++) {
-                    File f = new File(path, names.get(i));
-                    try {
-                        Uri uri = Uri.fromFile(f); //这里获取了真实可用的文件资源
-                        String docUrl = new String(path.getBytes(),"UTF-8");     //路径
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
+            mainPresenter.docFromWhere(requestCode,data);
         }
     }
 }

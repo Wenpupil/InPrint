@@ -33,4 +33,13 @@ public class Doc extends LitePalSupport {
     public void setDocUrl(String docUrl) {
         this.docUrl = docUrl;
     }
+
+    public static Doc createDoc(String docTitle,String docRate,String where,String docUrl){
+        Doc doc=new Doc();
+        doc.setDocTitle(docTitle);
+        doc.setDocRate(docRate);
+        doc.setWhere(where);
+        doc.setDocUrl(docUrl);
+        return doc;
+    }
 }

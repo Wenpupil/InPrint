@@ -1,6 +1,5 @@
 package com.example.inprint.fragment;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,7 +45,6 @@ public class DocFragment extends Fragment {
         docFragmentPresent=new DocFragmentPresent(getContext());
         return view;
     }
-
     private void setOnItemClickListener(){
         adapter.setItemListener(new DocAdapter.onItemClickListener() {
             @Override
@@ -60,5 +58,9 @@ public class DocFragment extends Fragment {
                 }
             }
         });
+    }
+    //更新一条数据，刷新recycler-list表
+    public void updataDocList(){
+        adapter.notifyItemInserted(0);
     }
 }

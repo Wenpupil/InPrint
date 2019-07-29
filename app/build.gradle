@@ -28,6 +28,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:3.7.0'                                          //图像导入
     implementation 'org.litepal.android:java:3.0.0'                                                 //android数据库框架
     implementation 'ru.bartwell:exfilepicker:2.1'                                                   //文件选择框架--后期自己写
+    implementation 'com.google.code.gson:gson:2.8.2'                                                //json相应api
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
