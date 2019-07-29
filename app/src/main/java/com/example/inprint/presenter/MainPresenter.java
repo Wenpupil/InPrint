@@ -7,6 +7,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.inprint.R;
 import com.example.inprint.bean.Doc;
+import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.util.LogUtil;
 import com.google.gson.Gson;
 import com.youth.banner.Banner;
@@ -22,6 +23,7 @@ import ru.bartwell.exfilepicker.data.ExFilePickerResult;
  * @Description MainActivity的对象中间件
  */
 public class MainPresenter {
+    private DocFragment docFragment;               //主活动中docFragment的引用
     private Activity activity;
     private ImageView[] tabIcons=new ImageView[3];  //tab1的图标
     private TextView[] tabTexts=new TextView[3];   //tab1的文本
@@ -68,7 +70,8 @@ public class MainPresenter {
      */
     private void addDocInList(String where,Uri uri){
         Doc doc=docCreate(where,uri);
-
+        //更新docFragment列表,并保存入库
+        docFragment.updataDocList(doc);
     }
     //接收URI对象和where数据，产生DOC
     private Doc docCreate(String where,Uri uri){
@@ -99,5 +102,8 @@ public class MainPresenter {
                 }
             }
         }
+    }
+    public void setDocFragment(DocFragment docFragment){
+        this.docFragment=docFragment;
     }
 }

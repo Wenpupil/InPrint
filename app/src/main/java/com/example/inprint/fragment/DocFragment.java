@@ -13,8 +13,8 @@ import com.example.inprint.R;
 import com.example.inprint.adapter.DocAdapter;
 import com.example.inprint.bean.Doc;
 import com.example.inprint.presenter.DocFragmentPresent;
+import com.example.inprint.util.ClassHandle;
 import com.example.inprint.util.LogUtil;
-import com.example.inprint.util.TestDataUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,11 @@ public class DocFragment extends Fragment {
         View view;
         RecyclerView recyclerView;
         //用测试数据 初始化
-        TestDataUtil.docItem(docList);
+        //TestDataUtil.docItem(docList);
+        //初始化中间对象件
+        docFragmentPresent=new DocFragmentPresent(getContext());
+        docList=docFragmentPresent.iniDocList();
+
         view = inflater.inflate(R.layout.doc_fragment,container,false);
         recyclerView=view.findViewById(R.id.rv_doc);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());
@@ -41,8 +45,6 @@ public class DocFragment extends Fragment {
         adapter.setContext(getContext());
         setOnItemClickListener();         //列表子项被点击对应的行为
         recyclerView.setAdapter(adapter);
-        //初始化中间对象件
-        docFragmentPresent=new DocFragmentPresent(getContext());
         return view;
     }
     private void setOnItemClickListener(){
@@ -59,8 +61,21 @@ public class DocFragment extends Fragment {
             }
         });
     }
-    //更新一条数据，刷新recycler-list表
-    public void updataDocList(){
-        adapter.notifyItemInserted(0);
+    //更新一条数据，刷新recycler-list表,并保存该数据
+    public void updataDocList(Doc doc){
+        if(!checkContains(doc)) {
+            docList.add(0, doc);
+            adapter.notifyItemInserted(0);
+            doc.save();
+        }
+    }
+    //检查docList中是否包含doc对象
+    private boolean checkContains(Doc doc){
+        for(int i=0;i<docList.size();i++){
+            if(ClassHandle.docIsEquals(docList.get(i),doc)){
+                return true;
+            }
+        }
+        return false;
     }
 }

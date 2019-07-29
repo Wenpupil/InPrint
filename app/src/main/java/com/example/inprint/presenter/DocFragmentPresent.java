@@ -9,8 +9,14 @@ import android.os.Message;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import com.example.inprint.bean.Doc;
 import com.example.inprint.myview.DocAddDialog;
 import com.example.inprint.util.LogUtil;
+
+import org.litepal.LitePal;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ru.bartwell.exfilepicker.ExFilePicker;
 
@@ -83,5 +89,22 @@ public class DocFragmentPresent {
         message.what=what;
         message.obj=obj;
         docHandler.sendMessage(message);
+    }
+    public List<Doc> iniDocList(){
+        List<Doc> docList= LitePal.findAll(Doc.class);
+        docList=reserve(docList);
+        Doc c=new Doc();
+        c.setDocRate("tianjia");
+        c.setDocUrl("ADD");
+        docList.add(c);
+        return docList;
+    }
+    //将数据反向
+    private List<Doc> reserve(List<Doc> docList){
+        List<Doc> result=new ArrayList<>();
+        for(int i=docList.size()-1;i>=0;i--){
+            result.add(docList.get(i));
+        }
+        return result;
     }
 }

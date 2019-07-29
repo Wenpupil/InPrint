@@ -1,5 +1,7 @@
 package com.example.inprint.bean;
 
+import androidx.annotation.Nullable;
+
 import org.litepal.crud.LitePalSupport;
 
 public class Doc extends LitePalSupport {

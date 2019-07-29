@@ -5,7 +5,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -18,11 +17,6 @@ import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
 import com.youth.banner.Banner;
-
-import java.io.File;
-import java.util.List;
-
-import ru.bartwell.exfilepicker.data.ExFilePickerResult;
 
 import static com.example.inprint.presenter.DocFragmentPresent.EX_FILE_PICKER_RESULT;
 
@@ -96,6 +90,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             transaction.replace(R.id.fl_main,docFragment);
         }
         transaction.commit();
+        mainPresenter.setDocFragment(docFragment);
     }
     @Override
     public void onStart(){
