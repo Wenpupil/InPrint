@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.inprint.bean.Doc;
 import com.example.inprint.myview.DocAddDialog;
+import com.example.inprint.myview.DocClickDialog;
 import com.example.inprint.util.LogUtil;
 
 import org.litepal.LitePal;
@@ -39,8 +40,9 @@ public class DocFragmentPresent {
         public void handleMessage(Message message){
             switch (message.what){
                 case 0:
-                    Toast.makeText(context,"你点击了文档 "+(String)message.obj
-                            ,Toast.LENGTH_SHORT).show();
+                    LogUtil.d("DocFragment",
+                            "你点击了文档 "+(String)message.obj);
+                    DocClickAction();
                     break;
                 case 1:
                     DocAddAction();
@@ -48,9 +50,7 @@ public class DocFragmentPresent {
             }
         }
     };
-    /*
-     * 选择文档来源地
-     */
+    //选择文档来源地
     private DocAddDialog.AddClickListener listener=new DocAddDialog.AddClickListener() {
         @Override
         public void onClick(Dialog dialog, int rate) {
@@ -58,12 +58,26 @@ public class DocFragmentPresent {
             SelectDoc(fileDirs[rate]);
         }
     };
+    //选择文档功能   --查看or打印
+    private DocClickDialog.ClickDialog clickDocListener=new DocClickDialog.ClickDialog() {
+        @Override
+        public void onClick(Dialog dialog, int rate) {
+            Toast.makeText(context,
+                    "选择功能="+rate,Toast.LENGTH_SHORT).show();
+        }
+    };
+
     private Context context;
     public DocFragmentPresent(Context context){
         this.context=context;
     }
+    //文档添加行为函数
     private void DocAddAction(){
         new DocAddDialog(context,listener).show();
+    }
+    //文档点击后相应行为函数
+    private void DocClickAction(){
+        new DocClickDialog(context,clickDocListener).show();
     }
     /*
      * 选择文档

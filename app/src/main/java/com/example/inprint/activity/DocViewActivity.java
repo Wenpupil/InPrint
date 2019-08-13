@@ -13,8 +13,8 @@ import org.apache.poi.hwpf.converter.PicturesManager;
 import org.apache.poi.hwpf.converter.WordToHtmlConverter;
 import org.apache.poi.hwpf.usermodel.Picture;
 import org.apache.poi.hwpf.usermodel.PictureType;
-import org.apache.poi.xwpf.converter.core.BasicURIResolver;
 import org.apache.poi.xwpf.converter.core.FileImageExtractor;
+import org.apache.poi.xwpf.converter.core.FileURIResolver;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLConverter;
 import org.apache.poi.xwpf.converter.xhtml.XHTMLOptions;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
@@ -27,6 +27,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.util.List;
 
@@ -39,11 +40,15 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+/**
+ * 查看文档
+ */
 public class DocViewActivity extends AppCompatActivity {
     //创建生成的文件地址
-    private static final String docName = "123.doc";
+    private static final String docName = "123.docx";
     private static final String docPath="/storage/emulated/0/";
     private static final String savePath="/data/user/0/com.example.inprint/files/";
+    private static final String tempPath="/data/user/0/com.example.inprint/files/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +58,7 @@ public class DocViewActivity extends AppCompatActivity {
             if(!(new File(savePath+name).exists()))
                 new File(savePath+name).mkdirs();
             LogUtil.d("fileView","找到文档");
-            word2007ToHtml();
+            docx2Html(docPath+docName,savePath+name+".html");
             //convert2Html(docPath+docName,savePath+name+".html");
         } catch (Exception e){
             LogUtil.d("fileView","没有找到文档");
@@ -152,26 +157,33 @@ public class DocViewActivity extends AppCompatActivity {
             }
         }
     }
-    public void word2007ToHtml() throws Exception {
-        String filepath = "/storage/emulated/0/";
-        String sourceFileName =filepath+"123.docx";
-        String targetFileName = savePath+"123.html";
-        String imagePathStr = savePath+"/image/";
-        OutputStreamWriter outputStreamWriter = null;
-        try {
-            XWPFDocument document = new XWPFDocument(new FileInputStream(sourceFileName));
-            XHTMLOptions options = XHTMLOptions.create();
-            // 存放图片的文件夹
-            options.setExtractor(new FileImageExtractor(new File(imagePathStr)));
-            // html中图片的路径
-            options.URIResolver(new BasicURIResolver("image"));
-            outputStreamWriter = new OutputStreamWriter(new FileOutputStream(targetFileName), "utf-8");
-            XHTMLConverter xhtmlConverter = (XHTMLConverter) XHTMLConverter.getInstance();
-            xhtmlConverter.convert(document, outputStreamWriter, options);
-        } finally {
-            if (outputStreamWriter != null) {
-                outputStreamWriter.close();
-            }
-        }
+    /**
+     * docx格式word转换为html
+     *
+     * @param fileName
+     *            docx文件路径
+     * @param outPutFile
+     *            html输出文件路径
+     * @throws TransformerException
+     * @throws IOException
+     * @throws ParserConfigurationException
+     */
+    public static void docx2Html(String fileName, String outPutFile)
+            throws TransformerException, IOException, ParserConfigurationException {
+        String fileOutName = outPutFile;
+        long startTime = System.currentTimeMillis();
+        XWPFDocument document = new XWPFDocument(new FileInputStream(fileName));
+        XHTMLOptions options = XHTMLOptions.create().indent(4);
+        // 导出图片
+        File imageFolder = new File(tempPath);
+        options.setExtractor(new FileImageExtractor(imageFolder));
+        // URI resolver
+        options.URIResolver(new FileURIResolver(imageFolder));
+        File outFile = new File(fileOutName);
+        outFile.getParentFile().mkdirs();
+        OutputStream out = new FileOutputStream(outFile);
+        XHTMLConverter.getInstance().convert(document, out, options);
+        System.out.println("Generate " + fileOutName + " with " +
+                (System.currentTimeMillis() - startTime) + " ms.");
     }
 }

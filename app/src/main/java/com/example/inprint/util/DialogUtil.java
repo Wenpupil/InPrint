@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import com.example.inprint.myview.ConfirmDialog;
 import com.example.inprint.myview.DocAddDialog;
+import com.example.inprint.myview.DocClickDialog;
 
 /**
  * 对话框工具
@@ -32,5 +33,8 @@ public class DialogUtil {
     }
     public static void DocAdd(Context context, DocAddDialog.AddClickListener listener){
         new DocAddDialog(context,listener).show();
+    }
+    public static void DocClick(Context context, DocClickDialog.ClickDialog listener){
+        new DocClickDialog(context,listener).show();
     }
 }
