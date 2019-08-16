@@ -28,4 +28,6 @@
     <color name="login_button_color2">#B44CAF50</color>
 
     <color name="doc_item_select">#f3f3f3</color>
+
+    <color name="item_click_selected">#DADADA</color>
 </resources>

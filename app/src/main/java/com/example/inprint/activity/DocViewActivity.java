@@ -1,6 +1,8 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -45,14 +47,15 @@ import javax.xml.transform.stream.StreamResult;
  */
 public class DocViewActivity extends AppCompatActivity {
     //创建生成的文件地址
-    private static final String docName = "123.docx";
-    private static final String docPath="/storage/emulated/0/";
+    private static String docName = "123.docx";
+    private static String docPath="/storage/emulated/0/";
     private static final String savePath="/data/user/0/com.example.inprint/files/";
     private static final String tempPath="/data/user/0/com.example.inprint/files/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_view);
+        intentData();
         String name = docName.substring(0, docName.indexOf("."));
         try {
             if(!(new File(savePath+name).exists()))
@@ -70,9 +73,14 @@ public class DocViewActivity extends AppCompatActivity {
         webSettings.setLoadWithOverviewMode(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
-        webView.loadUrl("file://"+savePath+"123"+".html");
+        webView.loadUrl("file://"+savePath+name+".html");
     }
-
+    //获取启用此活动的数据
+    private void intentData(){
+        Intent intent=getIntent();
+        docPath=intent.getStringExtra("docUrl");
+        docName=intent.getStringExtra("docName");
+    }
     /**
      * word文档转成html格式
      * */

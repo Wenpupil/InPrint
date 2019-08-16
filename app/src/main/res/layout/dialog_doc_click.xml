@@ -27,6 +27,7 @@
         android:layout_marginStart="15dp"
         android:textSize="16sp"
         android:text="@string/dialog_doc_click_one"
+        android:background="@drawable/item_click"
         app:layout_constraintTop_toBottomOf="@+id/title" />
     <!--查看文档-->
     <TextView
@@ -37,6 +38,7 @@
         android:layout_marginStart="15dp"
         android:textSize="16sp"
         android:text="@string/dialog_doc_click_two"
+        android:background="@drawable/item_click"
         app:layout_constraintTop_toBottomOf="@+id/print_doc"/>
     <TextView
         android:layout_width="match_parent"
