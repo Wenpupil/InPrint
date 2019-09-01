@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.widget.Toast;
 
 import com.example.inprint.activity.DocViewActivity;
+import com.example.inprint.activity.PrintActivity;
 import com.example.inprint.bean.Doc;
 import com.example.inprint.myview.DocAddDialog;
 import com.example.inprint.myview.DocClickDialog;
@@ -84,13 +85,18 @@ public class DocFragmentPresent {
     }
     //打印文档行为--
     private void printDoc(){
-        Toast.makeText(context,
-                "打印文档="+clickDocName,Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(context,
+                "打印文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
+        Intent intent=new Intent(context, PrintActivity.class);
+        //传递文档在app中的uri到打印文档的活动中
+        intent.putExtra("docUri",clickDocName);
+        context.startActivity(intent);
+
     }
     //查看文档行为--待优化
     private void checkDoc(){
-        Toast.makeText(context,
-                "查看文档="+clickDocName,Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(context,
+                "查看文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
         int splitLine=clickDocName.lastIndexOf('/');
         String docUrl=clickDocName.substring(0,splitLine+1);
         String docName=clickDocName.substring(splitLine+1);

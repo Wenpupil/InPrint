@@ -1,4 +1,6 @@
 <resources>
+    <string name="Http_postDoc_address">http://39.106.215.109/InPrint/upload.php</string>
+
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
     <string name="app_top_title">趣 印</string>
@@ -45,4 +47,7 @@
     <string name="dialog_add_doc">添加文档</string>
 
     <string name="docList_update_error">更新文档列表广播接收器出现异常</string>
+
+    <string name="print_top_img">打印文档活动的顶部返回按钮</string>
+    <string name="print_top_title">地点选择</string>
 </resources>
