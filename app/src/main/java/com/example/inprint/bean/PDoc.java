@@ -6,15 +6,21 @@ package com.example.inprint.bean;
  */
 public class PDoc {
     private String aid;
+    private String atoken;
     private String rate;
     private String uri;
     //提交信息到某个地址
     private String posturl;
 
-    public PDoc(String aid,String rate,String uri,String posturl){
+    public PDoc(String aid,String atoken,String rate,String uri,String posturl){
         this.aid=aid;
+        this.atoken=atoken;
         this.rate=rate;
         this.uri=uri;
+    }
+
+    public void setAtoken(String atoken) {
+        this.atoken = atoken;
     }
 
     public void setPosturl(String posturl) {
@@ -47,5 +53,9 @@ public class PDoc {
 
     public String getPosturl() {
         return posturl;
+    }
+
+    public String getAtoken() {
+        return atoken;
     }
 }

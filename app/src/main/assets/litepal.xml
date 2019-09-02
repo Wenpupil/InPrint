@@ -4,5 +4,6 @@
     <version value="1"/>
     <list>
         <mapping class="com.example.inprint.bean.Doc"/>
+        <mapping class="com.example.inprint.bean.User"/>
     </list>
 </litepal>

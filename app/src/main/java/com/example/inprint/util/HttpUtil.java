@@ -29,6 +29,7 @@ public class HttpUtil {
         builder.addFormDataPart("docfile", docfile.getName(),
                 RequestBody.create(MediaType.parse("application/octet-stream"),docfile))
                 .addFormDataPart("aid",pDoc.getAid())
+                .addFormDataPart("atoken",pDoc.getAtoken())
                 .addFormDataPart("rate",pDoc.getRate());
         MultipartBody body=builder.build();
 

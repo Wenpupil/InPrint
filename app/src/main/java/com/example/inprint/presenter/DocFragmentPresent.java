@@ -8,13 +8,17 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
-import android.widget.Toast;
 
+import com.example.inprint.R;
 import com.example.inprint.activity.DocViewActivity;
 import com.example.inprint.activity.PrintActivity;
 import com.example.inprint.bean.Doc;
+import com.example.inprint.bean.PDoc;
+import com.example.inprint.bean.User;
 import com.example.inprint.myview.DocAddDialog;
 import com.example.inprint.myview.DocClickDialog;
+import com.example.inprint.myview.LoadingDialog;
+import com.example.inprint.util.InfoUtil;
 import com.example.inprint.util.LogUtil;
 
 import org.litepal.LitePal;
@@ -83,15 +87,19 @@ public class DocFragmentPresent {
     public DocFragmentPresent(Context context){
         this.context=context;
     }
-    //打印文档行为--
+    /* 打印文档行为步骤
+     * 1.上传文档至服务器，获取页数及文档url
+     * 2.跳转至打印活动
+     */
     private void printDoc(){
         /*Toast.makeText(context,
                 "打印文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
+        uploadFile();
+        new LoadingDialog(context).show();
         Intent intent=new Intent(context, PrintActivity.class);
         //传递文档在app中的uri到打印文档的活动中
         intent.putExtra("docUri",clickDocName);
         context.startActivity(intent);
-
     }
     //查看文档行为--待优化
     private void checkDoc(){
@@ -156,5 +164,13 @@ public class DocFragmentPresent {
             result.add(docList.get(i));
         }
         return result;
+    }
+    //上传文档至服务器
+    private void uploadFile(){
+        int splitDiot=clickDocName.lastIndexOf(".");
+        String postUrl=context.getString(R.string.Http_postDoc_address);
+        String rate=clickDocName.substring(splitDiot);
+        User user= InfoUtil.testUserInfo();
+        PDoc pDoc=new PDoc(user.getAid(),user.getAtoken(),rate,clickDocName,postUrl);
     }
 }

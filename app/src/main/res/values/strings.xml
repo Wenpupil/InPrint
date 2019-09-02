@@ -46,6 +46,8 @@
     <string name="dialog_add_doc_wx">微信</string>
     <string name="dialog_add_doc">添加文档</string>
 
+    <string name="dialog_loading_text">请稍后...</string>
+
     <string name="docList_update_error">更新文档列表广播接收器出现异常</string>
 
     <string name="print_top_img">打印文档活动的顶部返回按钮</string>
