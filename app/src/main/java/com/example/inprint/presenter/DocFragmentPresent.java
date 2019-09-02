@@ -50,6 +50,7 @@ public class DocFragmentPresent {
     private String startDirectory = null;// 记忆上一次访问的文件目录路径
     /* 0表示点击文档
      * 1表示点击添加
+     * 2上传框消失
      * 列表点击检测监听：Handle机制
      */
     private Handler docHandler=new Handler(){
@@ -64,6 +65,10 @@ public class DocFragmentPresent {
                     break;
                 case 1:
                     DocAddAction();
+                    break;
+                case 2:
+                    myLoadDialog.dismiss();
+                    printDoc(message.obj);
                     break;
             }
         }
@@ -86,7 +91,7 @@ public class DocFragmentPresent {
             //Toast.makeText(context,
             //        "选择功能="+rate,Toast.LENGTH_SHORT).show();
             if(rate==0){
-                printDoc(); //执行打印文档行为
+                uploadFile(); //执行打印文档行为先进行上传
             }else if(rate==1){
                 checkDoc(); //执行查看文档行为
             }
@@ -102,13 +107,14 @@ public class DocFragmentPresent {
      * 1.上传文档至服务器，获取页数及文档url
      * 2.跳转至打印活动
      */
-    private void printDoc(){
+    private void printDoc(Object obj){
         /*Toast.makeText(context,
                 "打印文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
-        uploadFile();
+        RDoc rDoc=(RDoc)obj;
         Intent intent=new Intent(context, PrintActivity.class);
         //传递文档在app中的uri到打印文档的活动中
-        intent.putExtra("docUri",clickDocName);
+        intent.putExtra("docUri",rDoc.getFileUrl());
+        intent.putExtra("docPage",rDoc.getFilePage());
         context.startActivity(intent);
     }
     //查看文档行为--待优化
@@ -204,9 +210,17 @@ public class DocFragmentPresent {
             RDoc rDoc=gson.fromJson(result,RDoc.class);
             if(rDoc.getSuccess().equals("true")) {
                 LogUtil.d("上传成功", "回执信息:" + rDoc.viewInfo());
+                notifyDialog(rDoc);
             }else{
                 LogUtil.d("上传失败","用户信息认证失败");
             }
         }
     };
+    //通过handle机制更新UI
+    private void notifyDialog(RDoc rDoc){
+        Message message=new Message();
+        message.what=2;
+        message.obj=rDoc;
+        docHandler.sendMessage(message);
+    }
 }
