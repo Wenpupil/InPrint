@@ -14,18 +14,26 @@ import com.example.inprint.activity.DocViewActivity;
 import com.example.inprint.activity.PrintActivity;
 import com.example.inprint.bean.Doc;
 import com.example.inprint.bean.PDoc;
+import com.example.inprint.bean.RDoc;
 import com.example.inprint.bean.User;
 import com.example.inprint.myview.DocAddDialog;
 import com.example.inprint.myview.DocClickDialog;
 import com.example.inprint.myview.LoadingDialog;
+import com.example.inprint.util.HttpUtil;
 import com.example.inprint.util.InfoUtil;
 import com.example.inprint.util.LogUtil;
+import com.google.gson.Gson;
 
+import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 import ru.bartwell.exfilepicker.ExFilePicker;
 
 /*
@@ -60,6 +68,9 @@ public class DocFragmentPresent {
             }
         }
     };
+    //等待对话框
+    private LoadingDialog myLoadDialog;
+
     //选择文档来源地
     private DocAddDialog.AddClickListener listener=new DocAddDialog.AddClickListener() {
         @Override
@@ -95,7 +106,6 @@ public class DocFragmentPresent {
         /*Toast.makeText(context,
                 "打印文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
         uploadFile();
-        new LoadingDialog(context).show();
         Intent intent=new Intent(context, PrintActivity.class);
         //传递文档在app中的uri到打印文档的活动中
         intent.putExtra("docUri",clickDocName);
@@ -166,11 +176,37 @@ public class DocFragmentPresent {
         return result;
     }
     //上传文档至服务器
-    private void uploadFile(){
-        int splitDiot=clickDocName.lastIndexOf(".");
-        String postUrl=context.getString(R.string.Http_postDoc_address);
-        String rate=clickDocName.substring(splitDiot);
-        User user= InfoUtil.testUserInfo();
-        PDoc pDoc=new PDoc(user.getAid(),user.getAtoken(),rate,clickDocName,postUrl);
+    private void uploadFile() {
+        //生产等待对话框对象
+        myLoadDialog=new LoadingDialog(context);
+        myLoadDialog.show();
+        //构建上传信息
+        int splitDiot = clickDocName.lastIndexOf(".");
+        String postUrl = context.getResources().getString(R.string.Http_postDoc_address);
+        String rate = clickDocName.substring(splitDiot + 1);
+        //虚拟用户--测试
+        User user = InfoUtil.testUserInfo();
+        PDoc pDoc = new PDoc(user.getAid(), user.getAtoken(), rate, clickDocName, postUrl);
+        LogUtil.d("上传文档", pDoc.viewInfo());
+        //开始进行上传
+        HttpUtil.postDoc(pDoc,uCallback);
     }
+    //上传文档okhttp的接口实现
+    private Callback uCallback = new Callback() {
+        @Override
+        public void onFailure(@NotNull Call call, @NotNull IOException e) {
+            LogUtil.e("上传出错","位置:DocFragmentPresent的callback接口");
+        }
+        @Override
+        public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+            String result = response.body().string();
+            Gson gson=new Gson();
+            RDoc rDoc=gson.fromJson(result,RDoc.class);
+            if(rDoc.getSuccess().equals("true")) {
+                LogUtil.d("上传成功", "回执信息:" + rDoc.viewInfo());
+            }else{
+                LogUtil.d("上传失败","用户信息认证失败");
+            }
+        }
+    };
 }

@@ -32,4 +32,8 @@ public class RDoc {
     public String getSuccess() {
         return success;
     }
+
+    public String viewInfo(){
+        return "success = "+success+", fileUrl = "+fileUrl+", filePage = "+filePage;
+    }
 }
