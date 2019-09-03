@@ -55,6 +55,8 @@
     <string name="print_iv_weizhi">位置选择标识图片</string>
     <string name="print_top_img">打印文档活动的顶部返回按钮</string>
     <string name="print_object_img">文档类型图标</string>
+    <string name="print_number_add">增加文档数量</string>
+    <string name="print_number_sub">减少文档数量</string>
 
     <string name="print_top_title">订单确认</string>
     <string name="print_tv_address">未选择打印位置</string>
@@ -71,4 +73,8 @@
     <string name="print_zhifu_two">在线支付</string>
     <string name="print_numbers">份数</string>
     <string name="print_number">1</string>
+    <string name="print_all">合计</string>
+    <string name="print_test_money">￥14.7</string>
+    <string name="print_view">预览</string>
+    <string name="print_cost">支付</string>
 </resources>

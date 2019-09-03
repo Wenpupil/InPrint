@@ -36,4 +36,5 @@
 
     <color name="item_click_selected">#DADADA</color>
     <color name="print_object_grey">#F0F0F0</color>
+    <color name="print_zhifu_color">#57BEEC</color>
 </resources>
