@@ -30,8 +30,10 @@
     <color name="login_button_color2">#B44CAF50</color>
 
     <color name="print_address_color">#FFFFFF</color>
+    <color name="print_price_color">#FD1919</color>
 
     <color name="doc_item_select">#f3f3f3</color>
 
     <color name="item_click_selected">#DADADA</color>
+    <color name="print_object_grey">#F0F0F0</color>
 </resources>

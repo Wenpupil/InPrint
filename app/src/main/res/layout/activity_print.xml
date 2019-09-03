@@ -1,56 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/background_grey">
-    <include layout="@layout/print_top"/>
+    android:background="@color/background_grey"
+    android:orientation="vertical">
+
+    <include layout="@layout/print_top" />
+
     <RelativeLayout
         android:id="@+id/rl_address"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_margin="10dp"
-        android:orientation="horizontal"
         android:background="@drawable/print_select_address"
-        app:layout_constraintTop_toBottomOf="@+id/print_top_layout"
-        app:layout_constraintLeft_toLeftOf="parent">
+        android:orientation="horizontal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/print_top_layout">
+
         <ImageView
             android:id="@+id/iv_weizhi"
             android:layout_width="25dp"
             android:layout_height="21dp"
-            android:layout_margin="10dp"
             android:layout_centerVertical="true"
+            android:layout_margin="10dp"
             android:contentDescription="@string/print_iv_weizhi"
-            android:src="@mipmap/weizhi"/>
+            android:src="@mipmap/weizhi" />
+
         <TextView
             android:id="@+id/tv_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/iv_weizhi"
             android:layout_toStartOf="@+id/iv_address_select"
+            android:layout_toEndOf="@+id/iv_weizhi"
+            android:text="@string/print_tv_address"
             android:textColor="@color/my_black"
-            android:textSize="16sp"
-            android:text="@string/print_tv_address"/>
+            android:textSize="16sp" />
+
         <ImageView
             android:id="@+id/iv_address_select"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="5dp"
             android:contentDescription="@string/print_iv_select"
-            android:src="@mipmap/backright"/>
+            android:src="@mipmap/backright" />
     </RelativeLayout>
+
     <RelativeLayout
+        android:id="@+id/rl_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@drawable/print_item_background"
-        app:layout_constraintTop_toBottomOf="@+id/rl_address"
-        app:layout_constraintLeft_toLeftOf="@+id/rl_address">
+        app:layout_constraintLeft_toLeftOf="@+id/rl_address"
+        app:layout_constraintTop_toBottomOf="@+id/rl_address">
+
         <ImageView
             android:id="@+id/iv_icon"
             android:layout_width="25dp"
@@ -58,24 +65,221 @@
             android:layout_centerVertical="true"
             android:layout_margin="10dp"
             android:contentDescription="@string/print_iv_icon"
-            android:src="@mipmap/tubiao64"/>
+            android:src="@mipmap/tubiao64" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toEndOf="@+id/iv_icon"
             android:layout_toStartOf="@+id/iv_icon_end"
+            android:layout_toEndOf="@+id/iv_icon"
+            android:text="@string/print_tv_icon"
             android:textColor="@color/in_grey"
-            android:textSize="14sp"
-            android:text="@string/print_tv_icon"/>
+            android:textSize="14sp" />
+
         <TextView
             android:id="@+id/iv_icon_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="10dp"
-            android:textSize="10sp"
-            android:text="@string/print_tv_icon_end"/>
+            android:text="@string/print_tv_icon_end"
+            android:textSize="10sp" />
     </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_object"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/print_object_grey"
+        app:layout_constraintLeft_toLeftOf="@+id/rl_description"
+        app:layout_constraintTop_toBottomOf="@+id/rl_description">
+
+        <ImageView
+            android:id="@+id/iv_rate_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/print_object_img"
+            android:src="@mipmap/docprint" />
+
+        <TextView
+            android:id="@+id/tv_filename"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/iv_rate_img"
+            android:text="@string/print_filename"
+            android:textColor="@color/my_black"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rl_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="@+id/rl_object"
+        app:layout_constraintTop_toBottomOf="@+id/rl_object">
+
+        <TextView
+            android:id="@+id/tv_total_start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/print_total_start"
+            android:textColor="@color/my_black"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_univalence"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/print_total_univalence"
+            android:textColor="@color/my_black"
+            android:textSize="13sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_total_page"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:text="@string/print_total_page"
+            android:textColor="@color/my_black"
+            android:textSize="13sp"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_total_start"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_start" />
+
+        <TextView
+            android:id="@+id/tv_total_pages"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/print_total_pages"
+            android:textColor="@color/my_black"
+            android:textSize="13sp"
+            app:layout_constraintRight_toRightOf="@+id/tv_total_univalence"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_univalence" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_total_page"
+            app:layout_constraintTop_toBottomOf="@+id/tv_total_page" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:id="@+id/v_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@color/in_grey"
+        app:layout_constraintLeft_toLeftOf="@+id/rl_total"
+        app:layout_constraintTop_toBottomOf="@+id/rl_total" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/rl_totals"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/white"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/v_line">
+
+        <TextView
+            android:id="@+id/tv_totals_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:text="@string/print_totals_price"
+            android:textColor="@color/print_price_color"
+            android:textSize="16sp"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:text="@string/print_totals_description"
+            android:textColor="@color/my_black"
+            android:textSize="16sp"
+            app:layout_constraintRight_toLeftOf="@+id/tv_totals_price"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/tv_totals_price" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_numbers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/print_item_background"
+        app:layout_constraintTop_toBottomOf="@+id/rl_totals"
+        app:layout_constraintLeft_toLeftOf="@+id/rl_totals">
+        <TextView
+            android:id="@+id/tv_zhifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/my_black"
+            android:text="@string/print_zhifu"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_zhifu_two"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/in_grey"
+            android:text="@string/print_zhifu_two"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+        <TextView
+            android:id="@+id/tv_numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:textSize="13sp"
+            android:textColor="@color/my_black"
+            android:text="@string/print_numbers"
+            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_zhifu"/>
+        <TextView
+            android:id="@+id/tv_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/my_black"
+            android:text="@string/print_number"
+            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu_two"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

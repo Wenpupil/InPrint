@@ -54,8 +54,21 @@
     <string name="print_iv_icon">图标</string>
     <string name="print_iv_weizhi">位置选择标识图片</string>
     <string name="print_top_img">打印文档活动的顶部返回按钮</string>
+    <string name="print_object_img">文档类型图标</string>
+
     <string name="print_top_title">订单确认</string>
     <string name="print_tv_address">未选择打印位置</string>
     <string name="print_tv_icon">上海戎遇智能科技(云打印)</string>
     <string name="print_tv_icon_end">智能存储</string>
+    <string name="print_filename">文档名字</string>
+    <string name="print_total_start">每页单价</string>
+    <string name="print_total_univalence">￥0.2</string>
+    <string name="print_total_page">文档页数</string>
+    <string name="print_total_pages">5</string>
+    <string name="print_totals_description">小计</string>
+    <string name="print_totals_price">1.0</string>
+    <string name="print_zhifu">支付方式</string>
+    <string name="print_zhifu_two">在线支付</string>
+    <string name="print_numbers">份数</string>
+    <string name="print_number">1</string>
 </resources>
