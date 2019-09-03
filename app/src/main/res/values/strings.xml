@@ -50,6 +50,12 @@
 
     <string name="docList_update_error">更新文档列表广播接收器出现异常</string>
 
+    <string name="print_iv_select">进行选择的back按钮图片</string>
+    <string name="print_iv_icon">图标</string>
+    <string name="print_iv_weizhi">位置选择标识图片</string>
     <string name="print_top_img">打印文档活动的顶部返回按钮</string>
     <string name="print_top_title">订单确认</string>
+    <string name="print_tv_address">未选择打印位置</string>
+    <string name="print_tv_icon">上海戎遇智能科技(云打印)</string>
+    <string name="print_tv_icon_end">智能存储</string>
 </resources>

@@ -7,15 +7,75 @@
     android:orientation="vertical"
     android:background="@color/background_grey">
     <include layout="@layout/print_top"/>
-    <LinearLayout
-        android:id="@+id/ll_address"
+    <RelativeLayout
+        android:id="@+id/rl_address"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_margin="10dp"
-        android:orientation="vertical"
+        android:orientation="horizontal"
         android:background="@drawable/print_select_address"
         app:layout_constraintTop_toBottomOf="@+id/print_top_layout"
         app:layout_constraintLeft_toLeftOf="parent">
-
-    </LinearLayout>
+        <ImageView
+            android:id="@+id/iv_weizhi"
+            android:layout_width="25dp"
+            android:layout_height="21dp"
+            android:layout_margin="10dp"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/print_iv_weizhi"
+            android:src="@mipmap/weizhi"/>
+        <TextView
+            android:id="@+id/tv_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/iv_weizhi"
+            android:layout_toStartOf="@+id/iv_address_select"
+            android:textColor="@color/my_black"
+            android:textSize="16sp"
+            android:text="@string/print_tv_address"/>
+        <ImageView
+            android:id="@+id/iv_address_select"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="5dp"
+            android:contentDescription="@string/print_iv_select"
+            android:src="@mipmap/backright"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@drawable/print_item_background"
+        app:layout_constraintTop_toBottomOf="@+id/rl_address"
+        app:layout_constraintLeft_toLeftOf="@+id/rl_address">
+        <ImageView
+            android:id="@+id/iv_icon"
+            android:layout_width="25dp"
+            android:layout_height="21dp"
+            android:layout_centerVertical="true"
+            android:layout_margin="10dp"
+            android:contentDescription="@string/print_iv_icon"
+            android:src="@mipmap/tubiao64"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/iv_icon"
+            android:layout_toStartOf="@+id/iv_icon_end"
+            android:textColor="@color/in_grey"
+            android:textSize="14sp"
+            android:text="@string/print_tv_icon"/>
+        <TextView
+            android:id="@+id/iv_icon_end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="10dp"
+            android:textSize="10sp"
+            android:text="@string/print_tv_icon_end"/>
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
