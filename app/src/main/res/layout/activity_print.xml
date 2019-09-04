@@ -190,7 +190,7 @@
         android:layout_height="0.5dip"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:background="@color/in_grey"
+        android:background="@color/background_grey"
         app:layout_constraintLeft_toLeftOf="@+id/rl_total"
         app:layout_constraintTop_toBottomOf="@+id/rl_total" />
 
@@ -329,14 +329,53 @@
             android:src="@mipmap/gou"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/split_line_one"/>
+        <View
+            android:id="@+id/split_line_two"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/background_grey"
+            app:layout_constraintTop_toBottomOf="@+id/iv_zfb"/>
         <ImageView
             android:id="@+id/iv_weixin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginStart="10dp"
             android:contentDescription="@string/print_iv_weixin"
-            android:src="@mipmap/weixin"
-            app:layout_constraintTop_toBottomOf="@+id/iv_zfb"
+            android:src="@mipmap/printweixin"
+            app:layout_constraintTop_toBottomOf="@+id/split_line_two"
             app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="11dp"
+            android:textColor="@color/my_black"
+            android:textSize="12sp"
+            android:text="@string/print_tv_weixin"
+            app:layout_constraintTop_toBottomOf="@+id/split_line_two"
+            app:layout_constraintLeft_toRightOf="@+id/iv_weixin"/>
+        <ImageView
+            android:id="@+id/iv_weixin_weigou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/print_iv_gou"
+            android:src="@mipmap/weigou"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/split_line_two"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="15dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@+id/iv_weixin"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
