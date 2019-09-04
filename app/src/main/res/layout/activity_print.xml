@@ -242,35 +242,15 @@
         app:layout_constraintTop_toBottomOf="@+id/rl_totals"
         app:layout_constraintLeft_toLeftOf="@+id/rl_totals">
         <TextView
-            android:id="@+id/tv_zhifu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="13sp"
-            android:textColor="@color/my_black"
-            android:text="@string/print_zhifu"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"/>
-        <TextView
-            android:id="@+id/tv_zhifu_two"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:textSize="13sp"
-            android:textColor="@color/in_grey"
-            android:text="@string/print_zhifu_two"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintRight_toRightOf="parent"/>
-        <TextView
             android:id="@+id/tv_numbers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_margin="10dp"
             android:textSize="13sp"
             android:textColor="@color/my_black"
             android:text="@string/print_numbers"
-            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_zhifu"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
         <TextView
             android:id="@+id/tv_number"
             android:layout_width="wrap_content"
@@ -279,8 +259,8 @@
             android:textSize="13sp"
             android:textColor="@color/my_black"
             android:text="@string/print_number"
-            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu_two"
-            app:layout_constraintLeft_toLeftOf="@+id/tv_zhifu_two"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toLeftOf="@+id/print_number_add"/>
         <ImageView
             android:id="@+id/print_number_sub"
             android:layout_width="wrap_content"
@@ -288,7 +268,7 @@
             android:layout_margin="8dp"
             android:contentDescription="@string/print_number_sub"
             android:src="@mipmap/jianhao"
-            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu_two"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintRight_toLeftOf="@+id/tv_number"/>
         <ImageView
             android:id="@+id/print_number_add"
@@ -296,15 +276,67 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="15dp"
             android:contentDescription="@string/print_number_add"
             android:src="@mipmap/jiahao"
-            app:layout_constraintLeft_toRightOf="@+id/tv_number"
-            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu_two"/>
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
         <TextView
+            android:id="@+id/tv_zhifu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="13sp"
+            android:textColor="@color/my_black"
+            android:text="@string/print_zhifu"
+            app:layout_constraintTop_toBottomOf="@+id/tv_numbers"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <View
+            android:id="@+id/split_line_one"
             android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@color/white"
-            app:layout_constraintTop_toBottomOf="@+id/tv_numbers"/>
+            android:layout_height="0.5dip"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/background_grey"
+            app:layout_constraintTop_toBottomOf="@+id/tv_zhifu"/>
+        <ImageView
+            android:id="@+id/iv_zfb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:contentDescription="@string/print_iv_zfb"
+            android:src="@mipmap/printzfb"
+            app:layout_constraintTop_toBottomOf="@+id/split_line_one"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_print_zfb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="17dp"
+            android:textSize="12sp"
+            android:textColor="@color/my_black"
+            android:text="@string/print_tv_zfb"
+            app:layout_constraintLeft_toRightOf="@+id/iv_zfb"
+            app:layout_constraintTop_toTopOf="@+id/split_line_one"/>
+        <ImageView
+            android:id="@+id/iv_zfb_gou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="15dp"
+            android:contentDescription="@string/print_iv_gou"
+            android:src="@mipmap/gou"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/split_line_one"/>
+        <ImageView
+            android:id="@+id/iv_weixin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/print_iv_weixin"
+            android:src="@mipmap/weixin"
+            app:layout_constraintTop_toBottomOf="@+id/iv_zfb"
+            app:layout_constraintLeft_toLeftOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

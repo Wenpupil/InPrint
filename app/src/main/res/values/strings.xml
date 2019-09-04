@@ -58,6 +58,11 @@
     <string name="print_number_add">增加文档数量</string>
     <string name="print_number_sub">减少文档数量</string>
 
+    <string name="print_iv_zfb">支付宝支付</string>
+    <string name="print_iv_weixin">微信支付</string>
+
+    <string name="print_iv_gou">支付方式选择图片</string>
+
     <string name="print_top_title">订单确认</string>
     <string name="print_tv_address">未选择打印位置</string>
     <string name="print_tv_icon">上海戎遇智能科技(云打印)</string>
@@ -77,4 +82,7 @@
     <string name="print_test_money">￥14.7</string>
     <string name="print_view">预览</string>
     <string name="print_cost">支付</string>
+
+    <string name="print_tv_zfb">支付宝</string>
+    <string name="print_tv_weixin">微信支付</string>
 </resources>
