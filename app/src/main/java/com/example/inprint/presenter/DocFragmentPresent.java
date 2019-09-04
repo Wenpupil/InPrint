@@ -19,6 +19,7 @@ import com.example.inprint.bean.User;
 import com.example.inprint.myview.DocAddDialog;
 import com.example.inprint.myview.DocClickDialog;
 import com.example.inprint.myview.LoadingDialog;
+import com.example.inprint.util.ActivityUtil;
 import com.example.inprint.util.HttpUtil;
 import com.example.inprint.util.InfoUtil;
 import com.example.inprint.util.LogUtil;
@@ -113,22 +114,17 @@ public class DocFragmentPresent {
         RDoc rDoc=(RDoc)obj;
         Intent intent=new Intent(context, PrintActivity.class);
         //传递文档在app中的uri到打印文档的活动中
-        intent.putExtra("docUri",rDoc.getFileUrl());
+        intent.putExtra("docUrl",rDoc.getFileUrl());
         intent.putExtra("docPage",rDoc.getFilePage());
+        intent.putExtra("fileName",getFilename());
+        intent.putExtra("docUri",clickDocName);
         context.startActivity(intent);
     }
     //查看文档行为--待优化
     private void checkDoc(){
         /*Toast.makeText(context,
                 "查看文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
-        int splitLine=clickDocName.lastIndexOf('/');
-        String docUrl=clickDocName.substring(0,splitLine+1);
-        String docName=clickDocName.substring(splitLine+1);
-        LogUtil.d("DocFragment-文档URL分割",docUrl+"  , "+docName);
-        Intent intent=new Intent(context, DocViewActivity.class);
-        intent.putExtra("docName",docName);
-        intent.putExtra("docUrl",docUrl);
-        context.startActivity(intent);
+        ActivityUtil.checkDoc(context,clickDocName);
     }
     //添加文档行为
     private void DocAddAction(){
@@ -222,5 +218,9 @@ public class DocFragmentPresent {
         message.what=2;
         message.obj=rDoc;
         docHandler.sendMessage(message);
+    }
+    private String getFilename(){
+        int splitLine=clickDocName.lastIndexOf('/');
+        return clickDocName.substring(splitLine+1);
     }
 }
