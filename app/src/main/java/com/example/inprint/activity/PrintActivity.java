@@ -11,6 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.presenter.PrintPresenter;
 import com.example.inprint.util.ActivityUtil;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -23,6 +24,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private TextView tv_page;                 //文档页数 控件
     private TextView tv_number;               //文档份数 控件
     private TextView tv_univalence;           //文档单价 控件
+    private TextView tv_price;                //支付价格 控件
 
     private ImageView iv_add;                 //增加份数 控件
     private ImageView iv_sub;                 //减少份数 控件
@@ -35,10 +37,14 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private String docUrl;                    //文档在服务器的地址
     private String docUri;                    //文档在手机中的定位
     private Intent intent;
+
+    private int payPattern;                   //支付方式 0--支付宝支付，1--微信支付
+    private PrintPresenter printPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print);
+        printPresenter=new PrintPresenter(this);
         initView();
     }
     private void initView(){
@@ -56,17 +62,21 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         tv_page=findViewById(R.id.tv_total_pages);
         tv_univalence=findViewById(R.id.tv_totals_price);
         tv_number=findViewById(R.id.tv_number);
+        tv_price=findViewById(R.id.tv_money);
         iv_add=findViewById(R.id.print_number_add);
         iv_sub=findViewById(R.id.print_number_sub);
-        zfb_img=findViewById(R.id.iv_zfb_gou);
-        wx_img=findViewById(R.id.iv_weixin_weigou);
+        zfb_img=findViewById(R.id.iv_zfb_pay);
+        wx_img=findViewById(R.id.iv_weixin_pay);
 
         view_doc=findViewById(R.id.print_view);
         pay=findViewById(R.id.print_cost);
 
         tv_filename.setText(filename);
         tv_page.setText(filepage);
-        countMoney();
+        tv_univalence.setText(PrintPresenter
+                .countUnivalence(tv_page));
+        tv_price.setText(PrintPresenter
+                .countPrice(tv_number,tv_page));
 
         select_location.setOnClickListener(this);
         iv_add.setOnClickListener(this);
@@ -76,22 +86,29 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         view_doc.setOnClickListener(this);
         pay.setOnClickListener(this);
     }
-    //计算价格
-    private void countMoney(){
-        DecimalFormat decimalFormat=new DecimalFormat("0.0");
-        String page=tv_page.getText().toString();
-        String number=tv_number.getText().toString();
-        int numbers=Integer.parseInt(number);
-        int pages=Integer.parseInt(page);
-        float ftotal=pages*numbers*0.2f;
-        String total=decimalFormat.format(ftotal);
-        tv_univalence.setText(total);
-    }
     @Override
     public void onClick(View view){
         switch(view.getId()){
-            case R.id.print_view:
+            case R.id.print_view:                                              //点击预览按钮
                 ActivityUtil.checkDoc(this,docUri);
+                break;
+            case R.id.print_number_add:                                        //点击增加按钮
+                printPresenter.numberChange(tv_number,1);               //更新份数UI
+                tv_price.setText(PrintPresenter                                //更新合计价格UI
+                        .countPrice(tv_number,tv_page));
+                break;
+            case R.id.print_number_sub:                                        //点击减少按钮
+                printPresenter.numberChange(tv_number,0);
+                tv_price.setText(PrintPresenter                                //更新合计价格UI
+                        .countPrice(tv_number,tv_page));
+                break;
+            case R.id.iv_zfb_pay:
+                payPattern=0;
+                printPresenter.payPatternChange(zfb_img,wx_img,0);
+                break;
+            case R.id.iv_weixin_pay:
+                payPattern=1;
+                printPresenter.payPatternChange(zfb_img,wx_img,1);
                 break;
         }
     }

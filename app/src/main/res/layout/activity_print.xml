@@ -320,7 +320,7 @@
             app:layout_constraintLeft_toRightOf="@+id/iv_zfb"
             app:layout_constraintTop_toTopOf="@+id/split_line_one"/>
         <ImageView
-            android:id="@+id/iv_zfb_gou"
+            android:id="@+id/iv_zfb_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
@@ -360,7 +360,7 @@
             app:layout_constraintTop_toBottomOf="@+id/split_line_two"
             app:layout_constraintLeft_toRightOf="@+id/iv_weixin"/>
         <ImageView
-            android:id="@+id/iv_weixin_weigou"
+            android:id="@+id/iv_weixin_pay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
