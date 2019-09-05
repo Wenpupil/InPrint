@@ -1,10 +1,12 @@
 package com.example.inprint.presenter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.activity.LocationActivity;
 import com.example.inprint.util.DialogUtil;
 
 import java.text.DecimalFormat;
@@ -73,5 +75,10 @@ public class PrintPresenter {
     //提示打印地点未选择
     public void tipLocation(){
         DialogUtil.MyConfirm("未选择打印地点",context);
+    }
+    //启动选择位置信息
+    public void selectLocation(){
+        Intent intent=new Intent(context, LocationActivity.class);
+        context.startActivity(intent);
     }
 }

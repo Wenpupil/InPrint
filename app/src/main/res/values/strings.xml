@@ -86,7 +86,10 @@
     <string name="print_tv_zfb">支付宝</string>
     <string name="print_tv_weixin">微信支付</string>
 
+    <string name="location_top_title">附件打印点</string>
+
     <string name="location_item_img">地点选择图片</string>
     <string name="location_text">上海海洋大学xx小区</string>
-    <string name="location_status">空闲</string>
+    <string name="location_status_0">空闲</string>
+    <string name="location_status_1">忙碌</string>
 </resources>

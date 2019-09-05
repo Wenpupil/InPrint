@@ -100,7 +100,8 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view){
         switch(view.getId()){
             case R.id.rl_address:                                              //选择打印地点
-
+                selectLoaction=true;
+                printPresenter.selectLocation();                               //启动位置列表活动
                 break;
             case R.id.print_view:                                              //点击预览按钮
                 ActivityUtil.checkDoc(this,docUri);
