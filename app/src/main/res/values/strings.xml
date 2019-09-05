@@ -1,5 +1,5 @@
 <resources>
-    <string name="Http_postDoc_address">http://192.168.1.103:8080/index.php/admin/Upload/uploadFile</string>
+    <string name="Http_postDoc_address">http://192.168.43.165:8080/index.php/admin/Upload/uploadFile</string>
 
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
@@ -85,4 +85,8 @@
 
     <string name="print_tv_zfb">支付宝</string>
     <string name="print_tv_weixin">微信支付</string>
+
+    <string name="location_item_img">地点选择图片</string>
+    <string name="location_text">上海海洋大学xx小区</string>
+    <string name="location_status">空闲</string>
 </resources>

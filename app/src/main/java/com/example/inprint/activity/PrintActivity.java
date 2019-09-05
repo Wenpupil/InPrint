@@ -39,6 +39,8 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private Intent intent;
 
     private int payPattern;                   //支付方式 0--支付宝支付，1--微信支付
+    private int location;                     //位置信息 号码表示打印机号数以及地点
+    private boolean selectLoaction=false;           //打印地点是否选择
     private PrintPresenter printPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,6 +91,9 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     @Override
     public void onClick(View view){
         switch(view.getId()){
+            case R.id.rl_address:                                              //选择打印地点
+
+                break;
             case R.id.print_view:                                              //点击预览按钮
                 ActivityUtil.checkDoc(this,docUri);
                 break;
@@ -104,11 +109,18 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.iv_zfb_pay:
                 payPattern=0;
-                printPresenter.payPatternChange(zfb_img,wx_img,0);
+                printPresenter.payPatternChange(zfb_img,wx_img,0);       //点击支付宝支付
                 break;
             case R.id.iv_weixin_pay:
                 payPattern=1;
-                printPresenter.payPatternChange(zfb_img,wx_img,1);
+                printPresenter.payPatternChange(zfb_img,wx_img,1);       //点击微信支付
+                break;
+            case R.id.print_cost:                                               //支付按钮
+                if(selectLoaction){
+                    printPresenter.payCost();                                   //支付接口，发送消失至服务器
+                }else{
+                    printPresenter.tipLocation();                               //提示地点未选择
+                }
                 break;
         }
     }

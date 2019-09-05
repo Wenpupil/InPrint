@@ -424,7 +424,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/print_zhifu_color"
+            android:background="@drawable/pay_action"
             android:textColor="@color/white"
             android:text="@string/print_cost"
             app:layout_constraintRight_toRightOf="parent"

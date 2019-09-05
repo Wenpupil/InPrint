@@ -5,6 +5,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.util.DialogUtil;
 
 import java.text.DecimalFormat;
 
@@ -65,5 +66,12 @@ public class PrintPresenter {
             zfb.setImageResource(R.mipmap.weigou);
             wx.setImageResource(R.mipmap.gou);
         }
+    }
+    //点击支付按钮
+    public void payCost(){
+    }
+    //提示打印地点未选择
+    public void tipLocation(){
+        DialogUtil.MyConfirm("未选择打印地点",context);
     }
 }

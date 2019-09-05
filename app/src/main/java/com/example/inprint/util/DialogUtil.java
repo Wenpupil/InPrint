@@ -11,6 +11,7 @@ import com.example.inprint.myview.DocClickDialog;
  * 返回相应的对话框并且显示
  */
 public class DialogUtil {
+    //弹出提示对话框
     public static void MyConfirm(String msg, Context context){
         new ConfirmDialog(context,
                 msg, new ConfirmDialog.OnCloseListener() {
