@@ -1,6 +1,7 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -25,6 +26,9 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private TextView tv_number;               //文档份数 控件
     private TextView tv_univalence;           //文档单价 控件
     private TextView tv_price;                //支付价格 控件
+
+    private ConstraintLayout zfb_item;        //支付宝横条
+    private ConstraintLayout wx_item;         //微信横条
 
     private ImageView iv_add;                 //增加份数 控件
     private ImageView iv_sub;                 //减少份数 控件
@@ -69,6 +73,8 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         iv_sub=findViewById(R.id.print_number_sub);
         zfb_img=findViewById(R.id.iv_zfb_pay);
         wx_img=findViewById(R.id.iv_weixin_pay);
+        zfb_item=findViewById(R.id.cl_zfb);
+        wx_item=findViewById(R.id.cl_wx);
 
         view_doc=findViewById(R.id.print_view);
         pay=findViewById(R.id.print_cost);
@@ -80,6 +86,8 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         tv_price.setText(PrintPresenter
                 .countPrice(tv_number,tv_page));
 
+        zfb_item.setOnClickListener(this);
+        wx_item.setOnClickListener(this);
         select_location.setOnClickListener(this);
         iv_add.setOnClickListener(this);
         iv_sub.setOnClickListener(this);
@@ -107,11 +115,11 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 tv_price.setText(PrintPresenter                                //更新合计价格UI
                         .countPrice(tv_number,tv_page));
                 break;
-            case R.id.iv_zfb_pay:
+            case R.id.cl_zfb:
                 payPattern=0;
                 printPresenter.payPatternChange(zfb_img,wx_img,0);       //点击支付宝支付
                 break;
-            case R.id.iv_weixin_pay:
+            case R.id.cl_wx:
                 payPattern=1;
                 printPresenter.payPatternChange(zfb_img,wx_img,1);       //点击微信支付
                 break;
