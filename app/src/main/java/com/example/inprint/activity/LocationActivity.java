@@ -4,9 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.inprint.R;
 import com.example.inprint.adapter.LocationAdapter;
@@ -26,8 +26,13 @@ public class LocationActivity extends AppCompatActivity {
     //点击位置信息列表后所作出的相应动作
     private LocationAdapter.OnItemClickListener listener=new LocationAdapter.OnItemClickListener() {
         @Override
-        public void onClick(View v, final String locationId) {
-            LogUtil.d("位置信息","您选择的是:"+locationId);
+        public void onClick(View v, final Location location) {
+            LogUtil.d("位置信息","您选择的是:"+location.getLocationId());
+            Intent intent=new Intent();
+            intent.putExtra("locationId",location.getLocationId());
+            intent.putExtra("locationName",location.getLoc());
+            setResult(RESULT_OK,intent);
+            finish();
         }
     };
     @Override

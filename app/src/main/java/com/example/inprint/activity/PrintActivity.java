@@ -12,15 +12,19 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.bean.POrder;
 import com.example.inprint.presenter.PrintPresenter;
 import com.example.inprint.util.ActivityUtil;
+import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
-import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class PrintActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RelativeLayout select_location;   //位置选择 控件
+    private TextView tv_address;              //位置名字 控件
     private TextView tv_filename;             //文档名字 控件
     private TextView tv_page;                 //文档页数 控件
     private TextView tv_number;               //文档份数 控件
@@ -43,8 +47,8 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private Intent intent;
 
     private int payPattern;                   //支付方式 0--支付宝支付，1--微信支付
-    private int location;                     //位置信息 号码表示打印机号数以及地点
-    private boolean selectLoaction=false;           //打印地点是否选择
+    private boolean selectLoaction=false;     //打印地点是否选择
+    private POrder order=new POrder();        //订单信息
     private PrintPresenter printPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.white));
         select_location=findViewById(R.id.rl_address);
+        tv_address=findViewById(R.id.tv_address);
         tv_filename=findViewById(R.id.tv_filename);
         tv_page=findViewById(R.id.tv_total_pages);
         tv_univalence=findViewById(R.id.tv_totals_price);
@@ -101,7 +106,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         switch(view.getId()){
             case R.id.rl_address:                                              //选择打印地点
                 selectLoaction=true;
-                printPresenter.selectLocation();                               //启动位置列表活动
+                printPresenter.selectLocation(this);                   //启动位置列表活动
                 break;
             case R.id.print_view:                                              //点击预览按钮
                 ActivityUtil.checkDoc(this,docUri);
@@ -126,11 +131,41 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.print_cost:                                               //支付按钮
                 if(selectLoaction){
+                    order.setAid("admin");
+                    order.setAtoken("aa20190718211933");
+                    order.setAurl(docUrl);
+                    order.setAstatus("-1");
+                    order.setAcost(tv_price.getText().toString());
+                    order.setAnumber(tv_number.getText().toString());
+                    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+                    Date date=new Date(System.currentTimeMillis());
+                    order.setAtime(simpleDateFormat.format(date));
+                    order.viewInfo();
                     printPresenter.payCost();                                   //支付接口，发送消失至服务器
                 }else{
                     printPresenter.tipLocation();                               //提示地点未选择
                 }
                 break;
+        }
+    }
+    //接收位置活动返回的信息
+    @Override
+    public void onActivityResult(int requestCode,int resultCode,Intent data){
+        switch(requestCode){
+            case 1:
+                if(resultCode == RESULT_OK){
+                    String locationId = data.getStringExtra("locationId");
+                    String locationName = data.getStringExtra("locationName");
+                    LogUtil.d("位置信息",
+                            "PrintActivity活动 locationId = "+locationId);
+                    LogUtil.d("位置信息",
+                            "PrintActivity活动 locatioName = "+locationName);
+                    tv_address.setText(locationName);                               //更新位置UI
+                    selectLoaction = true;                                          //更新选择情况
+                    order.setAwhere(locationId);
+                }
+                break;
+            default:
         }
     }
 }

@@ -1,5 +1,7 @@
 package com.example.inprint.bean;
 
+import com.example.inprint.util.LogUtil;
+
 /*
  * @Author Wenpupil
  * @Time 2019.09.05
@@ -13,6 +15,7 @@ public class POrder {
     private String awhere;      //地点
     private String acost;       //花费
     private String aurl;        //文档地址
+    private String atime;        //订单创立时间
 
     public void setAid(String aid) {
         this.aid = aid;
@@ -40,5 +43,47 @@ public class POrder {
 
     public void setAurl(String aurl) {
         this.aurl = aurl;
+    }
+    public void setAtime(String atime){
+        this.atime = atime;
+    }
+
+    public String getAid() {
+        return aid;
+    }
+
+    public String getAtoken() {
+        return atoken;
+    }
+
+    public String getAcost() {
+        return acost;
+    }
+
+    public String getAnumber() {
+        return anumber;
+    }
+
+    public String getAstatus() {
+        return astatus;
+    }
+
+
+    public String getAurl() {
+        return aurl;
+    }
+
+    public String getAtime() {
+        return atime;
+    }
+
+    public String getAwhere() {
+        return awhere;
+    }
+
+    public void viewInfo(){
+        LogUtil.d("订单信息","aid = " + getAid() + ", where = " + getAwhere() +
+                ", cost = " + getAcost() + ", url = " + getAurl() + ", status = " + getAstatus() +
+                "\ntime = " + getAtime() + ", number = " + getAnumber());
     }
 }

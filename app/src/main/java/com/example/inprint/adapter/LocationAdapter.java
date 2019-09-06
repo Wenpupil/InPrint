@@ -26,7 +26,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     private Context context;
 
     public interface OnItemClickListener{
-        void onClick(View v,String locationId);
+        void onClick(View v,Location locationId);
     }
     public void setContext(Context context){
         this.context=context;
@@ -59,12 +59,12 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder,int position){
         Location location=locationList.get(position);
         holder.locName.setText(location.getLoc());
-        holder.itemView.setTag(location.getLocationId());
+        holder.itemView.setTag(location);
         holder.itemView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
                 if(listener!=null){
-                    listener.onClick(v,(String)v.getTag());
+                    listener.onClick(v,(Location) v.getTag());
                 }
             }
         });

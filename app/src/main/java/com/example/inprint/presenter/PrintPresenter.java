@@ -1,5 +1,6 @@
 package com.example.inprint.presenter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.ImageView;
@@ -77,8 +78,8 @@ public class PrintPresenter {
         DialogUtil.MyConfirm("未选择打印地点",context);
     }
     //启动选择位置信息
-    public void selectLocation(){
-        Intent intent=new Intent(context, LocationActivity.class);
-        context.startActivity(intent);
+    public void selectLocation(Activity activity){
+        Intent intent=new Intent(activity, LocationActivity.class);
+        activity.startActivityForResult(intent,1);
     }
 }
