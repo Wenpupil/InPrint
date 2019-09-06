@@ -10,12 +10,17 @@ package com.example.inprint.bean;
  *     1--表示柜门已满
  */
 public class Location {
-    private String loc;     //存储位置地点
-    private int status;     //存储打印点状态
+    private String locationId;  //打印柜唯一标识号
+    private String loc;         //存储位置地点
+    private int status;         //存储打印点状态
 
-    public Location(String loc,int status){
+    public Location(String locationId,String loc,int status){
+        this.locationId=locationId;
         this.loc=loc;
         this.status=status;
+    }
+    public void setLocationId(String locationId){
+        this.locationId=locationId;
     }
     public void setLoc(String loc){
         this.loc=loc;
@@ -24,6 +29,9 @@ public class Location {
         this.status=status;
     }
 
+    public String getLocationId(){
+        return locationId;
+    }
     public String getLoc() {
         return loc;
     }

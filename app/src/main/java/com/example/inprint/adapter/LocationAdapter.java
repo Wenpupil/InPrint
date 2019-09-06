@@ -1,5 +1,6 @@
 package com.example.inprint.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,19 @@ import java.util.List;
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHolder> {
 
     private List<Location> locationList;
+    private OnItemClickListener listener;
+    private Context context;
+
+    public interface OnItemClickListener{
+        void onClick(View v,String locationId);
+    }
+    public void setContext(Context context){
+        this.context=context;
+    }
+
+    public void setItemListener(OnItemClickListener listener){
+        this.listener=listener;
+    }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
         TextView locName;
@@ -45,6 +59,15 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder,int position){
         Location location=locationList.get(position);
         holder.locName.setText(location.getLoc());
+        holder.itemView.setTag(location.getLocationId());
+        holder.itemView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+                if(listener!=null){
+                    listener.onClick(v,(String)v.getTag());
+                }
+            }
+        });
         if(location.getStatus()==0){
             holder.locStatus.setText("空闲");
         }else if(location.getStatus()==1){
