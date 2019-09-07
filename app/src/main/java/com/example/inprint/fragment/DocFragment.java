@@ -18,7 +18,11 @@ import com.example.inprint.util.LogUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+ * @Author Wenpupil
+ * @Time 2019.08.21
+ * @Description 文档列表碎片
+ */
 public class DocFragment extends Fragment {
 
     private List<Doc> docList=new ArrayList<>();

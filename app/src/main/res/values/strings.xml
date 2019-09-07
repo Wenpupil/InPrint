@@ -101,4 +101,5 @@
     <string name="order_item_number">x1</string>
     <string name="order_item_cost_content">实付</string>
     <string name="order_item_cost">￥1.2</string>
+    <string name="order_item_open">取件</string>
 </resources>

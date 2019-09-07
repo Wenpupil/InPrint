@@ -42,4 +42,5 @@
     <color name="my_zfb_blue">#57BEEC</color>
 
     <color name="order_item_img_background">#57BEEC</color>
+    <color name="order_item_open_color">#4fa5d5</color>
 </resources>
