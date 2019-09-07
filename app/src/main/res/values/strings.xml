@@ -92,4 +92,13 @@
     <string name="location_text">上海海洋大学xx小区</string>
     <string name="location_status_0">空闲</string>
     <string name="location_status_1">忙碌</string>
+
+    <string name="order_item_img">文档类型图片</string>
+    <string name="order_item_filename">SQL注入原理-万能密码注入.docx</string>
+    <string name="order_item_time">2019-09-05 11:28</string>
+    <string name="order_item_status">正在打印</string>
+    <string name="order_item_info">文档份数</string>
+    <string name="order_item_number">x1</string>
+    <string name="order_item_cost_content">实付</string>
+    <string name="order_item_cost">￥1.2</string>
 </resources>

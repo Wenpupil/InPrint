@@ -40,4 +40,6 @@
     <color name="print_zhifu_color_click">#D557BEEC</color>
 
     <color name="my_zfb_blue">#57BEEC</color>
+
+    <color name="order_item_img_background">#57BEEC</color>
 </resources>

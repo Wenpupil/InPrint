@@ -131,16 +131,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 break;
             case R.id.print_cost:                                               //支付按钮
                 if(selectLoaction){
-                    order.setAid("admin");
-                    order.setAtoken("aa20190718211933");
-                    order.setAurl(docUrl);
-                    order.setAstatus("-1");
-                    order.setAcost(tv_price.getText().toString());
-                    order.setAnumber(tv_number.getText().toString());
-                    SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
-                    Date date=new Date(System.currentTimeMillis());
-                    order.setAtime(simpleDateFormat.format(date));
-                    order.viewInfo();
+                    parsePOrder();                                              //打包POrder类数据
                     printPresenter.payCost();                                   //支付接口，发送消失至服务器
                 }else{
                     printPresenter.tipLocation();                               //提示地点未选择
@@ -167,5 +158,18 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 break;
             default:
         }
+    }
+    //打包POder类数据
+    private void parsePOrder(){
+        order.setAid("admin");
+        order.setAtoken("aa20190718211933");
+        order.setAurl(docUrl);
+        order.setAstatus("-1");
+        order.setAcost(tv_price.getText().toString());
+        order.setAnumber(tv_number.getText().toString());
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date date=new Date(System.currentTimeMillis());
+        order.setAtime(simpleDateFormat.format(date));
+        order.viewInfo();
     }
 }
