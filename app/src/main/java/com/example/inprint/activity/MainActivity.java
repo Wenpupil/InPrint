@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 
 import com.example.inprint.R;
 import com.example.inprint.fragment.DocFragment;
+import com.example.inprint.fragment.OrderFragment;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout tab3;    //底部tab3
 
     DocFragment docFragment;
+    OrderFragment orderFragment;
     private static int past;
 
     private MainPresenter mainPresenter;
@@ -83,11 +85,21 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager manager=getSupportFragmentManager();
         FragmentTransaction transaction=manager.beginTransaction();
         past=mainPresenter.changeTab(past,i);
-        if(i==0){
-            if(docFragment==null){
-                docFragment=new DocFragment();
-            }
-            transaction.replace(R.id.fl_main,docFragment);
+        switch(i)
+        {
+            case 2:
+            case 0:
+                if(docFragment==null){
+                    docFragment=new DocFragment();
+                }
+                transaction.replace(R.id.fl_main,docFragment);
+                break;
+            case 1:
+                if(orderFragment==null){
+                    orderFragment=new OrderFragment();
+                }
+                transaction.replace(R.id.fl_main,orderFragment);
+                break;
         }
         transaction.commit();
         mainPresenter.setDocFragment(docFragment);

@@ -26,6 +26,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public interface OnItemClickListener{
         void onClick(View v,Order order);
     }
+
     static class ViewHolder extends RecyclerView.ViewHolder{
 
         TextView order_filename;           //订单 文档名
@@ -62,9 +63,15 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         Order order=orderList.get(position);
         holder.order_filename.setText(order.getDocName());
         holder.order_time.setText(order.getTime());
-        holder.order_number.setText(order.getNumber());
-        holder.order_cost.setText(order.getCost());
+
+        String number="x"+order.getNumber();
+        holder.order_number.setText(number);
+
+        String cost="￥"+order.getCost();
+        holder.order_cost.setText(cost);
+
         holder.itemView.setTag(order);
+        holder.order_open.setTag(order);
         holder.order_open.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
@@ -73,6 +80,19 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 }
             }
         });
+        switch(order.getStatus()){
+            case "0":
+                holder.order_status.setText("正在打印");
+                break;
+            case "1":
+                holder.order_status.setText("打印完成");
+                break;
+            case "2":
+                holder.order_status.setText("打印完成");
+                holder.order_open.setText("已取件");
+                break;
+            default:
+        }
     }
 
     @Override

@@ -14,6 +14,7 @@ import com.example.inprint.R;
 import com.example.inprint.adapter.OrderAdapter;
 import com.example.inprint.bean.Order;
 import com.example.inprint.presenter.OrderFragmentPresent;
+import com.example.inprint.util.TestDataUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ import java.util.List;
  * @Time 2019.09.07
  * @Description 展示订单列表
  */
-public class OrderFragmet extends Fragment {
+public class OrderFragment extends Fragment {
 
     private List<Order> orderList=new ArrayList<>();
     private OrderAdapter adapter;
@@ -33,6 +34,8 @@ public class OrderFragmet extends Fragment {
                              Bundle savedInstanceState){
         View view;
         RecyclerView recyclerView;
+        //用测试数据 初始化列表
+        TestDataUtil.orderItem(orderList);
 
         orderFragmentPresent=new OrderFragmentPresent(getContext());
 
@@ -41,6 +44,7 @@ public class OrderFragmet extends Fragment {
         LinearLayoutManager manager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
         adapter=new OrderAdapter(orderList);
+        setOnItemClickListener();
         recyclerView.setAdapter(adapter);
         return view;
     }
@@ -48,7 +52,11 @@ public class OrderFragmet extends Fragment {
         adapter.setListener(new OrderAdapter.OnItemClickListener() {
             @Override
             public void onClick(View v, Order order) {
-
+                if(order.getStatus().equals("0")){
+                    orderFragmentPresent.unableOpen();
+                }else{
+                    orderFragmentPresent.ableOpen();
+                }
             }
         });
     }
