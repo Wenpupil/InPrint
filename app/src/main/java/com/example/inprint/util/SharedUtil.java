@@ -20,8 +20,7 @@ public class SharedUtil {
     public static int readInt(Activity activity,String key){
         SharedPreferences sp=activity.getSharedPreferences("InTalk",
                 Context.MODE_PRIVATE);
-        int result=sp.getInt(key,0);
-        return result;
+        return sp.getInt(key,0);
     }
 
 }

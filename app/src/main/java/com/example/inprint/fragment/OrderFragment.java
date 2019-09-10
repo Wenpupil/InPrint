@@ -14,6 +14,7 @@ import com.example.inprint.R;
 import com.example.inprint.adapter.OrderAdapter;
 import com.example.inprint.bean.Uorder;
 import com.example.inprint.presenter.OrderFragmentPresent;
+import com.example.inprint.util.DataUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,10 +35,11 @@ public class OrderFragment extends Fragment {
         View view;
         RecyclerView recyclerView;
         //用测试数据 初始化列表
-        //TestDataUtil.orderItem(uorderList);
+        //DataUtil.orderItem(uorderList);
 
         orderFragmentPresent = new OrderFragmentPresent(getContext());
-        uorderList = orderFragmentPresent.readOrderList();
+        uorderList = orderFragmentPresent.readOrderList();             //读取数据库订单数据
+        uorderList = DataUtil.reverseList(uorderList);                 //订单链数据反向
 
         view = inflater.inflate(R.layout.order_fragment,container,false);
         recyclerView=view.findViewById(R.id.rv_order);

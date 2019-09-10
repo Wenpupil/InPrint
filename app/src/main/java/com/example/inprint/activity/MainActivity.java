@@ -18,7 +18,6 @@ import com.example.inprint.fragment.OrderFragment;
 import com.example.inprint.fragment.UserFragment;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.util.LogUtil;
-import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
 
 import static com.example.inprint.presenter.DocFragmentPresent.EX_FILE_PICKER_RESULT;
@@ -125,25 +124,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onResume() {
         super.onResume();
-        past= SharedUtil.readInt(this,"past");
-        LogUtil.d("onResume","past="+past);
-        mainPresenter.changeTab(0,past);
     }
     @Override
     public void onPause(){
         super.onPause();
-        SharedUtil.writeInt(this,"past",past);
     }
     @Override
     public void onStop(){
         super.onStop();
-        SharedUtil.writeInt(this,"past",past);
-        LogUtil.d("onStop","past="+past);
     }
     @Override
     public void onDestroy(){
-        LogUtil.d("onDestroy","past="+0);
-        SharedUtil.deleteInt(this,"past");
+        LogUtil.d("onsDestroy","past="+past);
         super.onDestroy();
     }
 

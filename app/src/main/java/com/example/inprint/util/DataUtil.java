@@ -3,9 +3,10 @@ package com.example.inprint.util;
 import com.example.inprint.bean.Doc;
 import com.example.inprint.bean.Uorder;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TestDataUtil {
+public class DataUtil {
     public static void docItem(List<Doc> docList){
         Doc doc=new Doc();
         doc.setDocTitle("学费通知");
@@ -64,6 +65,12 @@ public class TestDataUtil {
         b.setCost("12.4");
         b.setWhere("");
         uorderList.add(b);
-
+    }
+    public static List<Uorder> reverseList(List<Uorder> uorderList){
+        List<Uorder> uorders=new ArrayList<>();
+        for(int i=uorderList.size()-1;i>=0;i--){
+            uorders.add(uorderList.get(i));
+        }
+        return uorders;
     }
 }

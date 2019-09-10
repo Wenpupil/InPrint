@@ -2,9 +2,11 @@ package com.example.inprint.util;
 
 import com.example.inprint.bean.PDoc;
 import com.example.inprint.bean.Porder;
+import com.example.inprint.bean.Uorder;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.util.List;
 
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -59,5 +61,9 @@ public class HttpUtil {
                 .post(body)
                 .build();
         client.newCall(request).enqueue(callback);
+    }
+    //查询打印未完成的订单状态
+    public static void queryOrderStatus(List<Uorder> uorders,Callback callback){
+
     }
 }

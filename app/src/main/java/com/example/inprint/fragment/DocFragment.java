@@ -36,7 +36,7 @@ public class DocFragment extends Fragment {
         View view;
         RecyclerView recyclerView;
         //用测试数据 初始化
-        //TestDataUtil.docItem(docList);
+        //DataUtil.docItem(docList);
         //初始化中间对象件
         docFragmentPresent=new DocFragmentPresent(getContext());
         docList=docFragmentPresent.iniDocList();
