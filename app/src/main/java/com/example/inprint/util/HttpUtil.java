@@ -1,7 +1,7 @@
 package com.example.inprint.util;
 
 import com.example.inprint.bean.PDoc;
-import com.example.inprint.bean.POrder;
+import com.example.inprint.bean.Porder;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -43,11 +43,11 @@ public class HttpUtil {
         client.newCall(request).enqueue(callback);
     }
     //提交订单至服务器
-    public static void postPorder(POrder pOrder,Callback callback){
+    public static void postPorder(Porder pOrder, Callback callback){
         OkHttpClient client=new OkHttpClient();
         //将订单数据转化为json格式
         Gson gson=new Gson();
-        String data=gson.toJson(pOrder,POrder.class);
+        String data=gson.toJson(pOrder, Porder.class);
 
         RequestBody body=new FormBody.Builder()
                 .add("order",data)

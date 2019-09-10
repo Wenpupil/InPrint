@@ -12,9 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inprint.R;
 import com.example.inprint.adapter.OrderAdapter;
-import com.example.inprint.bean.Order;
+import com.example.inprint.bean.Uorder;
 import com.example.inprint.presenter.OrderFragmentPresent;
-import com.example.inprint.util.TestDataUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +25,7 @@ import java.util.List;
  */
 public class OrderFragment extends Fragment {
 
-    private List<Order> orderList=new ArrayList<>();
+    private List<Uorder> uorderList =new ArrayList<>();
     private OrderAdapter adapter;
     private OrderFragmentPresent orderFragmentPresent;
     @Override
@@ -35,15 +34,16 @@ public class OrderFragment extends Fragment {
         View view;
         RecyclerView recyclerView;
         //用测试数据 初始化列表
-        TestDataUtil.orderItem(orderList);
+        //TestDataUtil.orderItem(uorderList);
 
-        orderFragmentPresent=new OrderFragmentPresent(getContext());
-        
+        orderFragmentPresent = new OrderFragmentPresent(getContext());
+        uorderList = orderFragmentPresent.readOrderList();
+
         view = inflater.inflate(R.layout.order_fragment,container,false);
         recyclerView=view.findViewById(R.id.rv_order);
         LinearLayoutManager manager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
-        adapter=new OrderAdapter(orderList);
+        adapter=new OrderAdapter(uorderList);
         adapter.setContext(getContext());
         setOnItemClickListener();
         recyclerView.setAdapter(adapter);
@@ -52,8 +52,8 @@ public class OrderFragment extends Fragment {
     private void setOnItemClickListener(){
         adapter.setListener(new OrderAdapter.OnItemClickListener() {
             @Override
-            public void onClick(View v, Order order) {
-                if(order.getStatus().equals("0")){
+            public void onClick(View v, Uorder uorder) {
+                if(uorder.getStatus().equals("0")){
                     orderFragmentPresent.unableOpen();
                 }else{
                     orderFragmentPresent.ableOpen();

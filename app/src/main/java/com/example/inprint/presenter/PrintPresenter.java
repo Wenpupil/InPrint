@@ -8,7 +8,8 @@ import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.activity.LocationActivity;
-import com.example.inprint.bean.POrder;
+import com.example.inprint.bean.Uorder;
+import com.example.inprint.bean.Porder;
 import com.example.inprint.util.DialogUtil;
 import com.example.inprint.util.HttpUtil;
 import com.example.inprint.util.LogUtil;
@@ -80,7 +81,7 @@ public class PrintPresenter {
         }
     }
     //点击支付按钮
-    public void payCost(POrder order){
+    public void payCost(Porder order){
         HttpUtil.postPorder(order, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -101,5 +102,18 @@ public class PrintPresenter {
     public void selectLocation(Activity activity){
         Intent intent=new Intent(activity, LocationActivity.class);
         activity.startActivityForResult(intent,1);
+    }
+    //保存订单数据与数据库中
+    public void saveOrder(Porder porder){
+        Uorder uorder =new Uorder();
+        uorder.setAid(porder.getAid());
+        uorder.setWhere(porder.getAwhere());
+        uorder.setNumber(porder.getAnumber());
+        uorder.setStatus(porder.getAstatus());
+        uorder.setDocUrl(porder.getAurl());
+        uorder.setTime(porder.getAtime());
+        uorder.setCost(porder.getAcost().substring(1));
+        uorder.setDocName(porder.getAname());
+        uorder.save();
     }
 }

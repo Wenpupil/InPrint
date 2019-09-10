@@ -1,13 +1,13 @@
 package com.example.inprint.bean;
-
-import androidx.annotation.NonNull;
+import org.litepal.crud.LitePalSupport;
 
 /*
  * @Author Wenpupil
  * @Time 2019.09.07
  * @Description 用于初始化订单列表的类
  */
-public class Order {
+public class Uorder extends LitePalSupport {
+    private String aid;         //用户标识号
     private String docUrl;      //文档在服务器中的url作为标识
     private String docName;     //文档名字
     private String status;      //文档状态
@@ -15,6 +15,10 @@ public class Order {
     private String cost;        //用户付款
     private String time;        //下单时间
     private String where;       //文档位置
+
+    public void setAid(String aid) {
+        this.aid = aid;
+    }
 
     public void setWhere(String where) {
         this.where = where;
@@ -72,4 +76,7 @@ public class Order {
         return time;
     }
 
+    public String getAid() {
+        return aid;
+    }
 }

@@ -12,7 +12,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.inprint.R;
-import com.example.inprint.bean.POrder;
+import com.example.inprint.bean.Porder;
 import com.example.inprint.presenter.PrintPresenter;
 import com.example.inprint.util.ActivityUtil;
 import com.example.inprint.util.LogUtil;
@@ -48,7 +48,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
 
     private int payPattern;                   //支付方式 0--支付宝支付，1--微信支付
     private boolean selectLoaction=false;     //打印地点是否选择
-    private POrder order=new POrder();        //订单信息
+    private Porder order=new Porder();        //订单信息
     private PrintPresenter printPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -166,13 +166,16 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         docUrl=docUrl.replace('\\','/');
         order.setAid("admin");
         order.setAtoken("aa20190718211933");
+        order.setAname(tv_filename.getText().toString());
         order.setAurl(docUrl);
-        order.setAstatus("-1");
+        order.setAstatus("0");
         order.setAcost(tv_price.getText().toString());
         order.setAnumber(tv_number.getText().toString());
         SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date date=new Date(System.currentTimeMillis());
         order.setAtime(simpleDateFormat.format(date));
         order.viewInfo();
+        //保存订单数据于数据库中
+        printPresenter.saveOrder(order);
     }
 }

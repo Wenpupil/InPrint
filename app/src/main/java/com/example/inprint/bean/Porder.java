@@ -7,7 +7,7 @@ import com.example.inprint.util.LogUtil;
  * @Time 2019.09.05
  * @Description 发送订单到服务器上
  */
-public class POrder {
+public class Porder {
     private String aid;         //用户识别号
     private String atoken;      //登录令牌
     private String anumber;     //文档份数
@@ -15,7 +15,8 @@ public class POrder {
     private String awhere;      //地点
     private String acost;       //花费
     private String aurl;        //文档地址
-    private String atime;        //订单创立时间
+    private String atime;       //订单创立时间
+    private String aname;       //文档名
 
     public void setAid(String aid) {
         this.aid = aid;
@@ -46,6 +47,9 @@ public class POrder {
     }
     public void setAtime(String atime){
         this.atime = atime;
+    }
+    public void setAname(String aname){
+        this.aname=aname;
     }
 
     public String getAid() {
@@ -81,9 +85,13 @@ public class POrder {
         return awhere;
     }
 
+    public String getAname(){
+        return aname;
+    }
+
     public void viewInfo(){
         LogUtil.d("订单信息","aid = " + getAid() + ", where = " + getAwhere() +
                 ", cost = " + getAcost() + ", url = " + getAurl() + ", status = " + getAstatus() +
-                "\ntime = " + getAtime() + ", number = " + getAnumber());
+                "\ntime = " + getAtime() + ", number = " + getAnumber() + ", name = " + aname);
     }
 }

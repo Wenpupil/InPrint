@@ -1,7 +1,7 @@
 package com.example.inprint.util;
 
 import com.example.inprint.bean.Doc;
-import com.example.inprint.bean.Order;
+import com.example.inprint.bean.Uorder;
 
 import java.util.List;
 
@@ -33,19 +33,19 @@ public class TestDataUtil {
         c.setDocUrl("ADD");
         docList.add(c);
     }
-    public static void orderItem(List<Order> orderList){
-        orderList.clear();
-        Order order=new Order();
-        order.setDocUrl("http://www.ssdfs.com/1.doc");
-        order.setDocName("上海海洋大学校规.doc");
-        order.setTime("2019-09-01 10:20");
-        order.setStatus("0");
-        order.setNumber("2");
-        order.setCost("1.2");
-        order.setWhere("");
-        orderList.add(order);
+    public static void orderItem(List<Uorder> uorderList){
+        uorderList.clear();
+        Uorder uorder =new Uorder();
+        uorder.setDocUrl("http://www.ssdfs.com/1.doc");
+        uorder.setDocName("上海海洋大学校规.doc");
+        uorder.setTime("2019-09-01 10:20");
+        uorder.setStatus("0");
+        uorder.setNumber("2");
+        uorder.setCost("1.2");
+        uorder.setWhere("");
+        uorderList.add(uorder);
 
-        Order a=new Order();
+        Uorder a=new Uorder();
         a.setDocUrl("http://www.ssds.com/2.docx");
         a.setDocName("公司项目书.docx");
         a.setTime("2019-09-03 09:12");
@@ -53,9 +53,9 @@ public class TestDataUtil {
         a.setNumber("1");
         a.setCost("0.2");
         a.setWhere("00121");
-        orderList.add(a);
+        uorderList.add(a);
 
-        Order b=new Order();
+        Uorder b=new Uorder();
         b.setDocUrl("http://www.123.com/3.doc");
         b.setDocName("测试.doc");
         b.setTime("2019-09-02 23:12");
@@ -63,7 +63,7 @@ public class TestDataUtil {
         b.setNumber("5");
         b.setCost("12.4");
         b.setWhere("");
-        orderList.add(b);
+        uorderList.add(b);
 
     }
 }

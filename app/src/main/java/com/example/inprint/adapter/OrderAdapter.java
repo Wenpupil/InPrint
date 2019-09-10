@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inprint.R;
-import com.example.inprint.bean.Order;
+import com.example.inprint.bean.Uorder;
 
 import java.util.List;
 
@@ -21,12 +21,12 @@ import java.util.List;
  */
 public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
 
-    private List<Order> orderList;
+    private List<Uorder> uorderList;
     private OnItemClickListener listener;
     private Context context;
 
     public interface OnItemClickListener{
-        void onClick(View v,Order order);
+        void onClick(View v, Uorder uorder);
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder{
@@ -50,8 +50,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public void setContext(Context context){
         this.context=context;
     }
-    public OrderAdapter(List<Order> orderList){
-        this.orderList=orderList;
+    public OrderAdapter(List<Uorder> uorderList){
+        this.uorderList = uorderList;
     }
     public void setListener(OnItemClickListener listener){
         this.listener=listener;
@@ -64,28 +64,28 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position){
-        Order order=orderList.get(position);
-        holder.order_filename.setText(order.getDocName());
-        holder.order_time.setText(order.getTime());
+        Uorder uorder = uorderList.get(position);
+        holder.order_filename.setText(uorder.getDocName());
+        holder.order_time.setText(uorder.getTime());
 
-        String number="x"+order.getNumber();
+        String number="x"+ uorder.getNumber();
         holder.order_number.setText(number);
 
-        String cost="￥"+order.getCost();
+        String cost="￥"+ uorder.getCost();
         holder.order_cost.setText(cost);
 
-        holder.itemView.setTag(order);
-        holder.order_open.setTag(order);
+        holder.itemView.setTag(uorder);
+        holder.order_open.setTag(uorder);
         holder.order_open.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
                 if(listener!=null){
-                    listener.onClick(view,(Order)view.getTag());
+                    listener.onClick(view,(Uorder)view.getTag());
                 }
             }
         });
-        if(order.getStatus()!=null) {
-            switch (order.getStatus()) {
+        if(uorder.getStatus()!=null) {
+            switch (uorder.getStatus()) {
                 case "0":
                     holder.order_status.setText("正在打印");
                     break;
@@ -108,6 +108,6 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     @Override
     public int getItemCount(){
-        return orderList.size();
+        return uorderList.size();
     }
 }
