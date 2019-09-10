@@ -132,7 +132,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
             case R.id.print_cost:                                               //支付按钮
                 if(selectLoaction){
                     parsePOrder();                                              //打包POrder类数据
-                    printPresenter.payCost();                                   //支付接口，发送消失至服务器
+                    printPresenter.payCost(order);                                   //支付接口，发送消息至服务器
                 }else{
                     printPresenter.tipLocation();                               //提示地点未选择
                 }
@@ -155,12 +155,15 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                     selectLoaction = true;                                          //更新选择情况
                     order.setAwhere(locationId);
                 }
+            case 2:
                 break;
             default:
+                break;
         }
     }
     //打包POder类数据
     private void parsePOrder(){
+        docUrl=docUrl.replace('\\','/');
         order.setAid("admin");
         order.setAtoken("aa20190718211933");
         order.setAurl(docUrl);

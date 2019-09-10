@@ -34,6 +34,7 @@ public class TestDataUtil {
         docList.add(c);
     }
     public static void orderItem(List<Order> orderList){
+        orderList.clear();
         Order order=new Order();
         order.setDocUrl("http://www.ssdfs.com/1.doc");
         order.setDocName("上海海洋大学校规.doc");
@@ -58,7 +59,7 @@ public class TestDataUtil {
         b.setDocUrl("http://www.123.com/3.doc");
         b.setDocName("测试.doc");
         b.setTime("2019-09-02 23:12");
-        b.setStatus("0");
+        b.setStatus("2");
         b.setNumber("5");
         b.setCost("12.4");
         b.setWhere("");

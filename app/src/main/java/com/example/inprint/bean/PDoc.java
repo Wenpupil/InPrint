@@ -9,23 +9,16 @@ public class PDoc {
     private String atoken;          //随机令牌
     private String rate;            //文档种类
     private String uri;             //文档在手机中的资源定位
-    //提交信息到某个地址
-    private String posturl;         //提交的地址
 
-    public PDoc(String aid,String atoken,String rate,String uri,String posturl){
+    public PDoc(String aid,String atoken,String rate,String uri){
         this.aid=aid;
         this.atoken=atoken;
         this.rate=rate;
         this.uri=uri;
-        this.posturl=posturl;
     }
 
     public void setAtoken(String atoken) {
         this.atoken = atoken;
-    }
-
-    public void setPosturl(String posturl) {
-        this.posturl = posturl;
     }
 
     public void setRate(String rate) {
@@ -52,16 +45,12 @@ public class PDoc {
         return rate;
     }
 
-    public String getPosturl() {
-        return posturl;
-    }
-
     public String getAtoken() {
         return atoken;
     }
 
     public String viewInfo(){
         return "aid = "+aid+", atoken = "+atoken
-                +", uri = "+uri+"\n, rate = "+rate+", posturl = "+posturl;
+                +", uri = "+uri+"\n, rate = "+rate;
     }
 }

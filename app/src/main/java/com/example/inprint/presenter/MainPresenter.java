@@ -53,19 +53,6 @@ public class MainPresenter {
                 getResources().getColor(R.color.app_icon_color));
         return now;
     }
-    //初始化轮播广告控件
-    public static void iniBanner(Banner banner){
-        List<Integer> data=new ArrayList<>();
-        data.add(R.mipmap.l1);
-        data.add(R.mipmap.l2);
-        data.add(R.mipmap.l3);
-        banner.setImageLoader(new GlideImageLoader());
-        //设置轮播图片集合
-        banner.setImages(data);
-        //设置轮播时间
-        banner.setDelayTime(2000);
-        banner.start();
-    }
     /*
      * 添加文档到recycler中，并且更新UI，保存数据入库
      */

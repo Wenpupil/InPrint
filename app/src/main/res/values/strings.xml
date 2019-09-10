@@ -1,5 +1,6 @@
 <resources>
     <string name="Http_postDoc_address">http://192.168.1.108:8080/index.php/admin/Upload/uploadFile</string>
+    <string name="Http_postOrder_address">http://192.168.1.108:8080/index.php/admin/Receiveorderinfo/receiveOrder</string>
 
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
@@ -102,4 +103,10 @@
     <string name="order_item_cost_content">实付</string>
     <string name="order_item_cost">￥1.2</string>
     <string name="order_item_open">取件</string>
+
+    <string name="main_top_0">趣印</string>
+    <string name="main_top_1">订单</string>
+    <string name="main_top_2">我的</string>
+
+    <string name="user_fragment_img">用户头像</string>
 </resources>

@@ -8,9 +8,19 @@ import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.activity.LocationActivity;
+import com.example.inprint.bean.POrder;
 import com.example.inprint.util.DialogUtil;
+import com.example.inprint.util.HttpUtil;
+import com.example.inprint.util.LogUtil;
 
+import org.jetbrains.annotations.NotNull;
+
+import java.io.IOException;
 import java.text.DecimalFormat;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.Response;
 
 public class PrintPresenter {
     private Context context;
@@ -24,8 +34,7 @@ public class PrintPresenter {
         String page=tv_page.getText().toString();
         int pages=Integer.parseInt(page);
         float ftotal=pages*0.2f;
-        String total=decimalFormat.format(ftotal);
-        return total;
+        return decimalFormat.format(ftotal);
     }
     //计算文档*份数 合计的价格
     public static String countPrice(TextView tv_number,TextView tv_page){
@@ -71,7 +80,18 @@ public class PrintPresenter {
         }
     }
     //点击支付按钮
-    public void payCost(){
+    public void payCost(POrder order){
+        HttpUtil.postPorder(order, new Callback() {
+            @Override
+            public void onFailure(@NotNull Call call, @NotNull IOException e) {
+                LogUtil.d("上传订单","失败");
+            }
+
+            @Override
+            public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
+                LogUtil.d("上传订单","成功");
+            }
+        });
     }
     //提示打印地点未选择
     public void tipLocation(){

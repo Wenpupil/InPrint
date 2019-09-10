@@ -1,10 +1,13 @@
 package com.example.inprint.util;
 
 import com.example.inprint.bean.PDoc;
+import com.example.inprint.bean.POrder;
+import com.google.gson.Gson;
 
 import java.io.File;
 
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
@@ -20,7 +23,7 @@ public class HttpUtil {
     //提交文档--生成相应订单信息
     public static void postDoc(PDoc pDoc, Callback callback){
         File docfile=new File(pDoc.getUri());
-        String postUrl=pDoc.getPosturl();
+        String postUrl=ConfigUtil.getPostDocAddress();
 
         OkHttpClient client=new OkHttpClient();
         MultipartBody.Builder builder=new MultipartBody.Builder();
@@ -35,6 +38,24 @@ public class HttpUtil {
 
         Request request=new Request.Builder()
                 .url(postUrl)
+                .post(body)
+                .build();
+        client.newCall(request).enqueue(callback);
+    }
+    //提交订单至服务器
+    public static void postPorder(POrder pOrder,Callback callback){
+        OkHttpClient client=new OkHttpClient();
+        //将订单数据转化为json格式
+        Gson gson=new Gson();
+        String data=gson.toJson(pOrder,POrder.class);
+
+        RequestBody body=new FormBody.Builder()
+                .add("order",data)
+                .build();
+
+        LogUtil.d("上传订单",data);
+        Request request=new Request.Builder()
+                .url(ConfigUtil.getPostOrderAddress())
                 .post(body)
                 .build();
         client.newCall(request).enqueue(callback);

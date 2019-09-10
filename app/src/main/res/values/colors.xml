@@ -43,4 +43,5 @@
 
     <color name="order_item_img_background">#57BEEC</color>
     <color name="order_item_open_color">#4fa5d5</color>
+    <color name="order_grey">#808080</color>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.inprint.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     private List<Order> orderList;
     private OnItemClickListener listener;
+    private Context context;
 
     public interface OnItemClickListener{
         void onClick(View v,Order order);
@@ -45,6 +47,9 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
             order_open=view.findViewById(R.id.tv_order_item_open);
         }
     }
+    public void setContext(Context context){
+        this.context=context;
+    }
     public OrderAdapter(List<Order> orderList){
         this.orderList=orderList;
     }
@@ -55,8 +60,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent,int viewType){
         View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.order_item,parent, false);
-        ViewHolder holder=new ViewHolder(view);
-        return holder;
+        return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position){
@@ -80,18 +84,25 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
                 }
             }
         });
-        switch(order.getStatus()){
-            case "0":
-                holder.order_status.setText("正在打印");
-                break;
-            case "1":
-                holder.order_status.setText("打印完成");
-                break;
-            case "2":
-                holder.order_status.setText("打印完成");
-                holder.order_open.setText("已取件");
-                break;
-            default:
+        if(order.getStatus()!=null) {
+            switch (order.getStatus()) {
+                case "0":
+                    holder.order_status.setText("正在打印");
+                    break;
+                case "1":
+                    holder.order_status.setText("打印完成");
+                    break;
+                case "2":
+                    holder.order_status.setText("打印完成");
+                    holder.order_open.setText("已取件");
+                    holder.order_open.setBackground(
+                            context.getResources().getDrawable(R.drawable.order_item_open_false));
+                    holder.order_open.setTextColor(
+                            context.getResources().getColor(R.color.order_grey)
+                    );
+                    break;
+                default:
+            }
         }
     }
 

@@ -8,9 +8,9 @@ import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
+import android.view.View;
 
 import com.example.inprint.R;
-import com.example.inprint.activity.DocViewActivity;
 import com.example.inprint.activity.PrintActivity;
 import com.example.inprint.bean.Doc;
 import com.example.inprint.bean.PDoc;
@@ -24,6 +24,7 @@ import com.example.inprint.util.HttpUtil;
 import com.example.inprint.util.InfoUtil;
 import com.example.inprint.util.LogUtil;
 import com.google.gson.Gson;
+import com.youth.banner.Banner;
 
 import org.jetbrains.annotations.NotNull;
 import org.litepal.LitePal;
@@ -184,11 +185,10 @@ public class DocFragmentPresent {
         myLoadDialog.show();
         //构建上传信息
         int splitDiot = clickDocName.lastIndexOf(".");
-        String postUrl = context.getResources().getString(R.string.Http_postDoc_address);
         String rate = clickDocName.substring(splitDiot + 1);
         //虚拟用户--测试
         User user = InfoUtil.testUserInfo();
-        PDoc pDoc = new PDoc(user.getAid(), user.getAtoken(), rate, clickDocName, postUrl);
+        PDoc pDoc = new PDoc(user.getAid(), user.getAtoken(), rate, clickDocName);
         LogUtil.d("上传文档", pDoc.viewInfo());
         //开始进行上传
         HttpUtil.postDoc(pDoc,uCallback);
@@ -222,5 +222,19 @@ public class DocFragmentPresent {
     private String getFilename(){
         int splitLine=clickDocName.lastIndexOf('/');
         return clickDocName.substring(splitLine+1);
+    }
+
+    public void iniBanner(View view){
+        Banner banner=view.findViewById(R.id.banner);
+        List<Integer> data=new ArrayList<>();
+        data.add(R.mipmap.l1);
+        data.add(R.mipmap.l2);
+        data.add(R.mipmap.l3);
+        banner.setImageLoader(new GlideImageLoader());
+        //设置轮播图片集合
+        banner.setImages(data);
+        //设置轮播时间
+        banner.setDelayTime(2000);
+        banner.start();
     }
 }

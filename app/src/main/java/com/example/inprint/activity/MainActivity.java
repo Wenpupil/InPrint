@@ -9,27 +9,33 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.fragment.OrderFragment;
+import com.example.inprint.fragment.UserFragment;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.SharedUtil;
 import com.githang.statusbar.StatusBarCompat;
-import com.youth.banner.Banner;
 
 import static com.example.inprint.presenter.DocFragmentPresent.EX_FILE_PICKER_RESULT;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private ImageView userhead;   //用户头像
     private ImageView more;       //更多选项
+    private RelativeLayout rl_main_top;
+
+    private TextView mainTitle;   //顶部文本
     private LinearLayout tab1;    //底部tab1
     private LinearLayout tab2;    //底部tab2
     private LinearLayout tab3;    //底部tab3
 
     DocFragment docFragment;
     OrderFragment orderFragment;
+    UserFragment userFragment;
     private static int past;
 
     private MainPresenter mainPresenter;
@@ -46,9 +52,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化状态栏颜色与actionBar相同
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.app_top_color));
-        Banner banner=findViewById(R.id.banner);
-        MainPresenter.iniBanner(banner);
         userhead=findViewById(R.id.iv_userHead);
+        mainTitle=findViewById(R.id.tv_titles);
+        rl_main_top=findViewById(R.id.rl_main_top);
         more=findViewById(R.id.iv_more);
         tab1=findViewById(R.id.ll_tab1);
         tab2=findViewById(R.id.ll_tab2);
@@ -71,34 +77,42 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch(view.getId()){
             case R.id.ll_tab1:
                 select(0);
+                selectDocList();
                 break;
             case R.id.ll_tab2:
                 select(1);
+                selectOrderList();
                 break;
             case R.id.ll_tab3:
                 select(2);
+                selectUser();
                 break;
         }
     }
     //底部tab选择
     private void select(int i){
-        FragmentManager manager=getSupportFragmentManager();
-        FragmentTransaction transaction=manager.beginTransaction();
+        FragmentManager manager = getSupportFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
         past=mainPresenter.changeTab(past,i);
         switch(i)
         {
-            case 2:
             case 0:
-                if(docFragment==null){
-                    docFragment=new DocFragment();
+                if(docFragment == null){
+                    docFragment = new DocFragment();
                 }
                 transaction.replace(R.id.fl_main,docFragment);
                 break;
             case 1:
-                if(orderFragment==null){
-                    orderFragment=new OrderFragment();
+                if(orderFragment == null){
+                    orderFragment = new OrderFragment();
                 }
                 transaction.replace(R.id.fl_main,orderFragment);
+                break;
+            case 2:
+                if(userFragment == null){
+                    userFragment = new UserFragment();
+                }
+                transaction.replace(R.id.fl_main,userFragment);
                 break;
         }
         transaction.commit();
@@ -139,5 +153,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (requestCode == EX_FILE_PICKER_RESULT) {
             mainPresenter.docFromWhere(requestCode,data);
         }
+    }
+    //选择文档列表的main视图变化
+    private void selectDocList(){
+        mainTitle.setText(getResources().getString(R.string.main_top_0));
+        mainTitle.setTextColor(getResources().getColor(R.color.white));
+        userhead.setVisibility(View.VISIBLE);
+        more.setVisibility(View.VISIBLE);
+        StatusBarCompat.setStatusBarColor(this,
+                getResources().getColor(R.color.app_top_color));
+        rl_main_top.setBackgroundColor(getResources().getColor(R.color.app_top_color));
+    }
+    //选择订单列表的order视图变化
+    private void selectOrderList(){
+        mainTitle.setText(getResources().getString(R.string.main_top_1));
+        mainTitle.setTextColor(getResources().getColor(R.color.my_black));
+        userhead.setVisibility(View.GONE);
+        more.setVisibility(View.GONE);
+        StatusBarCompat.setStatusBarColor(this,
+                getResources().getColor(R.color.white));
+        rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));
+    }
+    //选择我的界面
+    private void selectUser(){
+        mainTitle.setText(getResources().getString(R.string.main_top_2));
     }
 }

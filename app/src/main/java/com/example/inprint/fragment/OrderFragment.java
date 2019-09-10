@@ -38,12 +38,13 @@ public class OrderFragment extends Fragment {
         TestDataUtil.orderItem(orderList);
 
         orderFragmentPresent=new OrderFragmentPresent(getContext());
-
+        
         view = inflater.inflate(R.layout.order_fragment,container,false);
         recyclerView=view.findViewById(R.id.rv_order);
         LinearLayoutManager manager=new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(manager);
         adapter=new OrderAdapter(orderList);
+        adapter.setContext(getContext());
         setOnItemClickListener();
         recyclerView.setAdapter(adapter);
         return view;

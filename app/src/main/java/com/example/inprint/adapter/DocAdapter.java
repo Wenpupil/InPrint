@@ -55,8 +55,7 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View view= LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.doc_fragment_item,parent,false);
-        ViewHolder holder=new ViewHolder(view);
-        return holder;
+         return new ViewHolder(view);
     }
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder,int position){
@@ -87,7 +86,7 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         }else{
             Glide.with(context).
                     load(R.mipmap.tianjia).
-                    //apply(RequestOptions.bitmapTransform(new CircleCrop())).
+                    ///apply(RequestOptions.bitmapTransform(new CircleCrop())).
                     into(holder.docImage);
             holder.docAdd.setVisibility(View.VISIBLE);
         }
