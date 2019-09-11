@@ -64,6 +64,17 @@ public class HttpUtil {
     }
     //查询打印未完成的订单状态
     public static void queryOrderStatus(List<Uorder> uorders,Callback callback){
-
+        OkHttpClient okHttpClient=new OkHttpClient();
+        Gson gson=new Gson();
+        String data=gson.toJson(uorders);
+        RequestBody body=new FormBody.Builder()
+                .add("orders",data)
+                .build();
+        LogUtil.d("查询订单状态",data);
+        Request request=new Request.Builder()
+                .url(ConfigUtil.getQueryOrderStatusAddress())
+                .post(body)
+                .build();
+        okHttpClient.newCall(request).enqueue(callback);
     }
 }

@@ -19,9 +19,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.LocationActivity">
+        <service
+            android:name=".service.QueryOrderService"
+            android:enabled="true"
+            android:exported="true"></service>
 
-        </activity>
+        <activity android:name=".activity.LocationActivity"></activity>
         <activity android:name=".activity.PrintActivity" />
         <activity android:name=".activity.DocViewActivity" />
 

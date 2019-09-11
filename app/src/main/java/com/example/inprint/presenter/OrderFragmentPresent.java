@@ -8,6 +8,7 @@ import com.example.inprint.util.LogUtil;
 
 import org.litepal.LitePal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class OrderFragmentPresent {
@@ -30,5 +31,20 @@ public class OrderFragmentPresent {
     //读取数据库中所有的订单数据
     public List<Uorder> readOrderList(){
         return LitePal.findAll(Uorder.class);
+    }
+
+    /**
+     * @param uorders List Uorder
+     * 用于查找需要查询的订单链
+     */
+    public List<Uorder> queryOrderUnable(List<Uorder> uorders){
+        List<Uorder> uorderList=new ArrayList<>();
+        for(int i=0;i<uorders.size();i++){
+            Uorder uorder=uorders.get(i);
+            if(uorder.getStatus()!=null&&uorder.getStatus().equals("0")){
+                uorderList.add(uorder);
+            }
+        }
+        return uorderList;
     }
 }

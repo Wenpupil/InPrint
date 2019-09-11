@@ -16,4 +16,9 @@ public class ConfigUtil {
         return LitePalApplication.getContext()
                 .getResources().getString(R.string.Http_postDoc_address);
     }
+    //提交订单状态查询地址
+    public static String getQueryOrderStatusAddress(){
+        return LitePalApplication.getContext()
+                .getResources().getString(R.string.Http_queryOrderStatus_address);
+    }
 }
