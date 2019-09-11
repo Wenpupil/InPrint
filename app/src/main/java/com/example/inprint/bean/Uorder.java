@@ -79,4 +79,8 @@ public class Uorder extends LitePalSupport {
     public String getAid() {
         return aid;
     }
+
+    public String viewInfo(){
+        return "aid = " + aid + ", docName = " + docName + ", status = " + status;
+    }
 }
