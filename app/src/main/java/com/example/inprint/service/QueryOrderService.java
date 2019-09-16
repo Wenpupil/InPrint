@@ -70,8 +70,10 @@ public class QueryOrderService extends Service {
                 if(gson == null){
                     gson = new Gson();
                 }
-                rorders = gson.fromJson(result,type);
-                saveInDatabases();
+                if(!result.equals("null")){
+                    rorders = gson.fromJson(result,type);
+                    saveInDatabases();
+                }
             }
         });
     }

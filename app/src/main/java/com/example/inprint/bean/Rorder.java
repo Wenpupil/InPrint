@@ -8,9 +8,16 @@ public class Rorder {
     private String anumber;
     private String astatus;
     private String awhere;
-    private String acost;
     private String aurl;
-    private String atime;
+    private String arate;
+
+    public String getArate() {
+        return arate;
+    }
+
+    public void setArate(String arate) {
+        this.arate = arate;
+    }
 
     public String getAid() {
         return aid;
@@ -40,20 +47,9 @@ public class Rorder {
         return awhere;
     }
 
-    public String getAtime() {
-        return atime;
-    }
 
     public String getAnumber() {
         return anumber;
-    }
-
-    public String getAcost() {
-        return acost;
-    }
-
-    public void setAcost(String acost) {
-        this.acost = acost;
     }
 
     public void setAwhere(String awhere) {
@@ -64,11 +60,8 @@ public class Rorder {
         this.anumber = anumber;
     }
 
-    public void setAtime(String atime) {
-        this.atime = atime;
-    }
     public String viewInfo(){
-        return "awhere = " + awhere + ", acost = " + acost + ", anumber = " + anumber
+        return "awhere = " + awhere + ", arate = " + arate + ", anumber = " + anumber
                 + ", astatus = " + astatus;
     }
 }
