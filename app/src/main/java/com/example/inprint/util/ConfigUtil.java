@@ -21,4 +21,9 @@ public class ConfigUtil {
         return LitePalApplication.getContext()
                 .getResources().getString(R.string.Http_queryOrderStatus_address);
     }
+
+    //用户测试的aid
+    public static String getAid(){
+        return "admin";
+    }
 }

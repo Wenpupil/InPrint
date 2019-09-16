@@ -17,6 +17,7 @@ import com.example.inprint.fragment.DocFragment;
 import com.example.inprint.fragment.OrderFragment;
 import com.example.inprint.fragment.UserFragment;
 import com.example.inprint.presenter.MainPresenter;
+import com.example.inprint.service.QueryOrderService;
 import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -59,6 +60,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tab2=findViewById(R.id.ll_tab2);
         tab3=findViewById(R.id.ll_tab3);
         setListener();//对控件设置监听
+
+        //启动订单查询服务
+        Intent intent=new Intent(this,QueryOrderService.class);
+        startService(intent);
     }
 
     /**
@@ -135,6 +140,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onDestroy(){
+        //订单服务取消
+        Intent intent=new Intent(this,QueryOrderService.class);
+        stopService(intent);
+
         LogUtil.d("onsDestroy","past="+past);
         super.onDestroy();
     }
