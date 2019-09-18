@@ -1,8 +1,11 @@
 package com.example.inprint.presenter;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,9 +13,12 @@ import com.example.inprint.R;
 import com.example.inprint.activity.LocationActivity;
 import com.example.inprint.bean.Uorder;
 import com.example.inprint.bean.Porder;
+import com.example.inprint.myview.ConfirmDialog;
+import com.example.inprint.myview.LoadingDialog;
 import com.example.inprint.util.DialogUtil;
 import com.example.inprint.util.HttpUtil;
 import com.example.inprint.util.LogUtil;
+import com.google.gson.Gson;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -24,8 +30,49 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class PrintPresenter {
+
+    private final int paySuccess = 0x21;
+    private final int payError = 0x22;
+
     private Context context;
+    private Activity activity;
     private static DecimalFormat decimalFormat;
+
+    private Handler payHandle = new Handler(){
+        @Override
+        public void handleMessage(Message message){
+            switch(message.what){
+                case paySuccess:
+                    LoadingDialog dialog = (LoadingDialog)message.obj;
+                    dialog.dismiss();
+                    LogUtil.d("上传订单","handle方式success");
+                    paySuccessAction();
+                    break;
+                case payError:
+                    LoadingDialog dialog1 = (LoadingDialog)message.obj;
+                    dialog1.dismiss();
+                    LogUtil.d("上传订单","handle方式error");
+                    break;
+            }
+        }
+    };
+    class ReceiveInfo{
+        private String success;
+        private String time;
+        public String getSuccess(){ return success; }
+        public String getTime(){
+            return time;
+        }
+        public void setTime(String time) {
+            this.time = time;
+        }
+        public void setSuccess(String success) {
+            this.success = success;
+        }
+    }
+    public void setActivity(Activity activity){
+        this.activity = activity;
+    }
     public PrintPresenter(Context context){
         this.context=context;
     }
@@ -82,6 +129,10 @@ public class PrintPresenter {
     }
     //点击支付按钮
     public void payCost(Porder order){
+        //出现等待对话框
+        final LoadingDialog loadingDialog = new LoadingDialog(context);
+        loadingDialog.show();
+
         HttpUtil.postPorder(order, new Callback() {
             @Override
             public void onFailure(@NotNull Call call, @NotNull IOException e) {
@@ -90,7 +141,21 @@ public class PrintPresenter {
 
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
-                LogUtil.d("上传订单","成功");
+                String result = response.body().string();
+                Message message = new Message();
+                Gson gson = new Gson();
+                ReceiveInfo receiveInfo = gson.fromJson(result,ReceiveInfo.class);
+                if(receiveInfo.getSuccess().equals("true")){
+                    LogUtil.d("上传订单","服务器正确处理");
+                    LogUtil.d("上传订单","服务器返回数据:" + receiveInfo.getSuccess()
+                            + receiveInfo.getTime());
+                    message.what = paySuccess;
+                }else{
+                    LogUtil.d("上传订单","订单服务器处理失败");
+                    message.what = payError;
+                }
+                message.obj = loadingDialog;
+                payHandle.sendMessage(message);
             }
         });
     }
@@ -115,5 +180,21 @@ public class PrintPresenter {
         uorder.setCost(porder.getAcost().substring(1));
         uorder.setDocName(porder.getAname());
         uorder.save();
+    }
+    //支付成功执行的动作
+    private void paySuccessAction(){
+        new ConfirmDialog(context, "下单成功", new ConfirmDialog.OnCloseListener() {
+            @Override
+            public void onClick(Dialog dialog, boolean confirm) {
+                dialog.dismiss();
+                activity.finish();
+            }
+        });
+        LogUtil.d("PrintPresenter","paySuccessAction");
+    }
+    //支付失败执行的动作
+    private void payErrorAction(){
+        DialogUtil.MyConfirm("下单失败",context);
+        LogUtil.d("PrintPresenter","payErrorAction");
     }
 }

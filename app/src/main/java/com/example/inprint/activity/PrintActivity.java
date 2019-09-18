@@ -55,6 +55,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_print);
         printPresenter=new PrintPresenter(this);
+        printPresenter.setActivity(this);
         initView();
     }
     private void initView(){
@@ -132,7 +133,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
             case R.id.print_cost:                                               //支付按钮
                 if(selectLoaction){
                     parsePOrder();                                              //打包POrder类数据
-                    printPresenter.payCost(order);                                   //支付接口，发送消息至服务器
+                    printPresenter.payCost(order);                              //支付接口，发送消息至服务器
                 }else{
                     printPresenter.tipLocation();                               //提示地点未选择
                 }
