@@ -110,4 +110,14 @@
     <string name="main_top_2">我的</string>
 
     <string name="user_fragment_img">用户头像</string>
+    <string name="user_fragment_id">ID:21341251</string>
+    <string name="user_fragment_balance_img">余额图标</string>
+    <string name="user_fragment_balance">余额</string>
+    <string name="user_fragment_back">进入或者返回图标</string>
+    <string name="user_fragment_service">客服</string>
+    <string name="user_fragment_service_img">客服图标</string>
+    <string name="user_fragment_recharge_img">充值图标</string>
+    <string name="user_fragment_recharge">充值</string>
+    <string name="user_fragment_set_img">设置图标</string>
+    <string name="user_fragment_set">设置</string>
 </resources>

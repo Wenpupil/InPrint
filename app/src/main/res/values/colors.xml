@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+
+    <!-- UI说明
+         图标灰色选择色调：#8a8a8a
+         字体颜色：#2c2c2c
+         背景灰色: #f7f6f6
+         白色选择: #fff
+
+          -->
+
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
@@ -44,4 +54,8 @@
     <color name="order_item_img_background">#57BEEC</color>
     <color name="order_item_open_color">#4fa5d5</color>
     <color name="order_grey">#808080</color>
+
+    <color name="user_fragment_background">#fff</color>
+    <color name="user_fragment_text">#2c2c2c</color>
+    <color name="user_fragment_drawable">#F7F6F6</color>
 </resources>
