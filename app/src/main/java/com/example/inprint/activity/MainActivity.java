@@ -178,5 +178,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //选择我的界面
     private void selectUser(){
         mainTitle.setText(getResources().getString(R.string.main_top_2));
+        mainTitle.setTextColor(getResources().getColor(R.color.my_black));
+        userhead.setVisibility(View.GONE);
+        more.setVisibility(View.GONE);
+        StatusBarCompat.setStatusBarColor(this,
+                getResources().getColor(R.color.white));
+        rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));
     }
 }
