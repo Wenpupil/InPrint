@@ -10,8 +10,9 @@
         android:id="@+id/rl_user_fragment_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
+        android:layout_marginTop="10dp"
         android:background="@drawable/user_fragment_radius"
+        android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
@@ -34,6 +35,19 @@
             android:text="@string/user_fragment_id"
             android:textColor="@color/user_fragment_text"
             android:textSize="16sp" />
+        <TextView
+            android:id="@+id/white"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:background="@color/white"
+            android:layout_below="@+id/tv_user_fragment_id"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_below="@+id/white"
+            android:background="@color/background_grey"/>
     </RelativeLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_user_fragment_balance"
@@ -76,6 +90,15 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/split_line_two"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/background_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cl_user_fragment_service"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_user_fragment_service"
         android:layout_width="match_parent"
@@ -116,6 +139,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/background_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cl_user_fragment_recharge"/>
     <!-- 充值-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_user_fragment_recharge"
@@ -156,6 +187,14 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@color/background_grey"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/cl_user_fragment_set"/>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_user_fragment_set"
         android:layout_width="match_parent"
