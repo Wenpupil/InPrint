@@ -112,6 +112,9 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toEndOf="@+id/iv_rate_img"
+            android:maxEms="10"
+            android:singleLine="true"
+            android:ellipsize="end"
             android:text="@string/print_filename"
             android:textColor="@color/my_black"
             android:textSize="14sp" />
