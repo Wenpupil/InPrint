@@ -74,7 +74,17 @@ public class MainPresenter {
     }
     //通过请求码，定位文件产生位置
     public void docFromWhere(int requestCode, Intent data){
-        if(requestCode==0xfa01) requestCode=1;
+        switch(requestCode){
+            case 0xfa01:
+                requestCode = 1;
+                break;
+            case 0xfa02:
+                requestCode = 0;
+                break;
+            case 0xfa03:
+                requestCode = 2;
+                break;
+        }
         String[] where={"QQ","设备","微信"};
         ExFilePickerResult result = ExFilePickerResult.getFromIntent(data);
         if (result != null && result.getCount() > 0) {

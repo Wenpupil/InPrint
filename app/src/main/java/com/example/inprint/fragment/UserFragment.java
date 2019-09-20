@@ -58,7 +58,6 @@ public class UserFragment extends Fragment implements View.OnClickListener{
                 .load(R.mipmap.userimg)
                 .transform(new CenterCrop(getContext()),new GlideRoundTransform(getContext()))
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .placeholder(R.mipmap.userimgback)
                 .dontAnimate()
                 .crossFade()
                 .into(iv_userHead);

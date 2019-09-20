@@ -48,7 +48,9 @@ public class DocFragmentPresent {
     private String[] fileDirs={"/tencent/QQfile_recv/","","/tencent/MicroMsg/Download/"};
 
     private String clickDocName;         //存储本次点击文档路径
-    public static int EX_FILE_PICKER_RESULT = 0xfa01;
+    public static int EX_FILE_PICKER_RESULT = 0xfa01; //文档来自本机
+    public static int FILE_FROM_QQ = 0xfa02;          //文档来自QQ
+    public static int FILE_FROM_WX = 0xfa03;          //文档来自微信
     private String startDirectory = null;// 记忆上一次访问的文件目录路径
     /* 0表示点击文档
      * 1表示点击添加
@@ -83,7 +85,7 @@ public class DocFragmentPresent {
         @Override
         public void onClick(Dialog dialog, int rate) {
             dialog.dismiss();
-            SelectDoc(fileDirs[rate]);
+            SelectDoc(fileDirs[rate],rate);
         }
     };
     //选择文档功能   --查看or打印
@@ -139,7 +141,7 @@ public class DocFragmentPresent {
     /*
      * 选择文档
      */
-    private void SelectDoc(String file_from){
+    private void SelectDoc(String file_from,int rate){
         ExFilePicker exFilePicker = new ExFilePicker();
         exFilePicker.setCanChooseOnlyOneItem(true);// 单选
         exFilePicker.setShowOnlyExtensions("docx","doc","pdf");
@@ -152,7 +154,18 @@ public class DocFragmentPresent {
         }
 
         exFilePicker.setChoiceType(ExFilePicker.ChoiceType.FILES);
-        exFilePicker.start((Activity)context, EX_FILE_PICKER_RESULT);
+
+        switch(rate){
+            case 0:
+                exFilePicker.start((Activity)context, FILE_FROM_QQ);
+                break;
+            case 1:
+                exFilePicker.start((Activity)context, EX_FILE_PICKER_RESULT);
+                break;
+            case 2:
+                exFilePicker.start((Activity)context, FILE_FROM_WX);
+                break;
+        }
     }
     //点击列表子项，通过handle更新UI
     public void notifyMessage(int what,String obj){

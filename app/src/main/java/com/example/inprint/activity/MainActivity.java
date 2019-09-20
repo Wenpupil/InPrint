@@ -151,9 +151,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //文档获取的结果
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == EX_FILE_PICKER_RESULT) {
-            mainPresenter.docFromWhere(requestCode,data);
-        }
+        mainPresenter.docFromWhere(requestCode,data);
     }
     //选择文档列表的main视图变化
     private void selectDocList(){

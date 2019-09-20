@@ -20,9 +20,10 @@
         <ImageView
             android:id="@+id/iv_user_fragment_img"
             android:layout_marginTop="40dp"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_centerInParent="true"
+            android:scaleType="centerInside"
             android:contentDescription="@string/user_fragment_img"
             android:src="@mipmap/userimg"/>
         <TextView
@@ -30,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/iv_user_fragment_img"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_centerHorizontal="true"
             android:text="@string/user_fragment_id"
             android:textColor="@color/user_fragment_text"
