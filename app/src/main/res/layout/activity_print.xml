@@ -427,7 +427,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginEnd="10dp"
-            android:background="@color/background_grey"
+            android:background="@drawable/review_action"
             android:textColor="@color/my_black"
             android:text="@string/print_view"
             app:layout_constraintTop_toTopOf="parent"
