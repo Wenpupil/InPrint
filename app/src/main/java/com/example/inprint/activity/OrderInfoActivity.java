@@ -1,13 +1,17 @@
-package com.example.inprint;
+package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.inprint.R;
+import com.example.inprint.bean.Uorder;
 import com.example.inprint.util.LogUtil;
+import com.githang.statusbar.StatusBarCompat;
 
 public class OrderInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -20,6 +24,8 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
     private TextView OrderNumber;
     private Button TakeDoc;
 
+    private Uorder uorder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +33,8 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
         initView();
     }
     private void initView(){
+        Intent intent = getIntent();
+        uorder = (Uorder)intent.getSerializableExtra("uorder_data");
         DocName = findViewById(R.id.tv_order_doc_name);
         DocPage = findViewById(R.id.tv_page_end);
         DocSum = findViewById(R.id.tv_order_sum_end);
@@ -35,6 +43,17 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
         OrderLocation = findViewById(R.id.tv_order_location_end);
         OrderNumber = findViewById(R.id.tv_order_number_end);
         TakeDoc = findViewById(R.id.tv_order_take_doc);
+
+        DocName.setText(uorder.getDocName());
+        DocPage.setText(uorder.getNumber());
+        DocSum.setText(uorder.getNumber());
+        OrderTime.setText(uorder.getTime());
+        OrderTotal.setText(uorder.getCost());
+        OrderLocation.setText(uorder.getWhere());
+        OrderNumber.setText("0");
+
+        StatusBarCompat.setStatusBarColor(this,
+                getResources().getColor(R.color.white));
     }
     @Override
     public void onClick(View view){

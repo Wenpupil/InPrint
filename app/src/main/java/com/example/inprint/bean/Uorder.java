@@ -1,12 +1,14 @@
 package com.example.inprint.bean;
 import org.litepal.crud.LitePalSupport;
 
+import java.io.Serializable;
+
 /*
  * @Author Wenpupil
  * @Time 2019.09.07
  * @Description 用于初始化订单列表的类
  */
-public class Uorder extends LitePalSupport {
+public class Uorder extends LitePalSupport implements Serializable {
     private String aid;         //用户标识号
     private String docUrl;      //文档在服务器中的url作为标识
     private String docName;     //文档名字

@@ -1,5 +1,6 @@
 package com.example.inprint.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.inprint.activity.OrderInfoActivity;
 import com.example.inprint.R;
 import com.example.inprint.adapter.OrderAdapter;
 import com.example.inprint.bean.Uorder;
@@ -55,11 +57,9 @@ public class OrderFragment extends Fragment {
         adapter.setListener(new OrderAdapter.OnItemClickListener() {
             @Override
             public void onClick(View v, Uorder uorder) {
-                if(uorder.getStatus().equals("0")){
-                    orderFragmentPresent.unableOpen();
-                }else{
-                    orderFragmentPresent.ableOpen();
-                }
+                Intent intent = new Intent(getContext(), OrderInfoActivity.class);
+                intent.putExtra("uorder_data",uorder);
+                startActivity(intent);
             }
         });
     }

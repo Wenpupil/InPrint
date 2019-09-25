@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inprint.R;
@@ -19,7 +20,7 @@ import java.util.List;
  * @Time 2019.09.07
  * @Description 初始化订单列表子项视图
  */
-public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> {
+public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
 
     private List<Uorder> uorderList;
     private OnItemClickListener listener;
@@ -31,6 +32,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
     static class ViewHolder extends RecyclerView.ViewHolder{
 
+        ConstraintLayout order_item;
         TextView order_filename;           //订单 文档名
         TextView order_time;               //订单 时间
         TextView order_status;             //订单 状态
@@ -39,12 +41,13 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
         TextView order_open;               //订单 取件
         ViewHolder(View view){
             super(view);
-            order_filename=view.findViewById(R.id.tv_order_item_filename);
-            order_time=view.findViewById(R.id.tv_order_item_time);
-            order_status=view.findViewById(R.id.tv_order_item_status);
-            order_number=view.findViewById(R.id.tv_order_item_number);
-            order_cost=view.findViewById(R.id.tv_order_item_cost);
-            order_open=view.findViewById(R.id.tv_order_item_open);
+            order_item = view.findViewById(R.id.cl_order_item);
+            order_filename = view.findViewById(R.id.tv_order_item_filename);
+            order_time = view.findViewById(R.id.tv_order_item_time);
+            order_status = view.findViewById(R.id.tv_order_item_status);
+            order_number = view.findViewById(R.id.tv_order_item_number);
+            order_cost = view.findViewById(R.id.tv_order_item_cost);
+            order_open = view.findViewById(R.id.tv_order_item_open);
         }
     }
     public void setContext(Context context){
@@ -76,6 +79,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder> 
 
         holder.itemView.setTag(uorder);
         holder.order_open.setTag(uorder);
+        holder.order_item.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if(listener!=null){
+                    listener.onClick(view,(Uorder)view.getTag());
+                }
+            }
+        });
         holder.order_open.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
