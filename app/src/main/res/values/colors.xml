@@ -43,7 +43,7 @@
     <color name="login_button_color2">#B44CAF50</color>
 
     <color name="print_address_color">#FFFFFF</color>
-    <color name="print_price_color">#FD1919</color>
+    <color name="print_price_color">#FF2741</color>
 
     <color name="doc_item_select">#f3f3f3</color>
 
@@ -61,4 +61,17 @@
     <color name="user_fragment_background">#fff</color>
     <color name="user_fragment_text">#2c2c2c</color>
     <color name="user_fragment_drawable">#F7F6F6</color>
+
+    <color name="red_book_text_color">#333333</color>
+
+    <color name="activity_order_view">#d8d8d8</color>
+    <color name="activity_order_text_first">#333333</color>
+    <color name="activity_order_text_end">#333333</color>
+    <color name="activity_order_pay_end">#8a8a8a</color>
+    <color name="activity_order_total_text">#FF2741</color>
+    <color name="activity_order_deliver_text_first">#535353</color>
+    <color name="activity_order_deliver_text_end">#8a8a8a</color>
+    <color name="activity_order_number_end">#57BEEC</color>
+    <color name="activity_order_take_doc_false">#57BEEC</color>
+    <color name="activity_order_take_doc_true">#73CEF7</color>
 </resources>

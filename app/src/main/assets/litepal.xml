@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <litepal>
     <dbname value="InPrint"/>
-    <version value="4"/>
+    <version value="5"/>
     <list>
         <mapping class="com.example.inprint.bean.Doc"/>
         <mapping class="com.example.inprint.bean.User"/>

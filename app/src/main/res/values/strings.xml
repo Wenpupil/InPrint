@@ -81,7 +81,7 @@
     <string name="print_numbers">份数</string>
     <string name="print_number">1</string>
     <string name="print_all">合计</string>
-    <string name="print_test_money">￥14.7</string>
+    <string name="print_test_money">￥1.0</string>
     <string name="print_view">预览</string>
     <string name="print_cost">支付</string>
 
@@ -120,4 +120,27 @@
     <string name="user_fragment_recharge">充值</string>
     <string name="user_fragment_set_img">设置图标</string>
     <string name="user_fragment_set">设置</string>
+
+    <string name="activity_order_top_back">返回图片</string>
+    <string name="activity_order_top_text">订单信息</string>
+    <string name="activity_order_doc_img">文档订单图片</string>
+    <string name="activity_order_doc_name">文档名字</string>
+    <string name="activity_order_page_first">文档页数</string>
+    <string name="activity_order_page_end">x12</string>
+    <string name="activity_order_sum_first">文档份数</string>
+    <string name="activity_order_sum_end">x2</string>
+    <string name="activity_order_time_first">下单时间</string>
+    <string name="activity_order_time_end">12:23</string>
+    <string name="activity_order_pay_first">支付方式</string>
+    <string name="activity_order_pay_end">在线支付</string>
+    <string name="activity_order_total">15.7</string>
+    <string name="activity_order_total_first">实付 ￥</string>
+    <string name="activity_order_deliver_head">取件信息</string>
+    <string name="activity_order_location_first">打印地点</string>
+    <string name="activity_order_location_end">上海电机大学教学楼</string>
+    <string name="activity_order_method_first">取件方式</string>
+    <string name="activity_order_method_end">用户自取</string>
+    <string name="activity_order_number_first">柜门号</string>
+    <string name="activity_order_number_end">未完成打印</string>
+    <string name="activity_order_take_doc">取件</string>
 </resources>
