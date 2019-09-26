@@ -10,6 +10,10 @@
 
           -->
 
+    <color name="actionbar_start_color">#63EBFF</color>
+    <color name="actionbar_center_color">#2BB0CE</color>
+    <color name="actionbar_end_color">#59D2E4</color>
+
     <color name="dialog_new_black">#333333</color>
 
     <color name="colorPrimary">#008577</color>
@@ -57,10 +61,12 @@
     <color name="order_item_img_background">#57BEEC</color>
     <color name="order_item_open_color">#4fa5d5</color>
     <color name="order_grey">#808080</color>
+    <color name="order_item_view">#bfbfbf</color>
 
     <color name="user_fragment_background">#fff</color>
     <color name="user_fragment_text">#2c2c2c</color>
     <color name="user_fragment_drawable">#F7F6F6</color>
+    <color name="user_fragment_view">#cdcdcd</color>
 
     <color name="red_book_text_color">#333333</color>
 

@@ -5,9 +5,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -19,6 +19,7 @@ import com.example.inprint.fragment.UserFragment;
 import com.example.inprint.presenter.MainPresenter;
 import com.example.inprint.service.QueryOrderService;
 import com.example.inprint.util.LogUtil;
+import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
@@ -45,9 +46,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //初始化界面
     private void initView(){
-        //初始化状态栏颜色与actionBar相同
+        StatusBarUtil.setStatusBarFullTransparent(this);
         StatusBarCompat.setStatusBarColor(this,
-                getResources().getColor(R.color.app_top_color));
+                Color.TRANSPARENT);
         mainTitle=findViewById(R.id.tv_titles);
         rl_main_top=findViewById(R.id.rl_main_top);
         tab1=findViewById(R.id.ll_tab1);
@@ -150,8 +151,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainTitle.setText(getResources().getString(R.string.main_top_0));
         mainTitle.setTextColor(getResources().getColor(R.color.white));
         StatusBarCompat.setStatusBarColor(this,
-                getResources().getColor(R.color.app_top_color));
-        rl_main_top.setBackgroundColor(getResources().getColor(R.color.app_top_color));
+                Color.TRANSPARENT);
+        rl_main_top.setBackgroundColor(Color.TRANSPARENT);
     }
     //选择订单列表的order视图变化
     private void selectOrderList(){

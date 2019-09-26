@@ -6,11 +6,10 @@
     android:layout_height="match_parent"
     android:background="@color/user_fragment_drawable">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/rl_user_fragment_head"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:background="@drawable/user_fragment_radius"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,41 +18,43 @@
 
         <ImageView
             android:id="@+id/iv_user_fragment_img"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="20dp"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_centerInParent="true"
             android:scaleType="centerInside"
             android:contentDescription="@string/user_fragment_img"
-            android:src="@mipmap/userimg"/>
+            android:src="@mipmap/userimg"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
         <TextView
             android:id="@+id/tv_user_fragment_id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/iv_user_fragment_img"
-            android:layout_marginTop="15dp"
-            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
             android:text="@string/user_fragment_id"
             android:textColor="@color/user_fragment_text"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/iv_user_fragment_img"/>
         <TextView
             android:id="@+id/white"
             android:layout_width="match_parent"
             android:layout_height="20dp"
             android:background="@color/white"
-            android:layout_below="@+id/tv_user_fragment_id"/>
+            app:layout_constraintTop_toBottomOf="@+id/tv_user_fragment_id" />
         <View
             android:layout_width="match_parent"
             android:layout_height="0.5dip"
-            android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
-            android:layout_below="@+id/white"
-            android:background="@color/background_grey"/>
-    </RelativeLayout>
+            android:background="@color/user_fragment_view"
+            app:layout_constraintTop_toBottomOf="@+id/white"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_user_fragment_balance"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
         android:orientation="horizontal"
