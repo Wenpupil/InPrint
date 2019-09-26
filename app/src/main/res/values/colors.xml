@@ -33,6 +33,8 @@
     <color name="in_grey">#8a8a8a</color>
     <color name="my_black">#2c2c2c</color>
 
+    <color name="doc_fragment_background">#F0F0F0</color>
+
     <color name="doc_item_title_color">#050000</color>
 
     <color name="dialog_title">#000</color>
