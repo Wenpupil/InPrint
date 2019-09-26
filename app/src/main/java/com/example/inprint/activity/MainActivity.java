@@ -21,11 +21,7 @@ import com.example.inprint.service.QueryOrderService;
 import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
-import static com.example.inprint.presenter.DocFragmentPresent.EX_FILE_PICKER_RESULT;
-
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
-    private ImageView userhead;   //用户头像
-    private ImageView more;       //更多选项
     private RelativeLayout rl_main_top;
 
     private TextView mainTitle;   //顶部文本
@@ -52,10 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //初始化状态栏颜色与actionBar相同
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.app_top_color));
-        userhead=findViewById(R.id.iv_userHead);
         mainTitle=findViewById(R.id.tv_titles);
         rl_main_top=findViewById(R.id.rl_main_top);
-        more=findViewById(R.id.iv_more);
         tab1=findViewById(R.id.ll_tab1);
         tab2=findViewById(R.id.ll_tab2);
         tab3=findViewById(R.id.ll_tab3);
@@ -70,8 +64,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      * 控件监听函数
      */
     private void setListener(){
-        userhead.setOnClickListener(this);
-        more.setOnClickListener(this);
         tab1.setOnClickListener(this);
         tab2.setOnClickListener(this);
         tab3.setOnClickListener(this);
@@ -157,8 +149,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void selectDocList(){
         mainTitle.setText(getResources().getString(R.string.main_top_0));
         mainTitle.setTextColor(getResources().getColor(R.color.white));
-        userhead.setVisibility(View.VISIBLE);
-        more.setVisibility(View.VISIBLE);
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.app_top_color));
         rl_main_top.setBackgroundColor(getResources().getColor(R.color.app_top_color));
@@ -167,8 +157,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void selectOrderList(){
         mainTitle.setText(getResources().getString(R.string.main_top_1));
         mainTitle.setTextColor(getResources().getColor(R.color.my_black));
-        userhead.setVisibility(View.GONE);
-        more.setVisibility(View.GONE);
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.white));
         rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));
@@ -177,8 +165,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void selectUser(){
         mainTitle.setText(getResources().getString(R.string.main_top_2));
         mainTitle.setTextColor(getResources().getColor(R.color.my_black));
-        userhead.setVisibility(View.GONE);
-        more.setVisibility(View.GONE);
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.white));
         rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));

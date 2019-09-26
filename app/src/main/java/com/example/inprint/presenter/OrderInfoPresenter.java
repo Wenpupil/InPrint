@@ -2,8 +2,7 @@ package com.example.inprint.presenter;
 
 import android.content.Context;
 
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
+import com.example.inprint.util.LogUtil;
 
 public class OrderInfoPresenter {
     private Context context;
@@ -17,6 +16,7 @@ public class OrderInfoPresenter {
         int pages = (int) Math.ceil(result);
         return Integer.toString(pages);
     }
+    //修正时间格式
     public String modifyTimeFormat(String time){
         int index=0;
         for(int i=0;i<time.length();i++){
@@ -28,6 +28,6 @@ public class OrderInfoPresenter {
         return time.substring(index+1);
     }
     public void openPrintDoor(){
-
+        LogUtil.d("订单信息","运行开门函数");
     }
 }

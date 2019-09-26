@@ -17,14 +17,14 @@ import com.githang.statusbar.StatusBarCompat;
 
 public class OrderInfoActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private TextView DocName;
-    private TextView DocPage;
-    private TextView DocSum;
-    private TextView OrderTime;
-    private TextView OrderTotal;
-    private TextView OrderLocation;
-    private TextView OrderNumber;
-    private Button TakeDoc;
+    private TextView DocName;        //文档名
+    private TextView DocPage;        //文档页数
+    private TextView DocSum;         //文档数量
+    private TextView OrderTime;      //下单时间
+    private TextView OrderTotal;     //订单花费
+    private TextView OrderLocation;  //打印地点
+    private TextView OrderNumber;    //订单数量
+    private Button TakeDoc;          //取件按钮
 
     private Uorder uorder;
 
@@ -78,5 +78,4 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
             orderInfoPresenter.openPrintDoor();
         }
     }
-
 }

@@ -1,7 +1,7 @@
 <resources>
-    <string name="Http_postDoc_address">http://192.168.43.165:8080/index.php/admin/Upload/uploadFile</string>
-    <string name="Http_postOrder_address">http://192.168.43.165:8080/index.php/admin/Receiveorderinfo/receiveOrder</string>
-    <string name="Http_queryOrderStatus_address">http://192.168.43.165:8080/index.php/admin/Queryorderstatus/orderStatus</string>
+    <string name="Http_postDoc_address">http://192.168.1.100:8080/index.php/admin/Upload/uploadFile</string>
+    <string name="Http_postOrder_address">http://192.168.1.100:8080/index.php/admin/Receiveorderinfo/receiveOrder</string>
+    <string name="Http_queryOrderStatus_address">http://192.168.1.100:8080/index.php/admin/Queryorderstatus/orderStatus</string>
 
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
