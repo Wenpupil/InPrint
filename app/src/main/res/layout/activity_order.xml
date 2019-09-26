@@ -23,22 +23,24 @@
             android:layout_width="25dp"
             android:layout_height="21dp"
             android:layout_centerVertical="true"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
             android:contentDescription="@string/print_iv_icon"
             android:src="@mipmap/tubiao64"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="16dp"
             android:text="@string/print_tv_icon"
             android:textColor="@color/red_book_text_color"
             android:textSize="14sp"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@+id/v_split"
-            app:layout_constraintLeft_toRightOf="@+id/iv_icon" />
+            app:layout_constraintLeft_toRightOf="@+id/iv_icon"
+            app:layout_constraintBottom_toTopOf="@id/v_split"/>
 
         <TextView
             android:id="@+id/iv_icon_end"
@@ -54,7 +56,9 @@
             android:id="@+id/v_split"
             android:layout_width="match_parent"
             android:layout_height="0.5dip"
-            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginTop="20dp"
             android:background="@color/activity_order_view"
             app:layout_constraintTop_toBottomOf="@+id/iv_icon"/>
         <ImageView
@@ -72,7 +76,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
-            android:textSize="12sp"
+            android:maxEms="14"
+            android:singleLine="true"
+            android:ellipsize="end"
+            android:textSize="14sp"
             android:textColor="@color/in_grey"
             android:text="@string/activity_order_doc_name"
             app:layout_constraintTop_toBottomOf="@+id/v_split"
@@ -91,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="@color/activity_order_text_first"
             android:text="@string/activity_order_page_first"
             app:layout_constraintTop_toBottomOf="@+id/v_split_two"
@@ -122,7 +129,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:textColor="@color/activity_order_text_first"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:text="@string/activity_order_sum_first"
             app:layout_constraintTop_toBottomOf="@+id/v_split_three"
             app:layout_constraintLeft_toLeftOf="parent"/>
@@ -150,7 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="@color/activity_order_text_first"
             android:text="@string/activity_order_time_first"
             app:layout_constraintTop_toBottomOf="@+id/v_split_four"
@@ -180,7 +187,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:textColor="@color/activity_order_text_first"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:text="@string/activity_order_pay_first"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/v_split_five"/>
