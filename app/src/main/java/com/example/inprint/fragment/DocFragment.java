@@ -42,7 +42,7 @@ public class DocFragment extends Fragment {
         docList=docFragmentPresent.iniDocList();
 
         view = inflater.inflate(R.layout.doc_fragment,container,false);
-        docFragmentPresent.iniBanner(view);
+        //docFragmentPresent.iniBanner(view);
 
         recyclerView=view.findViewById(R.id.rv_doc);
         LinearLayoutManager layoutManager=new LinearLayoutManager(getContext());

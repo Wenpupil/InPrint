@@ -4,19 +4,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/doc_fragment_background">
-    <com.youth.banner.Banner
+    <!-- <com.youth.banner.Banner
         android:id="@+id/banner"
         android:layout_width="match_parent"
         android:background="@drawable/img_radius"
         android:layout_height="130dp"
         android:layout_marginTop="10dp"
         android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"/>
+        android:layout_marginEnd="10dp"/> -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_doc"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
+
         android:layout_marginBottom="10dp"/>
 </LinearLayout>

@@ -157,10 +157,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //选择订单列表的order视图变化
     private void selectOrderList(){
         mainTitle.setText(getResources().getString(R.string.main_top_1));
-        mainTitle.setTextColor(getResources().getColor(R.color.my_black));
+        /*mainTitle.setTextColor(getResources().getColor(R.color.my_black));
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.white));
-        rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));
+        rl_main_top.setBackgroundColor(getResources().getColor(R.color.white));*/
+
+        mainTitle.setTextColor(getResources().getColor(R.color.white));
+        StatusBarCompat.setStatusBarColor(this,
+                Color.TRANSPARENT);
+        rl_main_top.setBackgroundColor(Color.TRANSPARENT);
     }
     //选择我的界面
     private void selectUser(){

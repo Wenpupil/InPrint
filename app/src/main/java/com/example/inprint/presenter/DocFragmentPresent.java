@@ -237,7 +237,7 @@ public class DocFragmentPresent {
         return clickDocName.substring(splitLine+1);
     }
 
-    public void iniBanner(View view){
+    /*public void iniBanner(View view){
         Banner banner=view.findViewById(R.id.banner);
         List<Integer> data=new ArrayList<>();
         data.add(R.mipmap.l1);
@@ -249,5 +249,5 @@ public class DocFragmentPresent {
         //设置轮播时间
         banner.setDelayTime(2000);
         banner.start();
-    }
+    }*/
 }
