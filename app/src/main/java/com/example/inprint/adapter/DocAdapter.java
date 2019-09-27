@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.inprint.R;
 import com.example.inprint.bean.Doc;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 import java.util.List;
 /*
@@ -33,7 +34,7 @@ public class DocAdapter extends RecyclerView.Adapter<DocAdapter.ViewHolder> {
         void onClick(View v,String docurl);
     }
     static class ViewHolder extends RecyclerView.ViewHolder{
-        ImageView docImage;
+        RoundedImageView docImage;
         TextView docTitle;
         TextView docWhere;
         TextView docAdd;
