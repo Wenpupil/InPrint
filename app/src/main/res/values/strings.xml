@@ -6,8 +6,9 @@
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
     <string name="app_top_title">趣 印</string>
-    <string name="app_top_image">用户头像</string>
     <string name="app_top_more">更多选项</string>
+
+    <string name="activity_main_user_img">用户头像</string>
 
     <string name="main_bottom_wendang">文档图标</string>
     <string name="main_bottom_order">订单图标</string>

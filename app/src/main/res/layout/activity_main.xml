@@ -9,9 +9,18 @@
     <RelativeLayout
         android:id="@+id/rl_main_top"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="48dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent">
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/activity_main_user_img"
+            android:layout_width="33dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="16dp"
+            android:contentDescription="@string/activity_main_user_img"
+            android:src="@mipmap/userimg"
+            android:layout_centerVertical="true"
+            app:riv_oval="true"/>
         <TextView
             android:id="@+id/tv_titles"
             android:layout_width="wrap_content"

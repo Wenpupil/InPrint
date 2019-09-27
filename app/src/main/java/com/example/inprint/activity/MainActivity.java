@@ -21,6 +21,7 @@ import com.example.inprint.service.QueryOrderService;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     private RelativeLayout rl_main_top;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private LinearLayout tab1;    //底部tab1
     private LinearLayout tab2;    //底部tab2
     private LinearLayout tab3;    //底部tab3
+    private RoundedImageView userImg; //用户头像
 
     DocFragment docFragment;
     OrderFragment orderFragment;
@@ -49,11 +51,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         StatusBarUtil.setStatusBarFullTransparent(this);
         StatusBarCompat.setStatusBarColor(this,
                 Color.TRANSPARENT);
-        mainTitle=findViewById(R.id.tv_titles);
-        rl_main_top=findViewById(R.id.rl_main_top);
-        tab1=findViewById(R.id.ll_tab1);
-        tab2=findViewById(R.id.ll_tab2);
-        tab3=findViewById(R.id.ll_tab3);
+        userImg = findViewById(R.id.activity_main_user_img);
+        mainTitle = findViewById(R.id.tv_titles);
+        rl_main_top = findViewById(R.id.rl_main_top);
+        tab1 = findViewById(R.id.ll_tab1);
+        tab2 = findViewById(R.id.ll_tab2);
+        tab3 = findViewById(R.id.ll_tab3);
         setListener();//对控件设置监听
 
         //启动订单查询服务
@@ -169,6 +172,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     //选择我的界面
     private void selectUser(){
+        userImg.setVisibility(View.GONE);
         mainTitle.setText(getResources().getString(R.string.main_top_2));
         mainTitle.setTextColor(getResources().getColor(R.color.my_black));
         StatusBarCompat.setStatusBarColor(this,
