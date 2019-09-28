@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.OrderInfoActivity"></activity>
+        <activity android:name=".activity.BalanceActivity"></activity>
+        <activity android:name=".activity.OrderInfoActivity" />
 
         <service
             android:name=".service.QueryOrderService"

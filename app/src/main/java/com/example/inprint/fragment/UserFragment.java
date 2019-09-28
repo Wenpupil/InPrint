@@ -1,5 +1,6 @@
 package com.example.inprint.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.inprint.R;
+import com.example.inprint.activity.BalanceActivity;
 import com.example.inprint.myview.GlideRoundTransform;
 import com.example.inprint.presenter.UserFragmentPresenter;
 
@@ -67,6 +69,9 @@ public class UserFragment extends Fragment implements View.OnClickListener{
     public void onClick(View view){
         switch(view.getId()){
             case R.id.cl_user_fragment_balance:
+                startActivity(new Intent(getContext(), BalanceActivity.class));
+                getActivity().overridePendingTransition(
+                        R.anim.doc_view_from_right,R.anim.out_left);
                 break;
             case R.id.cl_user_fragment_service:
                 break;

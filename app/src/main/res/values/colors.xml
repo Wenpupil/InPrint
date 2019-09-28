@@ -10,6 +10,8 @@
 
           -->
 
+    <color name="common_black">#333333</color>
+
     <color name="actionbar_start_color">#63EBFF</color>
     <color name="actionbar_center_color">#2BB0CE</color>
     <color name="actionbar_end_color">#59D2E4</color>
@@ -82,4 +84,7 @@
     <color name="activity_order_number_end">#57BEEC</color>
     <color name="activity_order_take_doc_false">#57BEEC</color>
     <color name="activity_order_take_doc_true">#73CEF7</color>
+
+    <color name="activity_balance_background">#f8f8f8</color>
+    <color name="activity_balance_recharge">#59D2E4</color>
 </resources>

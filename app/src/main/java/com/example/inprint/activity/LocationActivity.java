@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.example.inprint.R;
 import com.example.inprint.adapter.LocationAdapter;
@@ -17,11 +18,12 @@ import com.githang.statusbar.StatusBarCompat;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LocationActivity extends AppCompatActivity {
+public class LocationActivity extends AppCompatActivity implements View.OnClickListener{
 
     private RecyclerView recyclerView;                //列表 控件
     private List<Location> locationList;
     private LocationAdapter adapter;
+    private ImageView back;                           //退出按钮
 
     //点击位置信息列表后所作出的相应动作
     private LocationAdapter.OnItemClickListener listener=new LocationAdapter.OnItemClickListener() {
@@ -49,10 +51,12 @@ public class LocationActivity extends AppCompatActivity {
         iniLocationList();
         adapter=new LocationAdapter(locationList);
         adapter.setItemListener(listener);
-        recyclerView=findViewById(R.id.rv_location_list);
+        recyclerView = findViewById(R.id.rv_location_list);
+        back = findViewById(R.id.iv_userHead);
         LinearLayoutManager layoutManager=new LinearLayoutManager(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
+        back.setOnClickListener(this);
     }
     //初始化位置信息列表----测试UI函数
     private void iniLocationList(){
@@ -63,5 +67,14 @@ public class LocationActivity extends AppCompatActivity {
         locationList.add(b);
         Location c=new Location("003","上海海洋大学三小区",3);
         locationList.add(c);
+    }
+    @Override
+    public void onClick(View view){
+        finish();
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
     }
 }

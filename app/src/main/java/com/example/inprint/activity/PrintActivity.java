@@ -38,6 +38,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private ImageView iv_sub;                 //减少份数 控件
     private ImageView zfb_img;                //支付图片 控件
     private ImageView wx_img;                 //微信图片 控件
+    private ImageView back;                   //返回按钮
 
     private Button view_doc;                  //预览文档 按钮
     private Button pay;                       //支付     按钮
@@ -81,6 +82,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         wx_img=findViewById(R.id.iv_weixin_pay);
         zfb_item=findViewById(R.id.cl_zfb);
         wx_item=findViewById(R.id.cl_wx);
+        back = findViewById(R.id.iv_userHead);
 
         view_doc=findViewById(R.id.print_view);
         pay=findViewById(R.id.print_cost);
@@ -92,6 +94,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         tv_price.setText(PrintPresenter
                 .countPrice(tv_number,tv_page));
 
+        back.setOnClickListener(this);
         zfb_item.setOnClickListener(this);
         wx_item.setOnClickListener(this);
         select_location.setOnClickListener(this);
@@ -138,6 +141,9 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                     printPresenter.tipLocation();                               //提示地点未选择
                 }
                 break;
+            case R.id.iv_userHead:
+                finish();
+                break;
         }
     }
     //接收位置活动返回的信息
@@ -178,5 +184,15 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         order.viewInfo();
         //保存订单数据于数据库中
         printPresenter.saveOrder(order);
+    }
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.no_slide,R.anim.doc_view_out_right);
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
     }
 }

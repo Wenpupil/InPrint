@@ -152,4 +152,9 @@ public class DocViewActivity extends AppCompatActivity implements View.OnClickLi
         super.finish();
         overridePendingTransition(R.anim.doc_view_from_left,R.anim.doc_view_out_right);
     }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
+    }
 }

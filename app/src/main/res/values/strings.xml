@@ -147,4 +147,13 @@
 
     <string name="doc_view_title">标题</string>
     <string name="doc_view_back_img">返回按钮</string>
+
+    <string name="common_top_img">返回按钮</string>
+    <string name="common_top_center">余额</string>
+    <string name="common_top_right">记录</string>
+
+    <string name="activity_balance_image">余额标志</string>
+    <string name="activity_balance_balance">我的余额</string>
+    <string name="activity_balance_total">13.8</string>
+    <string name="activity_balance_recharge">充值</string>
 </resources>
