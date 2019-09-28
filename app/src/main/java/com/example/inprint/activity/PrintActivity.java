@@ -110,7 +110,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
                 printPresenter.selectLocation(this);                   //启动位置列表活动
                 break;
             case R.id.print_view:                                              //点击预览按钮
-                ActivityUtil.checkDoc(this,docUri);
+                ActivityUtil.checkDoc(this,docUri,"PrintActivity");
                 break;
             case R.id.print_number_add:                                        //点击增加按钮
                 printPresenter.numberChange(tv_number,1);               //更新份数UI

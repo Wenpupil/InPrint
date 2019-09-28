@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.transition.Slide;
+import android.view.Gravity;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.GridLayout;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.example.inprint.util.WordUtil;
-import com.google.android.material.appbar.AppBarLayout;
 
 import org.apache.poi.xwpf.converter.core.FileImageExtractor;
 import org.apache.poi.xwpf.converter.core.FileURIResolver;
@@ -23,40 +28,54 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.TransformerException;
 
 /**
  * 查看文档
  */
-public class DocViewActivity extends AppCompatActivity {
+public class DocViewActivity extends AppCompatActivity implements View.OnClickListener{
+    private int rate;  //0表示docx，1表示doc
     //创建生成的文件地址
     private static String docName = "123.docx";
     private static String docPath="/storage/emulated/0/";
-    private int rate;  //0表示docx，1表示doc
 
-    private static final String savePath="/data/user/0/com.example.inprint/files/";
-    private static final String tempPath="/data/user/0/com.example.inprint/files/";
+    private String activityName;
 
     private WordUtil wu;
     private WebView webView;
+    private ImageView back;
+    private TextView title;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doc_view);
+        overridePendingTransition(R.anim.doc_view_from_right,R.anim.no_slide);
         intentData();
         displayFile();
+        iniAnim();
+    }
+    private void iniAnim(){
+        Slide slide = new Slide();
+        slide.setSlideEdge(Gravity.END);
+        slide.setDuration(300);
+        getWindow().setEnterTransition(slide);
     }
     //获取启用此活动的数据
     private void intentData(){
         StatusBarUtil.hideStatusBar(this);
-        Intent intent=getIntent();
-        AppBarLayout appBarLayout = findViewById(R.id.al_actionbar);
-        docPath=intent.getStringExtra("docUrl");
-        docName=intent.getStringExtra("docName");
+        Intent intent = getIntent();
+        docPath = intent.getStringExtra("docUrl");
+        docName = intent.getStringExtra("docName");
+        activityName = intent.getStringExtra("activityName");
 
         //WebView加载显示本地html文件
-        webView = (WebView) this.findViewById(R.id.office);
+        webView = findViewById(R.id.office);
+        back = findViewById(R.id.iv_back);
+        title = findViewById(R.id.title);
+
+        title.setText(docName.substring(0,docName.lastIndexOf('.')));
+        back.setOnClickListener(this);
+
         WebSettings settings = webView.getSettings();
         settings.setUseWideViewPort(true);
         settings.setLoadWithOverviewMode(true);
@@ -73,6 +92,7 @@ public class DocViewActivity extends AppCompatActivity {
     }
     private void displayFile()
     {
+        String savePath= this.getFilesDir().getPath();
         String name = docName.substring(0, docName.indexOf("."));
         if(rate == 0) {
             try {
@@ -99,12 +119,11 @@ public class DocViewActivity extends AppCompatActivity {
      *            docx文件路径
      * @param outPutFile
      *            html输出文件路径
-     * @throws TransformerException
-     * @throws IOException
-     * @throws ParserConfigurationException
+     * @throws IOException 输出异常
      */
-    public static void docx2Html(String fileName, String outPutFile)
-            throws TransformerException, IOException, ParserConfigurationException {
+    public void docx2Html(String fileName, String outPutFile)
+            throws IOException {
+        String tempPath=this.getFilesDir().getPath();
         String fileOutName = outPutFile;
         long startTime = System.currentTimeMillis();
         XWPFDocument document = new XWPFDocument(new FileInputStream(fileName));
@@ -115,10 +134,22 @@ public class DocViewActivity extends AppCompatActivity {
         // URI resolver
         options.URIResolver(new FileURIResolver(imageFolder));
         File outFile = new File(fileOutName);
-        outFile.getParentFile().mkdirs();
+        boolean result = outFile.getParentFile().mkdirs();
+        if(!result){
+            LogUtil.d("文档解析","docx2Html() mkdirs()");
+        }
         OutputStream out = new FileOutputStream(outFile);
         XHTMLConverter.getInstance().convert(document, out, options);
         System.out.println("Generate " + fileOutName + " with " +
                 (System.currentTimeMillis() - startTime) + " ms.");
+    }
+    @Override
+    public void onClick(View view){
+        finish();
+    }
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.doc_view_from_left,R.anim.doc_view_out_right);
     }
 }

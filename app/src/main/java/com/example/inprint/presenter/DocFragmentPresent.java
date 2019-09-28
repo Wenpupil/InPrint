@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.Window;
 
 import com.example.inprint.R;
 import com.example.inprint.activity.PrintActivity;
@@ -46,7 +47,7 @@ public class DocFragmentPresent {
 
     //存储文档路径
     private String[] fileDirs={"/tencent/QQfile_recv/","","/tencent/MicroMsg/Download/"};
-
+    private Window window;
     private String clickDocName;         //存储本次点击文档路径
     public static int EX_FILE_PICKER_RESULT = 0xfa01; //文档来自本机
     public static int FILE_FROM_QQ = 0xfa02;          //文档来自QQ
@@ -77,6 +78,9 @@ public class DocFragmentPresent {
             }
         }
     };
+    public void setWindow(Window window){
+        this.window = window;
+    }
     //等待对话框
     private LoadingDialog myLoadDialog;
 
@@ -127,7 +131,7 @@ public class DocFragmentPresent {
     private void checkDoc(){
         /*Toast.makeText(context,
                 "查看文档="+clickDocName,Toast.LENGTH_SHORT).show();*/
-        ActivityUtil.checkDoc(context,clickDocName);
+        ActivityUtil.checkDoc(context,clickDocName,"MainActivity");
     }
     //添加文档行为
     private void DocAddAction(){

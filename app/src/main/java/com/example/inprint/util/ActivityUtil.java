@@ -7,14 +7,15 @@ import com.example.inprint.activity.DocViewActivity;
 
 public class ActivityUtil {
     //查看文档
-    public static void checkDoc(Context context,String clickDocName){
+    public static void checkDoc(Context context, String clickDocName,String activityName){
         int splitLine=clickDocName.lastIndexOf('/');
         String docUrl=clickDocName.substring(0,splitLine+1);
         String docName=clickDocName.substring(splitLine+1);
         LogUtil.d("DocFragment-文档URL分割",docUrl+"  , "+docName);
-        Intent intent=new Intent(context, DocViewActivity.class);
+        Intent intent = new Intent(context, DocViewActivity.class);
         intent.putExtra("docName",docName);
         intent.putExtra("docUrl",docUrl);
+        intent.putExtra("activityName",activityName);
         context.startActivity(intent);
     }
 }

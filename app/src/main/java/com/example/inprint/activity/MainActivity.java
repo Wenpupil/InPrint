@@ -119,6 +119,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainPresenter.setDocFragment(docFragment);
     }
     @Override
+    public void onRestart(){
+        super.onRestart();
+    }
+    @Override
     public void onStart(){
         super.onStart();
     }

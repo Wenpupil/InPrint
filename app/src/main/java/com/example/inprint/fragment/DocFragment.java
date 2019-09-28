@@ -40,6 +40,7 @@ public class DocFragment extends Fragment {
         //初始化中间对象件
         docFragmentPresent=new DocFragmentPresent(getContext());
         docList=docFragmentPresent.iniDocList();
+        docFragmentPresent.setWindow(getActivity().getWindow());
 
         view = inflater.inflate(R.layout.doc_fragment,container,false);
         //docFragmentPresent.iniBanner(view);
