@@ -144,4 +144,7 @@
     <string name="activity_order_number_first">柜门号</string>
     <string name="activity_order_number_end">未完成打印</string>
     <string name="activity_order_take_doc">取件</string>
+
+    <string name="doc_view_title">标题</string>
+    <string name="doc_view_back_img">返回按钮</string>
 </resources>
