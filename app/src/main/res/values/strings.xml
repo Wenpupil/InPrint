@@ -172,4 +172,13 @@
     <string name="activity_recharge_wx">微信图标</string>
     <string name="activity_recharge_wx_text">微信支付</string>
     <string name="activity_recharge_button_text">确认</string>
+
+    <string name="activity_set_top_img">返回按钮</string>
+    <string name="activity_set_top_title">设置</string>
+    <string name="activity_set_head_img">用户头像</string>
+    <string name="activity_set_head_text">头像</string>
+    <string name="activity_set_name_text">昵称</string>
+    <string name="activity_set_name">温子亦。</string>
+    <string name="activity_set_enter">进入</string>
+
 </resources>
