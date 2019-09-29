@@ -102,6 +102,8 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                     break;
                 case "1":
                     holder.order_status.setText("打印完成");
+                    holder.order_status.setTextColor(
+                            context.getResources().getColor(R.color.colorAccent));
                     break;
                 case "2":
                     holder.order_status.setText("打印完成");

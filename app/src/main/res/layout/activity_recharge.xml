@@ -202,11 +202,11 @@
     <Button
         android:id="@+id/recharge"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="30dp"
-        android:textSize="24sp"
+        android:textSize="22sp"
         android:textColor="@color/white"
         android:text="@string/activity_recharge_button_text"
         android:background="@drawable/recharge_button"
