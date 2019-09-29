@@ -86,5 +86,6 @@
     <color name="activity_order_take_doc_true">#73CEF7</color>
 
     <color name="activity_balance_background">#f8f8f8</color>
-    <color name="activity_balance_recharge">#59D2E4</color>
+    <color name="activity_balance_recharge_false">#59D2E4</color>
+    <color name="activity_balance_recharge_true">#4EBBCC</color>
 </resources>

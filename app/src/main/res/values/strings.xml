@@ -106,6 +106,9 @@
     <string name="order_item_cost">￥1.2</string>
     <string name="order_item_open">取件</string>
 
+    <string name="order_fragment_no_order_img">没有订单</string>
+    <string name="order_fragment_no_order_text">没有订单记录</string>
+
     <string name="main_top_0">趣印</string>
     <string name="main_top_1">订单</string>
     <string name="main_top_2">我的</string>

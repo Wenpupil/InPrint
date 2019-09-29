@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -38,15 +39,24 @@ public class BalanceActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View view){
         switch(view.getId()){
             case R.id.iv_back:{
+                LogUtil.d("余额界面","点击了返回按钮");
+                finish();
                 break;
             }
             case R.id.tv_content_right:{
+                LogUtil.d("余额界面","点击了明细按钮");
                 break;
             }
             case R.id.b_recharge:{
+                LogUtil.d("余额界面","点击了充值按钮");
                 break;
             }
         }
+    }
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.no_slide,R.anim.doc_view_out_right);
     }
     @Override
     public void onBackPressed(){

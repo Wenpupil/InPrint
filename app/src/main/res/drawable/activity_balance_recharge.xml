@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/activity_balance_recharge"/>
-    <corners android:radius="4dp"/>
-</shape>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/activity_balance_recharge_false"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/activity_balance_recharge_true"/>
+            <corners android:radius="4dp"/>
+        </shape>
+    </item>
+</selector>
