@@ -1,7 +1,7 @@
 <resources>
-    <string name="Http_postDoc_address">http://192.168.1.104:8080/index.php/admin/Upload/uploadFile</string>
-    <string name="Http_postOrder_address">http://192.168.1.104:8080/index.php/admin/Receiveorderinfo/receiveOrder</string>
-    <string name="Http_queryOrderStatus_address">http://192.168.1.104:8080/index.php/admin/Queryorderstatus/orderStatus</string>
+    <string name="Http_postDoc_address">http://192.168.1.102:8080/index.php/admin/Upload/uploadFile</string>
+    <string name="Http_postOrder_address">http://192.168.1.102:8080/index.php/admin/Receiveorderinfo/receiveOrder</string>
+    <string name="Http_queryOrderStatus_address">http://192.168.1.102:8080/index.php/admin/Queryorderstatus/orderStatus</string>
 
     <string name="app_name">InPrint</string>
     <string name="App_Name">趣印</string>
@@ -159,4 +159,17 @@
     <string name="activity_balance_balance">我的余额</string>
     <string name="activity_balance_total">13.8</string>
     <string name="activity_balance_recharge">充值</string>
+
+    <string name="activity_recharge_back_img">返回图标</string>
+    <string name="activity_recharge_text">充值</string>
+    <string name="activity_recharge_num">充值金额</string>
+    <string name="activity_recharge_sign">人民币符号</string>
+    <string name="activity_recharge_total"> </string>
+    <string name="activity_recharge_pattern">充值方式</string>
+    <string name="activity_recharge_select">选择项</string>
+    <string name="activity_recharge_zfb">支付宝图标</string>
+    <string name="activity_recharge_zfb_text">支付宝</string>
+    <string name="activity_recharge_wx">微信图标</string>
+    <string name="activity_recharge_wx_text">微信支付</string>
+
 </resources>

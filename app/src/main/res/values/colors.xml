@@ -88,4 +88,7 @@
     <color name="activity_balance_background">#f8f8f8</color>
     <color name="activity_balance_recharge_false">#59D2E4</color>
     <color name="activity_balance_recharge_true">#4EBBCC</color>
+
+    <color name="activity_recharge_total">#2c2c2c</color>
+    <color name="activity_recharge_cursor">#59d2e4</color>
 </resources>
