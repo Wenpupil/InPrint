@@ -2,6 +2,7 @@ package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -48,10 +49,16 @@ public class BalanceActivity extends AppCompatActivity implements View.OnClickLi
                 break;
             }
             case R.id.b_recharge:{
+                goRechargeActivity();
                 LogUtil.d("余额界面","点击了充值按钮");
                 break;
             }
         }
+    }
+    private void goRechargeActivity(){
+        startActivity(new Intent(this, RechargeActivity.class));
+        overridePendingTransition(
+                R.anim.doc_view_from_right,R.anim.out_left);
     }
     @Override
     public void finish(){

@@ -171,5 +171,5 @@
     <string name="activity_recharge_zfb_text">支付宝</string>
     <string name="activity_recharge_wx">微信图标</string>
     <string name="activity_recharge_wx_text">微信支付</string>
-
+    <string name="activity_recharge_button_text">确认</string>
 </resources>

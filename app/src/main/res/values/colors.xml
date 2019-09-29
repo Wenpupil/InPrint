@@ -91,4 +91,6 @@
 
     <color name="activity_recharge_total">#2c2c2c</color>
     <color name="activity_recharge_cursor">#59d2e4</color>
+    <color name="activity_recharge_button_false">#59D2E4</color>
+    <color name="activity_recharge_button_true">#4EBBCC</color>
 </resources>
