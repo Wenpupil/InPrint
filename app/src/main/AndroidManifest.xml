@@ -19,7 +19,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".activity.SetActivity"></activity>
+        <activity android:name=".activity.ServiceActivity"></activity>
+        <activity android:name=".activity.SetActivity" />
         <activity android:name=".activity.RechargeActivity" />
         <activity android:name=".activity.BalanceActivity" />
         <activity android:name=".activity.OrderInfoActivity" />

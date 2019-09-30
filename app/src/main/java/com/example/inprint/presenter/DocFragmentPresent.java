@@ -148,7 +148,7 @@ public class DocFragmentPresent {
     private void SelectDoc(String file_from,int rate){
         ExFilePicker exFilePicker = new ExFilePicker();
         exFilePicker.setCanChooseOnlyOneItem(true);// 单选
-        exFilePicker.setShowOnlyExtensions("docx","doc","pdf");
+        exFilePicker.setShowOnlyExtensions("docx","doc");
         exFilePicker.setQuitButtonEnabled(true);
         LogUtil.d("上传测试","文件路径："+file_from);
         if (TextUtils.isEmpty(startDirectory)) {

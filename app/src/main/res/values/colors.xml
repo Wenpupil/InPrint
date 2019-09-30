@@ -93,4 +93,10 @@
     <color name="activity_recharge_cursor">#59d2e4</color>
     <color name="activity_recharge_button_false">#59D2E4</color>
     <color name="activity_recharge_button_true">#4EBBCC</color>
+
+    <color name="activity_service_background">#EBEBEB</color>
+    <color name="activity_service_send">#59D2E4</color>
+    <color name="activity_service_send_temp">#D359D2E4</color>
+
+    <color name="activity_service_right">#59D2E4</color>
 </resources>

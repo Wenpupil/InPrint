@@ -41,8 +41,9 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         setContentView(R.layout.activity_set);
         initView();
     }
-    private void initView(){
-        StatusBarUtil.hideStatusBar(this);
+    private void initView() {
+        StatusBarUtil.setStatusBarFullTransparent(this);
+        StatusBarCompat.setStatusBarColor(this,Color.TRANSPARENT);
         back = findViewById(R.id.iv_back);
         userHead = findViewById(R.id.cl_set_head);
         userName = findViewById(R.id.cl_set_name);

@@ -188,4 +188,8 @@
     <string name="activity_set_exit">退出登录</string>
     <string name="activity_set_enter">进入</string>
 
+    <string name="activity_service_back">返回</string>
+    <string name="activity_service_title">客服</string>
+    <string name="activity_service_send">发送</string>
+    <string name="activity_service_info">你好</string>
 </resources>
