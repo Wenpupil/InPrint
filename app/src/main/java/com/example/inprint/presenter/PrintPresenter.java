@@ -189,7 +189,7 @@ public class PrintPresenter {
                 dialog.dismiss();
                 activity.finish();
             }
-        });
+        }).show();
         LogUtil.d("PrintPresenter","paySuccessAction");
     }
     //支付失败执行的动作

@@ -98,6 +98,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         if(uorder.getStatus()!=null) {
             switch (uorder.getStatus()) {
                 case "0":
+                case "2":
                     holder.order_status.setText("正在打印");
                     break;
                 case "1":
@@ -105,7 +106,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
                     holder.order_status.setTextColor(
                             context.getResources().getColor(R.color.colorAccent));
                     break;
-                case "2":
+                case "3":
                     holder.order_status.setText("打印完成");
                     holder.order_open.setText("已取件");
                     holder.order_open.setBackground(
