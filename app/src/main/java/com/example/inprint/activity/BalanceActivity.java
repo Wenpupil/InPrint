@@ -1,21 +1,28 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
 
 public class BalanceActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
+
     private ImageView back;     //返回 按钮
     private TextView record;    //记录 控件
     private Button recharge;    //充值 按钮
@@ -23,13 +30,17 @@ public class BalanceActivity extends AppCompatActivity implements View.OnClickLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_balance);
+        initTouch();
         initView();
+    }
+    private void initTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     private void initView(){
         back = findViewById(R.id.iv_back);
         record = findViewById(R.id.tv_content_right);
         recharge = findViewById(R.id.b_recharge);
-
         back.setOnClickListener(this);
         record.setOnClickListener(this);
         recharge.setOnClickListener(this);
@@ -59,6 +70,12 @@ public class BalanceActivity extends AppCompatActivity implements View.OnClickLi
         startActivity(new Intent(this, RechargeActivity.class));
         overridePendingTransition(
                 R.anim.doc_view_from_right,R.anim.out_left);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
     }
     @Override
     public void finish(){

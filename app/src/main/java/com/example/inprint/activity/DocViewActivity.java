@@ -1,19 +1,21 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.transition.Slide;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.example.inprint.util.WordUtil;
@@ -45,6 +47,8 @@ public class DocViewActivity extends AppCompatActivity implements View.OnClickLi
     private ImageView back;
     private TextView title;
 
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,6 +63,11 @@ public class DocViewActivity extends AppCompatActivity implements View.OnClickLi
         slide.setSlideEdge(Gravity.END);
         slide.setDuration(300);
         getWindow().setEnterTransition(slide);
+        iniTouch();                            //初始化手势操作
+    }
+    private void iniTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     //获取启用此活动的数据
     private void intentData(){
@@ -156,5 +165,10 @@ public class DocViewActivity extends AppCompatActivity implements View.OnClickLi
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event){
+        this.mDetector.onTouchEvent(event);
+        return super.onTouchEvent(event);
     }
 }

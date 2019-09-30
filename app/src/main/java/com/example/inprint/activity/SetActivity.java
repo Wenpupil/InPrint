@@ -2,14 +2,17 @@ package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.inprint.R;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.util.LogUtil;
 import com.example.inprint.util.StatusBarUtil;
 import com.githang.statusbar.StatusBarCompat;
@@ -17,6 +20,8 @@ import com.githang.statusbar.StatusBarCompat;
 import org.w3c.dom.Text;
 
 public class SetActivity extends AppCompatActivity implements View.OnClickListener{
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
 
     private ImageView back;
     private ConstraintLayout userHead;          //头像
@@ -58,6 +63,11 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
         checkUpdate.setOnClickListener(this);
         notify.setOnClickListener(this);
         exitLogin.setOnClickListener(this);
+        iniTouch();     //初始化手势
+    }
+    private void iniTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     @Override
     public void onClick(View view){
@@ -91,6 +101,11 @@ public class SetActivity extends AppCompatActivity implements View.OnClickListen
                 break;
             }
         }
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
     }
     @Override
     public void onBackPressed(){

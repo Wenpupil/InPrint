@@ -2,19 +2,25 @@ package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.inprint.R;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
 public class RechargeActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
 
     private int selectPattern =0;         //支付方式选择，0为支付宝，1为微信
 
@@ -48,6 +54,11 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
         wx.setOnClickListener(this);
         recharge.setOnClickListener(this);
         back.setOnClickListener(this);
+        initTouch();
+    }
+    private void initTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     @Override
     public void onClick(View view){
@@ -81,8 +92,18 @@ public class RechargeActivity extends AppCompatActivity implements View.OnClickL
         selectPattern = 0;
     }
     @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.no_slide,R.anim.doc_view_out_right);
+    }
+    @Override
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
     }
 }

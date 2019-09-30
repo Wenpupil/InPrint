@@ -1,21 +1,27 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.bean.Uorder;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.presenter.OrderInfoPresenter;
 import com.example.inprint.util.DialogUtil;
 import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
 public class OrderInfoActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
 
     private TextView DocName;        //文档名
     private TextView DocPage;        //文档页数
@@ -69,6 +75,11 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
 
         StatusBarCompat.setStatusBarColor(this,
                 getResources().getColor(R.color.white));
+        initTouch();
+    }
+    private void initTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     @Override
     public void onClick(View view){
@@ -77,5 +88,20 @@ public class OrderInfoActivity extends AppCompatActivity implements View.OnClick
         }else{
             orderInfoPresenter.openPrintDoor();
         }
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
+    }
+    @Override
+    public void finish(){
+        super.finish();
+        overridePendingTransition(R.anim.no_slide,R.anim.doc_view_out_right);
+    }
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
     }
 }

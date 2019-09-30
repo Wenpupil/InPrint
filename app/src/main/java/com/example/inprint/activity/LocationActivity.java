@@ -1,17 +1,20 @@
 package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GestureDetectorCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.example.inprint.R;
 import com.example.inprint.adapter.LocationAdapter;
 import com.example.inprint.bean.Location;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.util.LogUtil;
 import com.githang.statusbar.StatusBarCompat;
 
@@ -20,6 +23,8 @@ import java.util.List;
 
 public class LocationActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
     private RecyclerView recyclerView;                //列表 控件
     private List<Location> locationList;
     private LocationAdapter adapter;
@@ -57,6 +62,11 @@ public class LocationActivity extends AppCompatActivity implements View.OnClickL
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(layoutManager);
         back.setOnClickListener(this);
+        iniTouch();                    //初始化手势动作
+    }
+    private void iniTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     //初始化位置信息列表----测试UI函数
     private void iniLocationList(){
@@ -76,5 +86,10 @@ public class LocationActivity extends AppCompatActivity implements View.OnClickL
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
     }
 }

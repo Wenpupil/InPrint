@@ -2,9 +2,11 @@ package com.example.inprint.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GestureDetectorCompat;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +15,7 @@ import android.widget.TextView;
 
 import com.example.inprint.R;
 import com.example.inprint.bean.Porder;
+import com.example.inprint.myview.MyGestureListener;
 import com.example.inprint.presenter.PrintPresenter;
 import com.example.inprint.util.ActivityUtil;
 import com.example.inprint.util.LogUtil;
@@ -22,6 +25,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class PrintActivity extends AppCompatActivity implements View.OnClickListener{
+    private GestureDetectorCompat mDetector;
+    private MyGestureListener myGestureListener;
 
     private RelativeLayout select_location;   //位置选择 控件
     private TextView tv_address;              //位置名字 控件
@@ -104,6 +109,11 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
         wx_img.setOnClickListener(this);
         view_doc.setOnClickListener(this);
         pay.setOnClickListener(this);
+        initTouch();
+    }
+    private void initTouch(){
+        myGestureListener = new MyGestureListener(this);
+        mDetector = new GestureDetectorCompat(this, myGestureListener);
     }
     @Override
     public void onClick(View view){
@@ -194,5 +204,10 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     public void onBackPressed(){
         super.onBackPressed();
         finish();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent e){
+        this.mDetector.onTouchEvent(e);
+        return super.onTouchEvent(e);
     }
 }
