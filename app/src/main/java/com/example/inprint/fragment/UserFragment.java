@@ -17,6 +17,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop;
 import com.example.inprint.R;
 import com.example.inprint.activity.BalanceActivity;
 import com.example.inprint.activity.RechargeActivity;
+import com.example.inprint.activity.SetActivity;
 import com.example.inprint.myview.GlideRoundTransform;
 import com.example.inprint.presenter.UserFragmentPresenter;
 
@@ -82,6 +83,10 @@ public class UserFragment extends Fragment implements View.OnClickListener{
                         R.anim.doc_view_from_right,R.anim.out_left);
                 break;
             case R.id.cl_user_fragment_set:
+                startActivity(new Intent(getContext(), SetActivity.class));
+                getActivity().overridePendingTransition(
+                        R.anim.doc_view_from_right,R.anim.out_left
+                );
                 break;
         }
     }

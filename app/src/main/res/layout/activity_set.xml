@@ -10,7 +10,7 @@
         android:id="@+id/rl_top"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/white"
+        android:background="@drawable/actionbar_back"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="parent">
         <ImageView
@@ -20,7 +20,7 @@
             android:layout_marginStart="10dp"
             android:layout_centerVertical="true"
             android:contentDescription="@string/activity_set_top_img"
-            android:src="@mipmap/fanhui"/>
+            android:src="@mipmap/white_back"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -28,7 +28,7 @@
             android:layout_marginStart="10dp"
             android:gravity="center"
             android:textSize="18sp"
-            android:textColor="@color/my_black"
+            android:textColor="@color/white"
             android:text="@string/activity_set_top_title"/>
     </RelativeLayout>
     <View
@@ -46,7 +46,7 @@
         android:paddingBottom="15dp"
         android:paddingStart="20dp"
         android:paddingEnd="10dp"
-        android:background="@color/white"
+        android:background="@drawable/pay_pattern"
         app:layout_constraintTop_toBottomOf="@id/split">
         <TextView
             android:id="@+id/tv_head_text"
@@ -80,7 +80,7 @@
         android:paddingBottom="15dp"
         android:paddingStart="20dp"
         android:paddingEnd="10dp"
-        android:background="@color/white"
+        android:background="@drawable/pay_pattern"
         app:layout_constraintTop_toBottomOf="@id/split_two">
         <TextView
             android:id="@+id/tv_name_text"
@@ -110,4 +110,164 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_name"
             app:layout_constraintRight_toRightOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/split_three"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/view"
+        app:layout_constraintTop_toBottomOf="@id/cl_set_name"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_set_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/split_three">
+        <TextView
+            android:id="@+id/tv_set_id_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/red_book_text_color"
+            android:text="@string/activity_set_id_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:textSize="16sp"
+            android:textColor="@color/red_book_text_color"
+            android:text="@string/activity_set_id"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_set_id_text"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/split_four"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/view"
+        app:layout_constraintTop_toBottomOf="@id/cl_set_id"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_set_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:background="@drawable/pay_pattern"
+        app:layout_constraintTop_toBottomOf="@id/split_four">
+        <TextView
+            android:id="@+id/tv_set_phone_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/red_book_text_color"
+            android:text="@string/activity_set_phone_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="40dp"
+            android:textColor="@color/red_book_text_color"
+            android:textSize="16sp"
+            android:text="@string/activity_set_phone"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toRightOf="@id/tv_set_phone_text"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/activity_set_enter"
+            android:src="@mipmap/backright"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/split_five"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/view"
+        app:layout_constraintTop_toBottomOf="@id/cl_set_phone"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_set_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        android:background="@drawable/pay_pattern"
+        app:layout_constraintTop_toBottomOf="@id/split_five">
+        <TextView
+            android:id="@+id/tv_set_update_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/red_book_text_color"
+            android:text="@string/activity_set_update_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/activity_set_update_text"
+            android:src="@mipmap/backright"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:id="@+id/split_six"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dip"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="@id/cl_set_update"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_set_notify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/pay_pattern"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:paddingStart="20dp"
+        android:paddingEnd="10dp"
+        app:layout_constraintTop_toBottomOf="@id/split_six">
+        <TextView
+            android:id="@+id/tv_set_notify"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/red_book_text_color"
+            android:text="@string/activity_set_notify_text"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/activity_set_enter"
+            android:src="@mipmap/backright"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tv_exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="15dp"
+        android:background="@color/white"
+        android:gravity="center"
+        android:textColor="@color/red_book_text_color"
+        android:textSize="18sp"
+        android:text="@string/activity_set_exit"
+        app:layout_constraintTop_toBottomOf="@id/cl_set_notify"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

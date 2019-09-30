@@ -179,6 +179,13 @@
     <string name="activity_set_head_text">头像</string>
     <string name="activity_set_name_text">昵称</string>
     <string name="activity_set_name">温子亦。</string>
+    <string name="activity_set_id_text">趣号</string>
+    <string name="activity_set_id">21341251</string>
+    <string name="activity_set_phone_text">手机</string>
+    <string name="activity_set_phone">12345678945</string>
+    <string name="activity_set_update_text">检查更新</string>
+    <string name="activity_set_notify_text">消息通知</string>
+    <string name="activity_set_exit">退出登录</string>
     <string name="activity_set_enter">进入</string>
 
 </resources>
