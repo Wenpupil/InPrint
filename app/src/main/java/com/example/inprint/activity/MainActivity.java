@@ -3,7 +3,6 @@ package com.example.inprint.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -46,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mainPresenter=new MainPresenter(this);
         select(0);
     }
+
     //初始化界面
     private void initView(){
         StatusBarUtil.setStatusBarFullTransparent(this);
@@ -140,7 +140,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     @Override
     public void onDestroy(){
-        //订单服务取消
+        //订单状态查询服务取消
         Intent intent=new Intent(this,QueryOrderService.class);
         stopService(intent);
 

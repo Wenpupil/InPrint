@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.IBinder;
 import android.os.SystemClock;
 
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+
 import com.example.inprint.bean.Rorder;
 import com.example.inprint.bean.Uorder;
 import com.example.inprint.util.ConfigUtil;
@@ -87,6 +89,15 @@ public class QueryOrderService extends Service {
             if(position != null) {
                 position.setStatus(rorder.getAstatus());
                 position.save();
+                //发送广播通知订单列表刷新
+                if(rorder.getAstatus().equals("1")){
+                    LocalBroadcastManager localBroadcastManager = LocalBroadcastManager
+                            .getInstance(this);
+                    Intent intent = new Intent("com.example.inprint.ORDER_UPDATE");
+                    intent.putExtra("newOrder",position);
+                    localBroadcastManager.sendBroadcast(intent);
+                    LogUtil.d("orderUpdate","send broadcast success");
+                }
             }else{
                 LogUtil.d("订单服务","本地没有这个数据");
             }

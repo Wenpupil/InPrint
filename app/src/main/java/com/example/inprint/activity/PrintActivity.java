@@ -182,7 +182,7 @@ public class PrintActivity extends AppCompatActivity implements View.OnClickList
     private void parsePOrder(){
         docUrl=docUrl.replace('\\','/');
         order.setAid("admin");
-        order.setAtoken("aa20190718211933");
+        order.setAtoken("123456");
         order.setAname(tv_filename.getText().toString());
         order.setAurl(docUrl);
         order.setAstatus("0");

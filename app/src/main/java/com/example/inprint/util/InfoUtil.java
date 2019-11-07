@@ -17,7 +17,7 @@ public class InfoUtil {
     public static User testUserInfo(){
         User user=new User();
         user.setAid("admin");
-        user.setAtoken("aa20190718211933");
+        user.setAtoken("123456");
         return user;
     }
 }
