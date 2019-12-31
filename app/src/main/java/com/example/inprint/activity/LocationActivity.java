@@ -71,11 +71,11 @@ public class LocationActivity extends AppCompatActivity implements View.OnClickL
     //初始化位置信息列表----测试UI函数
     private void iniLocationList(){
         locationList=new ArrayList<>();
-        Location a=new Location("001","上海海洋大学一小区",0);
+        Location a=new Location("001","上海电机大学戎遇实验室",0);
         locationList.add(a);
-        Location b=new Location("002","上海海洋大学二小区",1);
+        Location b=new Location("002","上海电机大学测试数据一",1);
         locationList.add(b);
-        Location c=new Location("003","上海海洋大学三小区",3);
+        Location c=new Location("003","上海海洋大学测试数据二",3);
         locationList.add(c);
     }
     @Override

@@ -37,7 +37,7 @@ public class HttpUtil {
                 .addFormDataPart("atoken",pDoc.getAtoken())
                 .addFormDataPart("rate",pDoc.getRate());
         MultipartBody body=builder.build();
-
+        LogUtil.d("Atoken",pDoc.getAtoken());
         Request request=new Request.Builder()
                 .url(postUrl)
                 .post(body)
