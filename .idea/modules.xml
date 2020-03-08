@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Android-InPrint.iml" filepath="$PROJECT_DIR$/Android-InPrint.iml" group="InPrint" />
       <module fileurl="file://$PROJECT_DIR$/InPrint.iml" filepath="$PROJECT_DIR$/InPrint.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/InPrint-app.iml" filepath="$PROJECT_DIR$/app/InPrint-app.iml" group="InPrint/app" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
