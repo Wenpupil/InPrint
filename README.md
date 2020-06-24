@@ -1,2 +1,3 @@
-# InPrint
-戎印科技打印APP
+#"戎印"智能可存储式打印
+
+![image](https://github.com/Wenpupil/InPrint/tree/master/image/)
